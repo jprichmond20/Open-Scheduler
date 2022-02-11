@@ -25,10 +25,20 @@ namespace schedule2
         private void button1_Click(object sender, EventArgs e)
         {
             //Sign-In Button
-            Form Form2 = 
+            var frm = new Form2();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

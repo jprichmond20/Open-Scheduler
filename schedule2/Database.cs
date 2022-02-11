@@ -15,6 +15,6 @@ namespace schedule2
            db_file = File.Open("db.txt",FileMode.OpenOrCreate);
         }
 
-        public CreateUser()
+        //public CreateUser()
     }
 }
