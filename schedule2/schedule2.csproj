@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>schedule2</RootNamespace>
     <AssemblyName>schedule2</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentSchedule.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -54,11 +55,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Schedule View.cs">
+    <Compile Include="ScheduleView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule View.Designer.cs">
-      <DependentUpon>Schedule View.cs</DependentUpon>
+    <Compile Include="ScheduleView.Designer.cs">
+      <DependentUpon>ScheduleView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,9 +76,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Schedule View.resx">
-      <DependentUpon>Schedule View.cs</DependentUpon>
+    <EmbeddedResource Include="ScheduleView.resx">
+      <DependentUpon>ScheduleView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\schedule2.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\schedule2.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
