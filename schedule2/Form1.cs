@@ -24,16 +24,23 @@ namespace schedule2
 
         }
 
+        //Sign-In Button
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(db.AuthenticateUser(textBox1.Text, textBox2.Text));
-            //Sign-In Button
-            var frm = new Form2();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
-            this.Hide();
+            if(db.AuthenticateUser(textBox1.Text, textBox2.Text))
+            {
+                var frm = new Form2();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Show(); };
+                frm.Show();
+                this.Hide();
+            }
+            else{
+                label3.Text = "Login has failed! Try another password?";
+            }
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,6 +54,11 @@ namespace schedule2
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
