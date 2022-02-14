@@ -1,4 +1,4 @@
-﻿namespace schedule2
+namespace schedule2
 {
     partial class Form2
     {
@@ -77,9 +77,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label8.Location = new System.Drawing.Point(83, 9);
+            this.label8.Location = new System.Drawing.Point(111, 11);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(754, 61);
+            this.label8.Size = new System.Drawing.Size(952, 77);
             this.label8.TabIndex = 8;
             this.label8.Text = "Current Writing Center Schedule";
             // 
@@ -102,6 +103,15 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListView listView1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
