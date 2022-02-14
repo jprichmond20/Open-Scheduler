@@ -29,6 +29,7 @@ namespace schedule2
         {
             if(db.AuthenticateUser(textBox1.Text, textBox2.Text))
             {
+                label3.Text = "";
                 var frm = new Form2();
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
