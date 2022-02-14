@@ -39,8 +39,6 @@ namespace schedule2
             else{
                 label3.Text = "Login has failed! Try another password?";
             }
-            
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

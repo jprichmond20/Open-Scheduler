@@ -47,6 +47,5 @@ namespace schedule2
             rng.GetBytes(bytes);
             return Convert.ToBase64String(bytes);
         }
-
     }
 }
