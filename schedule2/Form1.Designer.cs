@@ -43,7 +43,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Gray;
+            this.textBox1.BackColor = System.Drawing.Color.Silver;
             this.textBox1.Font = new System.Drawing.Font("Microsoft JhengHei", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(201, 187);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -57,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
             this.label1.Location = new System.Drawing.Point(12, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 42);
@@ -69,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label2.ForeColor = System.Drawing.Color.Crimson;
             this.label2.Location = new System.Drawing.Point(21, 297);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(174, 42);
@@ -79,8 +79,8 @@
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Gray;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.BackColor = System.Drawing.Color.Silver;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(201, 299);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Multiline = true;
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(589, 455);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -160,9 +160,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Sign In";
