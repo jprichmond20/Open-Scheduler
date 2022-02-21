@@ -63,12 +63,10 @@ namespace schedule2
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
-                string user_account = Guid.NewGuid().ToString();
-                string[] user_login_info = { hash, salt, user_account };
+                string uuid = Guid.NewGuid().ToString();
+                string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
-
-
-
+                File.AppendAllText("pwds.txt", username + ", " + hash + "," + salt + "," + uuid + Environment.NewLine);
             }
             catch (Exception e)
             {
