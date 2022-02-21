@@ -21,10 +21,10 @@ namespace schedule2
 
         //username, (hashpass, salt, userId)
         private Dictionary<string, string[]> accounts;
-        private Dictionary<string, string[]> details;
         public Database()
         {
             accounts = new Dictionary<string, string[]>();
+
             var lines = File.ReadAllLines("pwds.txt");
             foreach (string line in lines)
             {
@@ -62,12 +62,19 @@ namespace schedule2
             DBReturnMessage return_message = new DBReturnMessage();
             try {
                 string salt = GenerateSalt();
+                string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
+                string user_account = Guid.NewGuid().ToString();
+                string[] user_login_info = { hash, salt, user_account };
+                accounts.Add(username, user_login_info);
+
+
 
             }
             catch (Exception e)
             {
                 return_message.success = false;
-                return_message.error_messages = { e.ToString(); };
+                string[] error = { e.ToString() };
+                return_message.error_messages = error;
             }
 
             return return_message;
