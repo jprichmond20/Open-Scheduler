@@ -11,8 +11,17 @@ namespace schedule2
 {
     internal class Database
     {
-        //username, (hashpass, salt)
+
+        private struct DBReturnMessage
+        {
+            public bool success;
+            public string[] error_messages;
+        }
+
+
+        //username, (hashpass, salt, userId)
         private Dictionary<string, string[]> accounts;
+        private Dictionary<string, string[]> details;
         public Database()
         {
             accounts = new Dictionary<string, string[]>();
@@ -20,7 +29,7 @@ namespace schedule2
             foreach (string line in lines)
             {
                 string[] split_line = line.Split(',');
-                string[] output = { split_line[1], split_line[2] };
+                string[] output = { split_line[1], split_line[2], split_line[3]};
                 accounts.Add(split_line[0], output);
             }
         }
@@ -47,5 +56,24 @@ namespace schedule2
             rng.GetBytes(bytes);
             return Convert.ToBase64String(bytes);
         }
+
+        private DBReturnMessage RegisterUser(string username, string password, string[] user_info)
+        {
+            DBReturnMessage return_message = new DBReturnMessage();
+            try {
+                string salt = GenerateSalt();
+
+            }
+            catch (Exception e)
+            {
+                return_message.success = false;
+                return_message.error_messages = { e.ToString(); };
+            }
+
+            return return_message;
+
+        }
+
+
     }
 }
