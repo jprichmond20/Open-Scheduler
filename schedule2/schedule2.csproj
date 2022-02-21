@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="User.cs" />
     <Compile Include="CurrentSchedule.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Database1DataSet.Designer.cs">

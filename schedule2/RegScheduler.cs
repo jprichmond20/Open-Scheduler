@@ -12,9 +12,10 @@ namespace schedule2
 {
     public partial class RegScheduler : Form
     {
-
-        public RegScheduler()
+        private string userID;
+        public RegScheduler(string ID)
         {
+            userID = ID;
             InitializeComponent();
         }
 
@@ -78,6 +79,20 @@ namespace schedule2
         private void dataGridView1_MultiSelectChanged(Object sender, EventArgs e)
         {
             MessageBox.Show(" Selection Changed");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if (dataGridView1.Columns[i].HeaderText != "Time")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        
+                   }
+                }
+            }
         }
     }
 }
