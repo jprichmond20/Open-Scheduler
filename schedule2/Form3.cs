@@ -12,9 +12,11 @@ namespace schedule2
 {
     public partial class Form3 : Form
     {
+        private Database db;
         public Form3()
         {
             InitializeComponent();
+            db = new Database();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace schedule2
                 label3.Text = "Please fill in all fields.";
             }
             string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer };
+            db.RegisterUser(username, password, userInfo);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -106,6 +109,11 @@ namespace schedule2
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }

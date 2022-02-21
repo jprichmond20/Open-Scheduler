@@ -12,7 +12,7 @@ namespace schedule2
     internal class Database
     {
 
-        private struct DBReturnMessage
+        public struct DBReturnMessage
         {
             public bool success;
             public string[] error_messages;
@@ -57,7 +57,7 @@ namespace schedule2
             return Convert.ToBase64String(bytes);
         }
 
-        private DBReturnMessage RegisterUser(string username, string password, string[] user_info)
+        public DBReturnMessage RegisterUser(string username, string password, string[] user_info)
         {
             DBReturnMessage return_message = new DBReturnMessage();
             try {
@@ -66,13 +66,14 @@ namespace schedule2
                 string uuid = Guid.NewGuid().ToString();
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
-                File.AppendAllText("pwds.txt", username + ", " + hash + "," + salt + "," + uuid + Environment.NewLine);
+                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
             }
             catch (Exception e)
             {
                 return_message.success = false;
                 string[] error = { e.ToString() };
                 return_message.error_messages = error;
+                Console.Write(e.ToString());
             }
 
             return return_message;
