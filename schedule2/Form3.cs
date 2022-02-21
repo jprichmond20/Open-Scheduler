@@ -31,10 +31,13 @@ namespace schedule2
         {
             //Submit button
 
-
+            string fName = textBox5.Text;
+            string lName = textBox2.Text;
             string username = textBox13.Text;
             string password = textBox11.Text;
-            string major = textBox10.Text;
+            string major = comboBox1.Text;
+            string majMin2 = comboBox2.Text;
+            string majMin3 = comboBox3.Text;
             string yearsWorked = textBox9.Text;
             string hoursPer = textBox3.Text;
             
@@ -57,7 +60,7 @@ namespace schedule2
             {
                 label3.Text = "Please fill in all fields.";
             }
-            string[] userInfo = { major, yearsWorked, hoursPer };
+            string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer };
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -80,6 +83,21 @@ namespace schedule2
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
