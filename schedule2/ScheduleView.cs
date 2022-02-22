@@ -388,5 +388,10 @@ namespace schedule2
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
