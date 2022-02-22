@@ -63,6 +63,15 @@ namespace schedule2
             string userID = Guid.NewGuid().ToString();
             string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer, userID };
             User newUser = new User(userInfo);
+            this.Hide();
+            var frm = new RegScheduler(newUser);
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
-    class User
+    public class User
     {
         string[] monday = new string[31];
         string[] tuesday = new string[31];
@@ -40,7 +40,7 @@ namespace schedule2
             {
                 for(int j = 1; j < schedule.Columns.Count; j++)
                 {
-
+                    MessageBox.Show(schedule.Columns[j].HeaderText);
                 }
             }
 
