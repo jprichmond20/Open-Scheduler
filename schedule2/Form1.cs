@@ -46,11 +46,11 @@ namespace schedule2
         {
             label3.Text = "";
             this.Hide();
-            var frm = new Form3();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            //var frm = new Form3();
+            //frm.Location = this.Location;
+            //frm.StartPosition = FormStartPosition.Manual;
+            //frm.FormClosing += delegate { this.Close(); };
+            //frm.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

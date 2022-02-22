@@ -60,7 +60,9 @@ namespace schedule2
             {
                 label3.Text = "Please fill in all fields.";
             }
-            string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer };
+            string userID = Guid.NewGuid().ToString();
+            string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer, userID };
+            User newUser = new User(userInfo);
         }
         private void button1_Click(object sender, EventArgs e)
         {

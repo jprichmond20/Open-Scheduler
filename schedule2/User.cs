@@ -26,6 +26,7 @@ namespace schedule2
         string last;
         string username;
         string password;
+        string userID;
 
 
         public User(string[] demographicInfo)
@@ -73,6 +74,7 @@ namespace schedule2
             majMin3 = demographicInfo[6];
             yearsWorked = demographicInfo[7];
             hoursPer = demographicInfo[8];
+            userID = demographicInfo[9];
            
             for (int i = 0; i < 31; i++)
             {
