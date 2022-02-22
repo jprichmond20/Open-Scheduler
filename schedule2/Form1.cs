@@ -44,7 +44,13 @@ namespace schedule2
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            label3.Text = "";
+            var frm = new Form3();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -58,6 +64,16 @@ namespace schedule2
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
