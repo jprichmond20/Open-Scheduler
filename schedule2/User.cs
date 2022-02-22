@@ -17,6 +17,7 @@ namespace schedule2
         string[] friday = new string[31];
         string[] saturday = new string[31];
         string[] sunday = new string[31];
+        List<string[]> days;
         string major;
         string majMin2;
         string majMin3;
@@ -36,12 +37,28 @@ namespace schedule2
 
         public void PopulateSched(DataGridView schedule)
         {
-            for(int i = 0; i < schedule.Rows.Count; i++)
+            DataGridViewCellStyle sel = new DataGridViewCellStyle();
+            sel.BackColor = Color.Crimson;
+            for (int i = 0; i < schedule.Rows.Count; i++)
             {
                 for(int j = 1; j < schedule.Columns.Count; j++)
                 {
-                    MessageBox.Show(schedule.Columns[j].HeaderText);
+                    //MessageBox.Show(schedule.Rows[i].Cells[j].Style.BackColor.ToString());
+                    //MessageBox.Show(sel.BackColor.ToString());
+                    if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor)
+                    {
+                        days[j - 1][i] = " ";
+                    }
+                    else
+                    {
+                        days[j - 1][i] = "NULL";
+                    }
                 }
+                }
+            for (int k = 0; k < 6; k++)
+            {
+                MessageBox.Show(string.Join(",", days[k]));
+                    }
             }
 
             //for (int i = 0; i < schedule.Columns.Count; i++)
@@ -61,7 +78,7 @@ namespace schedule2
             //        }
             //    }
             //}
-        }
+        
 
         private void Initialize(string[] demographicInfo)
         {
@@ -86,6 +103,7 @@ namespace schedule2
                 saturday[i] = "";
                 sunday[i] = "";
             }
+            days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
         }
     }
 }
