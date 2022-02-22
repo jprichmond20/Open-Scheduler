@@ -65,6 +65,14 @@ namespace schedule2
         private void button1_Click(object sender, EventArgs e)
         {
             //Back button
+            this.Hide();
+            var frm = new Form1();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+
         }
 
         private void textBox13_TextChanged(object sender, EventArgs e)

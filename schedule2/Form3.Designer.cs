@@ -32,7 +32,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,13 +46,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox3
@@ -102,17 +102,6 @@
             this.textBox13.Size = new System.Drawing.Size(340, 40);
             this.textBox13.TabIndex = 17;
             this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Crimson;
-            this.label1.Location = new System.Drawing.Point(52, 176);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 42);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Username:";
             // 
             // label2
             // 
@@ -184,7 +173,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 42);
             this.button2.TabIndex = 31;
-            this.button2.Text = "Submit";
+            this.button2.Text = "Next";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -194,7 +183,7 @@
             this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label3.Font = new System.Drawing.Font("Microsoft JhengHei", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Crimson;
-            this.label3.Location = new System.Drawing.Point(292, 578);
+            this.label3.Location = new System.Drawing.Point(305, 622);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 35);
             this.label3.TabIndex = 32;
@@ -476,17 +465,6 @@
             this.label7.TabIndex = 40;
             this.label7.Text = "Last Name:";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Crimson;
-            this.label11.Location = new System.Drawing.Point(52, 172);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(184, 42);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Username:";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -553,6 +531,28 @@
             this.textBox5.Size = new System.Drawing.Size(340, 40);
             this.textBox5.TabIndex = 41;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
+            this.label1.Location = new System.Drawing.Point(52, 176);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 42);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Username:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Crimson;
+            this.label11.Location = new System.Drawing.Point(52, 172);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(184, 42);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Username:";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -598,7 +598,6 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -613,12 +612,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
     }
 }
