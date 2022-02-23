@@ -12,9 +12,11 @@ namespace schedule2
 {
     public partial class Form3 : Form
     {
+        private Database db;
         public Form3()
         {
             InitializeComponent();
+            db = new Database();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -70,8 +72,6 @@ namespace schedule2
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
-
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -117,6 +117,11 @@ namespace schedule2
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }

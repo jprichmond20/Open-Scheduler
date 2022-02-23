@@ -11,16 +11,25 @@ namespace schedule2
 {
     internal class Database
     {
-        //username, (hashpass, salt)
+
+        public struct DBReturnMessage
+        {
+            public bool success;
+            public string[] error_messages;
+        }
+
+
+        //username, (hashpass, salt, userId)
         private Dictionary<string, string[]> accounts;
         public Database()
         {
             accounts = new Dictionary<string, string[]>();
+
             var lines = File.ReadAllLines("pwds.txt");
             foreach (string line in lines)
             {
                 string[] split_line = line.Split(',');
-                string[] output = { split_line[1], split_line[2] };
+                string[] output = { split_line[1], split_line[2], split_line[3]};
                 accounts.Add(split_line[0], output);
             }
         }
@@ -47,5 +56,30 @@ namespace schedule2
             rng.GetBytes(bytes);
             return Convert.ToBase64String(bytes);
         }
+
+        public DBReturnMessage RegisterUser(string username, string password, string[] user_info)
+        {
+            DBReturnMessage return_message = new DBReturnMessage();
+            try {
+                string salt = GenerateSalt();
+                string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
+                string uuid = Guid.NewGuid().ToString();
+                string[] user_login_info = { hash, salt, uuid };
+                accounts.Add(username, user_login_info);
+                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
+            }
+            catch (Exception e)
+            {
+                return_message.success = false;
+                string[] error = { e.ToString() };
+                return_message.error_messages = error;
+                Console.Write(e.ToString());
+            }
+
+            return return_message;
+
+        }
+
+
     }
 }

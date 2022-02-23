@@ -154,7 +154,7 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="pwds.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
