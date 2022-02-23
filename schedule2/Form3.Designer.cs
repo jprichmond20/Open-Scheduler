@@ -64,8 +64,8 @@
             this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(256, 33);
-            this.textBox3.TabIndex = 7;
+            this.textBox3.Size = new System.Drawing.Size(340, 40);
+            this.textBox3.TabIndex = 9;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox9
@@ -76,8 +76,8 @@
             this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(256, 33);
-            this.textBox9.TabIndex = 13;
+            this.textBox9.Size = new System.Drawing.Size(340, 40);
+            this.textBox9.TabIndex = 8;
             // 
             // textBox11
             // 
@@ -87,8 +87,8 @@
             this.textBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(256, 33);
-            this.textBox11.TabIndex = 15;
+            this.textBox11.Size = new System.Drawing.Size(340, 40);
+            this.textBox11.TabIndex = 4;
             this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // textBox13
@@ -99,8 +99,8 @@
             this.textBox13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(256, 33);
-            this.textBox13.TabIndex = 17;
+            this.textBox13.Size = new System.Drawing.Size(340, 40);
+            this.textBox13.TabIndex = 3;
             this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
             // 
             // label2
@@ -161,8 +161,8 @@
             this.button1.Location = new System.Drawing.Point(44, 505);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 34);
-            this.button1.TabIndex = 30;
+            this.button1.Size = new System.Drawing.Size(125, 42);
+            this.button1.TabIndex = 11;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -175,8 +175,8 @@
             this.button2.Location = new System.Drawing.Point(524, 505);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 34);
-            this.button2.TabIndex = 31;
+            this.button2.Size = new System.Drawing.Size(125, 42);
+            this.button2.TabIndex = 10;
             this.button2.Text = "Next";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -269,8 +269,8 @@
             this.comboBox1.Location = new System.Drawing.Point(363, 242);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(256, 36);
-            this.comboBox1.TabIndex = 34;
+            this.comboBox1.Size = new System.Drawing.Size(340, 42);
+            this.comboBox1.TabIndex = 5;
             // 
             // comboBox2
             // 
@@ -347,8 +347,8 @@
             this.comboBox2.Location = new System.Drawing.Point(363, 294);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(256, 36);
-            this.comboBox2.TabIndex = 35;
+            this.comboBox2.Size = new System.Drawing.Size(340, 42);
+            this.comboBox2.TabIndex = 6;
             // 
             // comboBox3
             // 
@@ -425,8 +425,8 @@
             this.comboBox3.Location = new System.Drawing.Point(363, 346);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(256, 36);
-            this.comboBox3.TabIndex = 36;
+            this.comboBox3.Size = new System.Drawing.Size(340, 42);
+            this.comboBox3.TabIndex = 7;
             // 
             // label4
             // 
@@ -532,8 +532,8 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(256, 33);
-            this.textBox2.TabIndex = 42;
+            this.textBox2.Size = new System.Drawing.Size(340, 40);
+            this.textBox2.TabIndex = 2;
             // 
             // textBox5
             // 
@@ -543,9 +543,8 @@
             this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(256, 33);
-            this.textBox5.TabIndex = 41;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBox5.Size = new System.Drawing.Size(340, 40);
+            this.textBox5.TabIndex = 1;
             // 
             // label1
             // 
@@ -605,7 +604,7 @@
             this.Controls.Add(this.textBox3);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Registration";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

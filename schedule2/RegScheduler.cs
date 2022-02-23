@@ -12,10 +12,10 @@ namespace schedule2
 {
     public partial class RegScheduler : Form
     {
-        private string userID;
-        public RegScheduler(string ID)
+        public User user;
+        public RegScheduler(User user)
         {
-            userID = ID;
+            this.user = user;
             InitializeComponent();
         }
 
@@ -75,24 +75,16 @@ namespace schedule2
                 }
             }
         }
-
-        private void dataGridView1_MultiSelectChanged(Object sender, EventArgs e)
-        {
-            MessageBox.Show(" Selection Changed");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < dataGridView1.Columns.Count; i++)
-            {
-                if (dataGridView1.Columns[i].HeaderText != "Time")
-                {
-                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
-                    {
-                        
-                   }
-                }
-            }
+            user.PopulateSched(dataGridView1);
+            MessageBox.Show("Registration Successful");
+            var frm = new Form2();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }
