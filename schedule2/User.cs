@@ -32,7 +32,9 @@ namespace schedule2
 
         public User(string[] demographicInfo)
         {
+            Database db = new Database();
             Initialize(demographicInfo);
+            db.RegisterUser(username, password, demographicInfo);
         }
 
         public void PopulateSched(DataGridView schedule)
@@ -54,12 +56,13 @@ namespace schedule2
                         days[j - 1][i] = "NULL";
                     }
                 }
-                }
+            }
             for (int k = 0; k < 6; k++)
             {
                 MessageBox.Show(string.Join(",", days[k]));
-                    }
             }
+
+        }
 
             //for (int i = 0; i < schedule.Columns.Count; i++)
             //{
@@ -105,5 +108,6 @@ namespace schedule2
             }
             days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
         }
+
     }
 }
