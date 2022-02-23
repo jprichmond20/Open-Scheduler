@@ -78,6 +78,13 @@ namespace schedule2
         private void button1_Click(object sender, EventArgs e)
         {
             user.PopulateSched(dataGridView1);
+            MessageBox.Show("Registration Successful");
+            var frm = new Form2();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }
