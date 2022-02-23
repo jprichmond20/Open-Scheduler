@@ -28,13 +28,12 @@ namespace schedule2
         string username;
         string password;
         string userID;
+        string[] demographicInfo;
 
 
         public User(string[] demographicInfo)
         {
-            Database db = new Database();
             Initialize(demographicInfo);
-            db.RegisterUser(username, password, demographicInfo);
         }
 
         public void PopulateSched(DataGridView schedule)
@@ -95,7 +94,8 @@ namespace schedule2
             yearsWorked = demographicInfo[7];
             hoursPer = demographicInfo[8];
             userID = demographicInfo[9];
-           
+            this.demographicInfo = demographicInfo;
+
             for (int i = 0; i < 31; i++)
             {
                 monday[i] = "";
@@ -107,6 +107,12 @@ namespace schedule2
                 sunday[i] = "";
             }
             days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+        }
+
+        public void RegisterUser()
+        {
+            Database db = new Database();
+            db.RegisterUser(username, password, demographicInfo);
         }
 
     }
