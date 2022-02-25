@@ -86,5 +86,11 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+        private void scheduleConsultants()
+        {
+            int numShifts;
+            int consecShifts;
+
+        }
     }
 }
