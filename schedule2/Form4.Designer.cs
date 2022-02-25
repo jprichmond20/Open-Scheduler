@@ -1,6 +1,6 @@
 ﻿namespace schedule2
 {
-    partial class ConLanding
+    partial class DirectorLanding
     {
         /// <summary>
         /// Required designer variable.
@@ -69,7 +69,7 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Welcome to the Coe College Writing Center";
             // 
-            // ConLanding
+            // DirectorLanding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +78,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Name = "ConLanding";
+            this.Name = "DirectorLanding";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
