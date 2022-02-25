@@ -37,9 +37,12 @@ namespace schedule2
             string lName = textBox2.Text;
             string username = textBox13.Text;
             string password = textBox11.Text;
-            string major = comboBox1.Text;
-            string majMin2 = comboBox2.Text;
-            string majMin3 = comboBox3.Text;
+            string major = " ";
+            string majMin2 = " ";
+            string majMin3 = " ";
+            Console.Write(checkedListBox1.CheckedItems);
+            Console.Write(checkedListBox2.CheckedItems);
+
             string yearsWorked = textBox9.Text;
             string hoursPer = textBox3.Text;
             
