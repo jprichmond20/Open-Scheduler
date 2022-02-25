@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
-    public partial class ConLanding : Form
+    public partial class DirectorLanding : Form
     {
-        public ConLanding()
+        public DirectorLanding()
         {
             InitializeComponent();
         }
