@@ -12,8 +12,10 @@ namespace schedule2
 {
     public partial class DirectorLanding : Form
     {
-        public DirectorLanding()
+        public User user;
+        public DirectorLanding(User user)
         {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -31,6 +33,22 @@ namespace schedule2
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new RegScheduler(user);
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
