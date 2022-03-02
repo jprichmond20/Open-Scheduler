@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
-    public partial class Form1 : Form
+    public partial class SignIn : Form
     {
         private Database db;
-        public Form1()
+        public SignIn()
         {
             InitializeComponent();
             db = new Database();
@@ -27,17 +27,20 @@ namespace schedule2
         //Sign-In Button
         private void button1_Click(object sender, EventArgs e)
         {
+            //Need to distinguish between types of users to determine landing page
+            //Talk with Kacik about Form4
             if(db.AuthenticateUser(textBox1.Text, textBox2.Text))
             {
                 label3.Text = "";
-                var frm = new Form2();
+                var frm = new ScheduleView();
                 this.Hide();
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Close(); };
                 frm.Show();
             }
-            else{
+            else
+            {
                 label3.Text = "Login has failed! Try another password?";
             }
         }
@@ -46,7 +49,7 @@ namespace schedule2
         {
             label3.Text = "";
             this.Hide();
-            var frm = new Form3();
+            var frm = new RegForm();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };

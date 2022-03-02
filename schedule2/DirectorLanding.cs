@@ -27,7 +27,7 @@ namespace schedule2
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var frm = new Form2();
+            var frm = new ScheduleView();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;

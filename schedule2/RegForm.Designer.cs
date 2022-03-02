@@ -1,6 +1,6 @@
 ﻿namespace schedule2
 {
-    partial class Form3
+    partial class RegForm
     {
         /// <summary>
         /// Required designer variable.

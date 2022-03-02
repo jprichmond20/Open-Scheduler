@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
-    public partial class Form2 : Form
+    public partial class ScheduleView : Form
     {
         public List<CurrentSchedule> CurrentSchedule { get; set; }
 
-        public Form2()
+        public ScheduleView()
         {
             CurrentSchedule = GetCurrentSchedule();
             InitializeComponent();
