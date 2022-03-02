@@ -39,8 +39,7 @@ namespace schedule2
             string password = textBox11.Text;
             string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
             string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
-            MessageBox.Show(major);
-            MessageBox.Show(minor);
+            
 
             string yearsWorked = textBox9.Text;
             string hoursPer = textBox3.Text;

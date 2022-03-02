@@ -18,8 +18,10 @@ namespace schedule2
         protected string[] saturday = new string[31];
         protected string[] sunday = new string[31];
         protected List<string[]> days;
-        protected string major;
-        protected string minor;
+        protected string[] major;
+        protected string maj;
+        protected string[] minor;
+        protected string min;
         protected string yearsWorked;
         protected string hoursPer;
         protected string first;
@@ -66,8 +68,10 @@ namespace schedule2
             last = demographicInfo[1];
             username = demographicInfo[2];
             password = demographicInfo[3];
-            major = demographicInfo[4];
-            minor = demographicInfo[5];
+            maj = demographicInfo[4];
+            min = demographicInfo[5];
+            major = maj.Split(',');
+            minor = min.Split(',');
             yearsWorked = demographicInfo[6];
             hoursPer = demographicInfo[7];
             userID = demographicInfo[8];
