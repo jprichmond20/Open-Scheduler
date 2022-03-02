@@ -37,14 +37,15 @@ namespace schedule2
             string lName = textBox2.Text;
             string username = textBox13.Text;
             string password = textBox11.Text;
-            string major = " ";
-            string majMin2 = " ";
-            string majMin3 = " ";
-            Console.Write(checkedListBox1.CheckedItems);
-            Console.Write(checkedListBox2.CheckedItems);
+            string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
+            string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
+            MessageBox.Show(major);
+            MessageBox.Show(minor);
 
             string yearsWorked = textBox9.Text;
             string hoursPer = textBox3.Text;
+            
+         
             
             if (username == "") {
                 label3.Text = "Please fill in all fields.";
@@ -66,7 +67,7 @@ namespace schedule2
                 label3.Text = "Please fill in all fields.";
             }
             string userID = Guid.NewGuid().ToString();
-            string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer, userID };
+            string[] userInfo = { fName, lName, username, password, major, minor, yearsWorked, hoursPer, userID };
             User newUser = new User(userInfo);
             this.Hide();
             var frm = new RegScheduler(newUser);

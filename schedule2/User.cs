@@ -10,25 +10,24 @@ namespace schedule2
 {
     public class User
     {
-        string[] monday = new string[31];
-        string[] tuesday = new string[31];
-        string[] wednesday = new string[31];
-        string[] thursday = new string[31];
-        string[] friday = new string[31];
-        string[] saturday = new string[31];
-        string[] sunday = new string[31];
-        List<string[]> days;
-        string major;
-        string majMin2;
-        string majMin3;
-        string yearsWorked;
-        string hoursPer;
-        string first;
-        string last;
-        string username;
-        string password;
-        string userID;
-        string[] demographicInfo;
+        protected string[] monday = new string[31];
+        protected string[] tuesday = new string[31];
+        protected string[] wednesday = new string[31];
+        protected string[] thursday = new string[31];
+        protected string[] friday = new string[31];
+        protected string[] saturday = new string[31];
+        protected string[] sunday = new string[31];
+        protected List<string[]> days;
+        protected string major;
+        protected string minor;
+        protected string yearsWorked;
+        protected string hoursPer;
+        protected string first;
+        protected string last;
+        protected string username;
+        protected string password;
+        protected string userID;
+        protected string[] demographicInfo;
 
 
         public User(string[] demographicInfo)
@@ -44,8 +43,6 @@ namespace schedule2
             {
                 for(int j = 1; j < schedule.Columns.Count; j++)
                 {
-                    //MessageBox.Show(schedule.Rows[i].Cells[j].Style.BackColor.ToString());
-                    //MessageBox.Show(sel.BackColor.ToString());
                     if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor)
                     {
                         days[j - 1][i] = " ";
@@ -62,26 +59,7 @@ namespace schedule2
             }
 
         }
-
-            //for (int i = 0; i < schedule.Columns.Count; i++)
-            //{
-            //    if (schedule.Columns[i].HeaderText != "Time")
-            //    {
-            //        for (int j = 0; j < schedule.Rows.Count; j++)
-            //        {
-            //            DataGridViewCellStyle unsel = new DataGridViewCellStyle();
-            //            DataGridViewCellStyle sel = new DataGridViewCellStyle();
-            //            unsel.BackColor = Color.Gainsboro;
-            //            sel.BackColor = Color.Crimson;
-            //            if (i == 1)
-            //            {
-                         
-            //            }
-            //        }
-            //    }
-            //}
         
-
         private void Initialize(string[] demographicInfo)
         {
             first = demographicInfo[0];
@@ -89,11 +67,10 @@ namespace schedule2
             username = demographicInfo[2];
             password = demographicInfo[3];
             major = demographicInfo[4];
-            majMin2 = demographicInfo[5];
-            majMin3 = demographicInfo[6];
-            yearsWorked = demographicInfo[7];
-            hoursPer = demographicInfo[8];
-            userID = demographicInfo[9];
+            minor = demographicInfo[5];
+            yearsWorked = demographicInfo[6];
+            hoursPer = demographicInfo[7];
+            userID = demographicInfo[8];
             this.demographicInfo = demographicInfo;
 
             for (int i = 0; i < 31; i++)
@@ -116,4 +93,37 @@ namespace schedule2
         }
 
     }
+
+    //public class Consultant : User
+    //{
+    //    public Consultant(string[] demographicInfo)
+    //    {
+
+    //    }
+    //    private override void Initialize(string[] demographicInfo)
+    //    {
+    //        first = demographicInfo[0];
+    //        last = demographicInfo[1];
+    //        username = demographicInfo[2];
+    //        password = demographicInfo[3];
+    //        major = demographicInfo[4];
+    //        minor = demographicInfo[5];
+    //        yearsWorked = demographicInfo[6];
+    //        hoursPer = demographicInfo[7];
+    //        userID = demographicInfo[8];
+    //        this.demographicInfo = demographicInfo;
+
+    //        for (int i = 0; i < 31; i++)
+    //        {
+    //            monday[i] = "";
+    //            tuesday[i] = "";
+    //            wednesday[i] = "";
+    //            thursday[i] = "";
+    //            friday[i] = "";
+    //            saturday[i] = "";
+    //            sunday[i] = "";
+    //        }
+    //        days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+    //    }
+    //}
 }
