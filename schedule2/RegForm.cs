@@ -37,14 +37,14 @@ namespace schedule2
             string lName = textBox2.Text;
             string username = textBox13.Text;
             string password = textBox11.Text;
-            string major = " ";
-            string majMin2 = " ";
-            string majMin3 = " ";
-            Console.Write(checkedListBox1.CheckedItems);
-            Console.Write(checkedListBox2.CheckedItems);
+            string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
+            string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
+            
 
             string yearsWorked = textBox9.Text;
             string hoursPer = textBox3.Text;
+            
+         
             
             if (username == "") {
                 label3.Text = "Please fill in all fields.";
@@ -66,8 +66,8 @@ namespace schedule2
                 label3.Text = "Please fill in all fields.";
             }
             string userID = Guid.NewGuid().ToString();
-            string[] userInfo = { fName, lName, username, password, major, majMin2, majMin3, yearsWorked, hoursPer, userID };
-            User newUser = new User(userInfo);
+            string[] userInfo = { fName, lName, username, password, major, minor, yearsWorked, hoursPer, userID };
+            Consultant newUser = new Consultant(userInfo);
             this.Hide();
             var frm = new RegScheduler(newUser);
             this.Hide();
@@ -125,6 +125,16 @@ namespace schedule2
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

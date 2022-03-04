@@ -79,7 +79,8 @@ namespace schedule2
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Registration Successful");
-            var frm = new ScheduleView();
+            user.RegisterUser();
+            var frm = new Form2();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -91,6 +92,25 @@ namespace schedule2
             int numShifts;
             int consecShifts;
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //clear
+
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.Gainsboro;
+                }
+            }
+        
         }
     }
 }
