@@ -93,5 +93,24 @@ namespace schedule2
             int consecShifts;
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //clear
+
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.Gainsboro;
+                }
+            }
+        
+        }
     }
 }
