@@ -67,7 +67,7 @@ namespace schedule2
             }
             string userID = Guid.NewGuid().ToString();
             string[] userInfo = { fName, lName, username, password, major, minor, yearsWorked, hoursPer, userID };
-            User newUser = new User(userInfo);
+            Consultant newUser = new Consultant(userInfo);
             this.Hide();
             var frm = new RegScheduler(newUser);
             this.Hide();
@@ -125,6 +125,16 @@ namespace schedule2
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

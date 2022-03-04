@@ -32,10 +32,13 @@ namespace schedule2
         protected string[] demographicInfo;
 
 
-        public User(string[] demographicInfo)
-        {
-            Initialize(demographicInfo);
-        }
+        //public User(string[] demographicInfo)
+        //{
+        //    first = demographicInfo[0];
+        //    last = demographicInfo[1];
+        //    username = demographicInfo[2];
+        //    password = demographicInfo[3];
+        //}
 
         public void PopulateSched(DataGridView schedule)
         {
@@ -61,7 +64,77 @@ namespace schedule2
             }
 
         }
+
+        public void RegisterUser()
+        {
+        Database db = new Database();
+        db.RegisterUser(username, password, demographicInfo);
+        }
         
+        //private void Initialize(string[] demographicInfo)
+        //{
+        //    first = demographicInfo[0];
+        //    last = demographicInfo[1];
+        //    username = demographicInfo[2];
+        //    password = demographicInfo[3];
+        //    maj = demographicInfo[4];
+        //    min = demographicInfo[5];
+        //    major = maj.Split(',');
+        //    minor = min.Split(',');
+        //    yearsWorked = demographicInfo[6];
+        //    hoursPer = demographicInfo[7];
+        //    userID = demographicInfo[8];
+        //    this.demographicInfo = demographicInfo;
+
+        //    for (int i = 0; i < 31; i++)
+        //    {
+        //        monday[i] = "";
+        //        tuesday[i] = "";
+        //        wednesday[i] = "";
+        //        thursday[i] = "";
+        //        friday[i] = "";
+        //        saturday[i] = "";
+        //        sunday[i] = "";
+        //    }
+        //    days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+        //}
+
+        //public void RegisterUser()
+        //{
+        //    Database db = new Database();
+        //    db.RegisterUser(username, password, demographicInfo);
+        //}
+
+    }
+    public class Director : User
+    {
+        public Director(string[] demographicInfo)
+        {
+            Initialize(demographicInfo);
+        }
+        private void Initialize(string[] demographicInfo)
+        {
+            this.demographicInfo = demographicInfo;
+
+            for (int i = 0; i < 31; i++)
+            {
+                monday[i] = "";
+                tuesday[i] = "";
+                wednesday[i] = "";
+                thursday[i] = "";
+                friday[i] = "";
+                saturday[i] = "";
+                sunday[i] = "";
+            }
+            days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+        }
+    }
+    public class Consultant : User
+    {
+        public Consultant(string[] demographicInfo)
+        {
+            Initialize(demographicInfo);
+        }
         private void Initialize(string[] demographicInfo)
         {
             first = demographicInfo[0];
@@ -87,47 +160,8 @@ namespace schedule2
                 saturday[i] = "";
                 sunday[i] = "";
             }
-            days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+            days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
         }
-
-        public void RegisterUser()
-        {
-            Database db = new Database();
-            db.RegisterUser(username, password, demographicInfo);
-        }
-
-    }
-
-    //public class Consultant : User
-    //{
-    //    public Consultant(string[] demographicInfo)
-    //    {
-
-    //    }
-    //    private override void Initialize(string[] demographicInfo)
-    //    {
-    //        first = demographicInfo[0];
-    //        last = demographicInfo[1];
-    //        username = demographicInfo[2];
-    //        password = demographicInfo[3];
-    //        major = demographicInfo[4];
-    //        minor = demographicInfo[5];
-    //        yearsWorked = demographicInfo[6];
-    //        hoursPer = demographicInfo[7];
-    //        userID = demographicInfo[8];
-    //        this.demographicInfo = demographicInfo;
-
-    //        for (int i = 0; i < 31; i++)
-    //        {
-    //            monday[i] = "";
-    //            tuesday[i] = "";
-    //            wednesday[i] = "";
-    //            thursday[i] = "";
-    //            friday[i] = "";
-    //            saturday[i] = "";
-    //            sunday[i] = "";
-    //        }
-    //        days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
-    //    }
-    //}
+        
+}
 }
