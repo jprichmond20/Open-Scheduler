@@ -373,6 +373,19 @@ namespace schedule2
             var CurrentSchedule = this.CurrentSchedule;
 
             dataGridView1.DataSource = CurrentSchedule;
+            int height = 0;
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                height += row.Height;
+            }
+            height += dataGridView1.ColumnHeadersHeight;
+
+            int width = 0;
+            foreach(DataGridViewColumn col in dataGridView1.Columns)
+            {
+                width += col.Width;
+            }
+            dataGridView1.ClientSize = new Size(width + 2, height + 2);
         }
 
         private void label1_Click(object sender, EventArgs e)
