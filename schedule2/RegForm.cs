@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
-    public partial class Form3 : Form
+    public partial class RegForm : Form
     {
         private Database db;
-        public Form3()
+        public RegForm()
         {
             InitializeComponent();
             db = new Database();
@@ -80,7 +80,7 @@ namespace schedule2
         {
             //Back button
             this.Hide();
-            var frm = new Form1();
+            var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;

@@ -1,6 +1,6 @@
 ﻿namespace schedule2
 {
-    partial class ConLanding
+    partial class DirectorLanding
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -45,6 +46,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "View Schedule";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -56,8 +58,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 100);
             this.button3.TabIndex = 10;
-            this.button3.Text = "Change Information";
+            this.button3.Text = "Change Schedule";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -69,16 +72,31 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Welcome to the Coe College Writing Center";
             // 
-            // ConLanding
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Crimson;
+            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Location = new System.Drawing.Point(263, 215);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 100);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Availability Change Requests";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // DirectorLanding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(666, 403);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Name = "ConLanding";
+            this.Name = "DirectorLanding";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
@@ -91,5 +109,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
