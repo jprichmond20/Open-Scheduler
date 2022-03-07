@@ -36,8 +36,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,6 +50,8 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.class12 = new CustomButtons.Buttons.class1();
+            this.class11 = new CustomButtons.Buttons.class1();
             this.SuspendLayout();
             // 
             // textBox3
@@ -146,34 +146,6 @@
             this.label10.TabIndex = 29;
             this.label10.Text = "Majors:";
             this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(59, 622);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 52);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Crimson;
-            this.button2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.Location = new System.Drawing.Point(769, 615);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 52);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Next";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -464,12 +436,54 @@
             this.label4.TabIndex = 44;
             this.label4.Text = "Minors:";
             // 
+            // class12
+            // 
+            this.class12.BackColor = System.Drawing.Color.Crimson;
+            this.class12.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class12.BorderColor = System.Drawing.Color.White;
+            this.class12.BorderRadius = 25;
+            this.class12.BorderSize = 2;
+            this.class12.FlatAppearance.BorderSize = 0;
+            this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class12.ForeColor = System.Drawing.Color.White;
+            this.class12.Location = new System.Drawing.Point(786, 622);
+            this.class12.Name = "class12";
+            this.class12.Size = new System.Drawing.Size(150, 55);
+            this.class12.TabIndex = 45;
+            this.class12.Text = "Next";
+            this.class12.TextColor = System.Drawing.Color.White;
+            this.class12.UseVisualStyleBackColor = false;
+            this.class12.Click += new System.EventHandler(this.class12_Click);
+            // 
+            // class11
+            // 
+            this.class11.BackColor = System.Drawing.Color.Crimson;
+            this.class11.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class11.BorderColor = System.Drawing.Color.White;
+            this.class11.BorderRadius = 25;
+            this.class11.BorderSize = 2;
+            this.class11.FlatAppearance.BorderSize = 0;
+            this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class11.ForeColor = System.Drawing.Color.White;
+            this.class11.Location = new System.Drawing.Point(59, 622);
+            this.class11.Name = "class11";
+            this.class11.Size = new System.Drawing.Size(150, 55);
+            this.class11.TabIndex = 46;
+            this.class11.Text = "Back";
+            this.class11.TextColor = System.Drawing.Color.White;
+            this.class11.UseVisualStyleBackColor = false;
+            this.class11.Click += new System.EventHandler(this.class11_Click);
+            // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(979, 702);
+            this.Controls.Add(this.class11);
+            this.Controls.Add(this.class12);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkedListBox2);
             this.Controls.Add(this.checkedListBox1);
@@ -481,8 +495,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label12);
@@ -512,8 +524,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -528,5 +538,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.Label label4;
+        private CustomButtons.Buttons.class1 class12;
+        private CustomButtons.Buttons.class1 class11;
     }
 }
