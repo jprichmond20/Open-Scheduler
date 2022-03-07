@@ -80,7 +80,7 @@ namespace schedule2
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Registration Successful");
             user.RegisterUser();
-            var frm = new Form2();
+            var frm = new ScheduleView();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
