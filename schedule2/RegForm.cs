@@ -93,16 +93,16 @@ namespace schedule2
         {
             //Submit button
             //Stores all user info and creates a new user 
-            string fName = textBox5.Text;
-            string lName = textBox2.Text;
-            string username = textBox13.Text;
-            string password = textBox11.Text;
+            string fName = newTextBox6.Text;
+            string lName = newTextBox5.Text;
+            string username = newTextBox4.Text;
+            string password = newTextBox3.Text;
             string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
             string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
 
 
-            string yearsWorked = textBox9.Text;
-            string hoursPer = textBox3.Text;
+            string yearsWorked = newTextBox1.Text;
+            string hoursPer = newTextBox2.Text;
 
 
 
