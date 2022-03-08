@@ -109,7 +109,7 @@
             this.class11.Location = new System.Drawing.Point(957, 162);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(182, 71);
-            this.class11.TabIndex = 16;
+            this.class11.TabIndex = 2;
             this.class11.Text = "Clear";
             this.class11.TextColor = System.Drawing.Color.White;
             this.class11.UseVisualStyleBackColor = false;
@@ -129,7 +129,7 @@
             this.class12.Location = new System.Drawing.Point(957, 69);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(182, 71);
-            this.class12.TabIndex = 17;
+            this.class12.TabIndex = 1;
             this.class12.Text = "Submit";
             this.class12.TextColor = System.Drawing.Color.White;
             this.class12.UseVisualStyleBackColor = false;
