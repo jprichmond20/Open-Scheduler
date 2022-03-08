@@ -8,16 +8,25 @@ namespace schedule2
 {
     public class CurrentSchedule
     {
-        public string Time { get; set; }
-        public string Monday { get; set; }
-        public string Tuesday { get; set; }
-        public string Wednesday { get; set; }
-        public string Thursday { get; set; }
-        public string Friday { get; set; }
-        public string Saturday { get; set; }
-        public string Sunday { get; set; }
-        
+        public List<string[]> days;
+
+        public CurrentSchedule(List<string[]> currSched)
+        {
+            for(int i = 0; i < currSched.Count(); i++)
+            {
+                days.Add(currSched[i]);
+            }
+        }
+
+        public void UpdateCurrentSchedule(List<string[]> updatedSched)
+        {
+            for(int i = 0; i < updatedSched.Count(); i++)
+            {
+                days[i] = updatedSched[i];
+            }
+        }
     }
+
 
  
 }

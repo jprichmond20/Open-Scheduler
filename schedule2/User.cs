@@ -20,7 +20,7 @@ namespace schedule2
         protected string[] friday = new string[31];
         protected string[] saturday = new string[31];
         protected string[] sunday = new string[31];
-        protected List<string[]> days;
+        public List<string[]> days;
         protected string[] major;
         protected string maj;
         protected string[] minor;
@@ -133,6 +133,13 @@ namespace schedule2
                 sunday[i] = "";
             }
             days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+        }
+        public void update2CurrentSched(List<string[]> currSched)
+        {
+            for (int i = 0; i < currSched.Count(); i++)
+            {
+                days[i] = currSched[i];
+            }
         }
     }
     public class Consultant : User
