@@ -36,8 +36,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.newTextBox1 = new CustomButtons.TextBox.newTextBox();
             this.class12 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
+            this.newTextBox2 = new CustomButtons.TextBox.newTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.Silver;
             this.textBox1.Font = new System.Drawing.Font("Microsoft JhengHei", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(201, 187);
+            this.textBox1.Location = new System.Drawing.Point(171, 231);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -120,6 +122,25 @@
             this.label3.TabIndex = 10;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // newTextBox1
+            // 
+            this.newTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.newTextBox1.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.newTextBox1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.newTextBox1.BorderSize = 2;
+            this.newTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newTextBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.newTextBox1.Location = new System.Drawing.Point(203, 190);
+            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.newTextBox1.Multiline = false;
+            this.newTextBox1.Name = "newTextBox1";
+            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7);
+            this.newTextBox1.PasswordChar = false;
+            this.newTextBox1.Size = new System.Drawing.Size(308, 35);
+            this.newTextBox1.TabIndex = 11;
+            this.newTextBox1.Texts = "";
+            this.newTextBox1.UnderlinedStyle = false;
+            // 
             // class12
             // 
             this.class12.BackColor = System.Drawing.Color.Crimson;
@@ -160,12 +181,33 @@
             this.class11.UseVisualStyleBackColor = false;
             this.class11.Click += new System.EventHandler(this.class11_Click);
             // 
+            // newTextBox2
+            // 
+            this.newTextBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.newTextBox2.BorderColor = System.Drawing.Color.Silver;
+            this.newTextBox2.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.newTextBox2.BorderSize = 2;
+            this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newTextBox2.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox2.Location = new System.Drawing.Point(231, 147);
+            this.newTextBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.newTextBox2.Multiline = false;
+            this.newTextBox2.Name = "newTextBox2";
+            this.newTextBox2.Padding = new System.Windows.Forms.Padding(7);
+            this.newTextBox2.PasswordChar = false;
+            this.newTextBox2.Size = new System.Drawing.Size(250, 35);
+            this.newTextBox2.TabIndex = 12;
+            this.newTextBox2.Texts = "";
+            this.newTextBox2.UnderlinedStyle = false;
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(589, 455);
+            this.Controls.Add(this.newTextBox2);
+            this.Controls.Add(this.newTextBox1);
             this.Controls.Add(this.class12);
             this.Controls.Add(this.class11);
             this.Controls.Add(this.label3);
@@ -196,6 +238,8 @@
         private System.Windows.Forms.Label label3;
         private CustomButtons.Buttons.class1 class11;
         private CustomButtons.Buttons.class1 class12;
+        private CustomButtons.TextBox.newTextBox newTextBox1;
+        private CustomButtons.TextBox.newTextBox newTextBox2;
     }
 }
 
