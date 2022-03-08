@@ -64,7 +64,7 @@ namespace schedule2
         {
             //Sign-in button
             //Checks against username and password on file
-            if (db.AuthenticateUser(textBox1.Text, textBox2.Text))
+            if (db.AuthenticateUser(newTextBox2.Text, newTextBox1.Text))
             {
                 label3.Text = "";
                 var frm = new ScheduleView();
