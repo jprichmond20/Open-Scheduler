@@ -86,7 +86,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(340, 40);
-            this.textBox2.TabIndex = 4;
+            this.textBox2.TabIndex = 1;
             // 
             // panel1
             // 
@@ -134,7 +134,7 @@
             this.class12.Location = new System.Drawing.Point(393, 377);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(150, 55);
-            this.class12.TabIndex = 12;
+            this.class12.TabIndex = 3;
             this.class12.Text = "Register";
             this.class12.TextColor = System.Drawing.Color.White;
             this.class12.UseVisualStyleBackColor = false;
@@ -154,7 +154,7 @@
             this.class11.Location = new System.Drawing.Point(201, 377);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(150, 55);
-            this.class11.TabIndex = 11;
+            this.class11.TabIndex = 2;
             this.class11.Text = "Sign In";
             this.class11.TextColor = System.Drawing.Color.White;
             this.class11.UseVisualStyleBackColor = false;

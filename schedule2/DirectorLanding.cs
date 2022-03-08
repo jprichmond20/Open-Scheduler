@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace schedule2
 {
+    //Only accessible by director users
     public partial class DirectorLanding : Form
     {
         public User user;
-        public DirectorLanding()
+        public DirectorLanding(User user)
         {
-            //this.user = user;
-            //User user
+            this.user = user;
             InitializeComponent();
         }
 
@@ -47,6 +47,7 @@ namespace schedule2
 
         private void class11_Click(object sender, EventArgs e)
         {
+            //Button to allow user to view the current schedule
             this.Hide();
             var frm = new ScheduleView();
             this.Hide();
@@ -58,6 +59,7 @@ namespace schedule2
 
         private void class13_Click(object sender, EventArgs e)
         {
+            //Allow director to open up the schedule creator to set new hours of operation
             this.Hide();
             var frm = new RegScheduler(user);
             this.Hide();

@@ -22,6 +22,9 @@ namespace schedule2
 
         private List<CurrentSchedule> GetCurrentSchedule()
         {
+            //
+            //Create list for whole weekly schedule
+            //
             var list = new List<CurrentSchedule>();
             list.Add(new CurrentSchedule()
             {
@@ -367,7 +370,9 @@ namespace schedule2
 
             return list;
         }
-
+        //
+        //Use list to create dataGridView
+        //
         private void Form2_Load(object sender, EventArgs e)
         {
             var CurrentSchedule = this.CurrentSchedule;

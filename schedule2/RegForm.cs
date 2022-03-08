@@ -92,7 +92,7 @@ namespace schedule2
         private void class12_Click(object sender, EventArgs e)
         {
             //Submit button
-
+            //Stores all user info and creates a new user 
             string fName = textBox5.Text;
             string lName = textBox2.Text;
             string username = textBox13.Text;
@@ -126,6 +126,9 @@ namespace schedule2
             {
                 label3.Text = "Please fill in all fields.";
             }
+            //
+            //Gather user data and create user, open availability form
+            //
             string userID = Guid.NewGuid().ToString();
             string[] userInfo = { fName, lName, username, password, major, minor, yearsWorked, hoursPer, userID };
             Consultant newUser = new Consultant(userInfo);
@@ -140,7 +143,7 @@ namespace schedule2
 
         private void class11_Click(object sender, EventArgs e)
         {
-            //Back button
+            //Back button to sign-in form
             this.Hide();
             var frm = new SignIn();
             this.Hide();
