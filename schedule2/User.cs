@@ -10,6 +10,9 @@ namespace schedule2
 {
     public class User
     {
+        //
+        //All the users demographic info
+        //
         protected string[] monday = new string[31];
         protected string[] tuesday = new string[31];
         protected string[] wednesday = new string[31];
@@ -42,6 +45,9 @@ namespace schedule2
 
         public void PopulateSched(DataGridView schedule)
         {
+            //
+            //User availability stored
+            //
             DataGridViewCellStyle sel = new DataGridViewCellStyle();
             sel.BackColor = Color.Crimson;
             for (int i = 0; i < schedule.Rows.Count; i++)
@@ -64,7 +70,7 @@ namespace schedule2
             }
 
         }
-
+        //Register user, hash password and add to our "db"
         public void RegisterUser()
         {
         Database db = new Database();

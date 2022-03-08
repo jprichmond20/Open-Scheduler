@@ -112,5 +112,31 @@ namespace schedule2
             }
         
         }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            user.PopulateSched(dataGridView1);
+            MessageBox.Show("Registration Successful");
+            user.RegisterUser();
+            var frm = new ScheduleView();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+            //clear
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.Gainsboro;
+                }
+            }
+        }
     }
 }

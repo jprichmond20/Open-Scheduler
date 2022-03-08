@@ -17,9 +17,9 @@ namespace CustomButtons.Buttons
     public class class1 : Button
     {
         //Fields
-        private int borderSize = 0;
-        private int borderRadius = 0;
-        private Color borderColor = Color.PaleVioletRed;
+        private int borderSize = 2;
+        private int borderRadius = 25;
+        private Color borderColor = Color.White;
 
         //Properties
         public int BorderSize
@@ -70,7 +70,8 @@ namespace CustomButtons.Buttons
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             this.Size = new Size(150, 40);
-            this.BackColor = Color.MediumSlateBlue;
+            this.BackColor = Color.Crimson;
+            this.Font = new Font("Microsoft JhengHei UI", 12);
             this.ForeColor = Color.White;
             this.Resize += new EventHandler(Button_Resize);
         }

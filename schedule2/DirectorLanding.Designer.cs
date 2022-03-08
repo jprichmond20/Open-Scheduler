@@ -28,39 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.class13 = new CustomButtons.Buttons.class1();
+            this.class11 = new CustomButtons.Buttons.class1();
+            this.class12 = new CustomButtons.Buttons.class1();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Crimson;
-            this.button2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.Location = new System.Drawing.Point(63, 215);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 100);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "View Schedule";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Crimson;
-            this.button3.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(463, 215);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 100);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Change Schedule";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -72,19 +44,65 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Welcome to the Coe College Writing Center";
             // 
-            // button1
+            // class13
             // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(263, 215);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 100);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Availability Change Requests";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.class13.BackColor = System.Drawing.Color.Crimson;
+            this.class13.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class13.BorderColor = System.Drawing.Color.White;
+            this.class13.BorderRadius = 25;
+            this.class13.BorderSize = 2;
+            this.class13.FlatAppearance.BorderSize = 0;
+            this.class13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class13.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class13.ForeColor = System.Drawing.Color.White;
+            this.class13.Location = new System.Drawing.Point(446, 223);
+            this.class13.Name = "class13";
+            this.class13.Size = new System.Drawing.Size(182, 71);
+            this.class13.TabIndex = 16;
+            this.class13.Text = "Change Schedule";
+            this.class13.TextColor = System.Drawing.Color.White;
+            this.class13.UseVisualStyleBackColor = false;
+            this.class13.Click += new System.EventHandler(this.class13_Click);
+            // 
+            // class11
+            // 
+            this.class11.BackColor = System.Drawing.Color.Crimson;
+            this.class11.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class11.BorderColor = System.Drawing.Color.White;
+            this.class11.BorderRadius = 25;
+            this.class11.BorderSize = 2;
+            this.class11.FlatAppearance.BorderSize = 0;
+            this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class11.ForeColor = System.Drawing.Color.White;
+            this.class11.Location = new System.Drawing.Point(38, 223);
+            this.class11.Name = "class11";
+            this.class11.Size = new System.Drawing.Size(182, 71);
+            this.class11.TabIndex = 15;
+            this.class11.Text = "View Schedule";
+            this.class11.TextColor = System.Drawing.Color.White;
+            this.class11.UseVisualStyleBackColor = false;
+            this.class11.Click += new System.EventHandler(this.class11_Click);
+            // 
+            // class12
+            // 
+            this.class12.BackColor = System.Drawing.Color.Crimson;
+            this.class12.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class12.BorderColor = System.Drawing.Color.White;
+            this.class12.BorderRadius = 25;
+            this.class12.BorderSize = 2;
+            this.class12.FlatAppearance.BorderSize = 0;
+            this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class12.ForeColor = System.Drawing.Color.White;
+            this.class12.Location = new System.Drawing.Point(242, 223);
+            this.class12.Name = "class12";
+            this.class12.Size = new System.Drawing.Size(182, 71);
+            this.class12.TabIndex = 14;
+            this.class12.Text = "Availability Changes";
+            this.class12.TextColor = System.Drawing.Color.White;
+            this.class12.UseVisualStyleBackColor = false;
+            this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
             // DirectorLanding
             // 
@@ -92,10 +110,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(666, 403);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.class13);
+            this.Controls.Add(this.class11);
+            this.Controls.Add(this.class12);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Name = "DirectorLanding";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Form4_Load);
@@ -105,10 +123,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private CustomButtons.Buttons.class1 class12;
+        private CustomButtons.Buttons.class1 class11;
+        private CustomButtons.Buttons.class1 class13;
     }
 }

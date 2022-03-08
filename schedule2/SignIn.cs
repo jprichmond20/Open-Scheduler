@@ -15,6 +15,7 @@ namespace schedule2
         private Database db;
         public SignIn()
         {
+            //Databse will initialize a JSON file soon that contains user info
             InitializeComponent();
             db = new Database();
         }
@@ -24,36 +25,14 @@ namespace schedule2
 
         }
 
-        //Sign-In Button
         private void button1_Click(object sender, EventArgs e)
         {
-            //Need to distinguish between types of users to determine landing page
-            //Talk with Kacik about Form4
-            if(db.AuthenticateUser(textBox1.Text, textBox2.Text))
-            {
-                label3.Text = "";
-                var frm = new ScheduleView();
-                this.Hide();
-                frm.Location = this.Location;
-                frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Close(); };
-                frm.Show();
-            }
-            else
-            {
-                label3.Text = "Login has failed! Try another password?";
-            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            label3.Text = "";
-            this.Hide();
-            var frm = new RegForm();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -79,6 +58,39 @@ namespace schedule2
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+            //Sign-in button
+            //Checks against username and password on file
+            if (db.AuthenticateUser(newTextBox2.Text, newTextBox1.Text))
+            {
+                label3.Text = "";
+                var frm = new ScheduleView();
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            else
+            {
+                //Catch-all error
+                label3.Text = "Login has failed! Try another password?";
+            }
+        }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            //Open form to register new user
+            label3.Text = "";
+            this.Hide();
+            var frm = new RegForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }
