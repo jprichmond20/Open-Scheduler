@@ -128,6 +128,13 @@ namespace schedule2
             }
             days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
         }
+        public void update2CurrentSched(List<string[]> currSched)
+        {
+            for (int i = 0; i < currSched.Count(); i++)
+            {
+                days[i] = currSched[i];
+            }
+        }
     }
     public class Consultant : User
     {

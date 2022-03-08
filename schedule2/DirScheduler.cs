@@ -56,15 +56,6 @@ namespace schedule2
                             dataGridView1[j, i].Style.BackColor = sched.BackColor;
                         }
                             }
-                            //user.days[i][j]
-                    //if (schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor)
-                    //{
-                    //    days[j - 1][i] = " ";
-                    //}
-                    //else
-                    //{
-                    //    days[j - 1][i] = "NULL";
-                    //}
                 }
             }
 
