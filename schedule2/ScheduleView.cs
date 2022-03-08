@@ -68,7 +68,7 @@ namespace schedule2
                     if (i > 0)
                     {
                         // Columns are the associated to the times
-                        if (CurrentSched.days[i][j] == " ")
+                        if (CurrentSched.days[i][j] == "NULL")
                         {
                             dataGridView1[j, i].Style.BackColor = notOpen.BackColor;
                         }
