@@ -17,7 +17,7 @@ namespace schedule2
         protected string[] friday = new string[31];
         protected string[] saturday = new string[31];
         protected string[] sunday = new string[31];
-        protected List<string[]> days;
+        public List<string[]> days;
         protected string[] major;
         protected string maj;
         protected string[] minor;

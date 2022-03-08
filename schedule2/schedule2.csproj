@@ -80,6 +80,12 @@
     <Compile Include="DirectorLanding.Designer.cs">
       <DependentUpon>DirectorLanding.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirScheduler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirScheduler.Designer.cs">
+      <DependentUpon>DirScheduler.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="CurrentSchedule.cs" />
     <Compile Include="Database.cs" />
@@ -108,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DirScheduler.resx">
+      <DependentUpon>DirScheduler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +189,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
