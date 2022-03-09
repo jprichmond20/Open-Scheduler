@@ -51,6 +51,10 @@
             this.newTextBox4 = new CustomButtons.TextBox.newTextBox();
             this.newTextBox5 = new CustomButtons.TextBox.newTextBox();
             this.newTextBox6 = new CustomButtons.TextBox.newTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label2
@@ -508,12 +512,52 @@
             this.newTextBox6.Texts = "";
             this.newTextBox6.UnderlinedStyle = false;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Crimson;
+            this.panel3.Location = new System.Drawing.Point(59, 28);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(877, 10);
+            this.panel3.TabIndex = 47;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Crimson;
+            this.panel4.Location = new System.Drawing.Point(59, 596);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(877, 10);
+            this.panel4.TabIndex = 47;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Crimson;
+            this.panel2.Location = new System.Drawing.Point(59, 467);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(877, 10);
+            this.panel2.TabIndex = 46;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Crimson;
+            this.panel1.Location = new System.Drawing.Point(59, 286);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(877, 10);
+            this.panel1.TabIndex = 45;
+            // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(979, 702);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.newTextBox6);
             this.Controls.Add(this.newTextBox5);
             this.Controls.Add(this.newTextBox4);
@@ -570,5 +614,9 @@
         private CustomButtons.TextBox.newTextBox newTextBox4;
         private CustomButtons.TextBox.newTextBox newTextBox5;
         private CustomButtons.TextBox.newTextBox newTextBox6;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
