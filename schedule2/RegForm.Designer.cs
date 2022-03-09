@@ -401,7 +401,7 @@
             this.newTextBox2.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox2.BorderSize = 2;
             this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox2.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox2.ForeColor = System.Drawing.Color.Black;
             this.newTextBox2.Location = new System.Drawing.Point(484, 545);
             this.newTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox2.Multiline = false;
@@ -420,7 +420,7 @@
             this.newTextBox1.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox1.BorderSize = 2;
             this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox1.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox1.ForeColor = System.Drawing.Color.Black;
             this.newTextBox1.Location = new System.Drawing.Point(484, 485);
             this.newTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox1.Multiline = false;
@@ -439,7 +439,7 @@
             this.newTextBox3.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox3.BorderSize = 2;
             this.newTextBox3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox3.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox3.ForeColor = System.Drawing.Color.Black;
             this.newTextBox3.Location = new System.Drawing.Point(484, 245);
             this.newTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox3.Multiline = false;
@@ -458,7 +458,7 @@
             this.newTextBox4.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox4.BorderSize = 2;
             this.newTextBox4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox4.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox4.ForeColor = System.Drawing.Color.Black;
             this.newTextBox4.Location = new System.Drawing.Point(484, 183);
             this.newTextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox4.Multiline = false;
@@ -477,7 +477,7 @@
             this.newTextBox5.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox5.BorderSize = 2;
             this.newTextBox5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox5.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox5.ForeColor = System.Drawing.Color.Black;
             this.newTextBox5.Location = new System.Drawing.Point(484, 119);
             this.newTextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox5.Multiline = false;
@@ -496,7 +496,7 @@
             this.newTextBox6.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox6.BorderSize = 2;
             this.newTextBox6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox6.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox6.ForeColor = System.Drawing.Color.Black;
             this.newTextBox6.Location = new System.Drawing.Point(484, 57);
             this.newTextBox6.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox6.Multiline = false;
