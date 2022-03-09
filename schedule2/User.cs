@@ -42,6 +42,10 @@ namespace schedule2
         //    username = demographicInfo[2];
         //    password = demographicInfo[3];
         //}
+        //public bool isDirector()
+        //{
+        //    return false;
+        //}
 
         public void PopulateSched(DataGridView schedule)
         {
@@ -118,6 +122,11 @@ namespace schedule2
         {
             Initialize(demographicInfo);
         }
+        public bool isDirector()
+        {
+            return true;
+        }
+
         private void Initialize(string[] demographicInfo)
         {
             this.demographicInfo = demographicInfo;
@@ -147,6 +156,10 @@ namespace schedule2
         public Consultant(string[] demographicInfo)
         {
             Initialize(demographicInfo);
+        }
+        public bool isDirector()
+        {
+            return false;
         }
         private void Initialize(string[] demographicInfo)
         {

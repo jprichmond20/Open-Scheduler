@@ -34,10 +34,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.newTextBox1 = new CustomButtons.TextBox.newTextBox();
             this.newTextBox2 = new CustomButtons.TextBox.newTextBox();
             this.class12 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
-            this.newTextBox1 = new CustomButtons.TextBox.newTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +100,25 @@
             this.label3.TabIndex = 10;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // newTextBox1
+            // 
+            this.newTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.newTextBox1.BorderColor = System.Drawing.Color.Silver;
+            this.newTextBox1.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.newTextBox1.BorderSize = 2;
+            this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newTextBox1.ForeColor = System.Drawing.Color.Black;
+            this.newTextBox1.Location = new System.Drawing.Point(231, 304);
+            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.newTextBox1.Multiline = false;
+            this.newTextBox1.Name = "newTextBox1";
+            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7);
+            this.newTextBox1.PasswordChar = false;
+            this.newTextBox1.Size = new System.Drawing.Size(312, 35);
+            this.newTextBox1.TabIndex = 1;
+            this.newTextBox1.Texts = "";
+            this.newTextBox1.UnderlinedStyle = false;
+            // 
             // newTextBox2
             // 
             this.newTextBox2.BackColor = System.Drawing.SystemColors.Window;
@@ -107,7 +126,7 @@
             this.newTextBox2.BorderFocusColor = System.Drawing.Color.Crimson;
             this.newTextBox2.BorderSize = 2;
             this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox2.ForeColor = System.Drawing.Color.Silver;
+            this.newTextBox2.ForeColor = System.Drawing.Color.Black;
             this.newTextBox2.Location = new System.Drawing.Point(231, 190);
             this.newTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox2.Multiline = false;
@@ -115,7 +134,7 @@
             this.newTextBox2.Padding = new System.Windows.Forms.Padding(7);
             this.newTextBox2.PasswordChar = false;
             this.newTextBox2.Size = new System.Drawing.Size(312, 35);
-            this.newTextBox2.TabIndex = 12;
+            this.newTextBox2.TabIndex = 0;
             this.newTextBox2.Texts = "";
             this.newTextBox2.UnderlinedStyle = false;
             // 
@@ -158,25 +177,6 @@
             this.class11.TextColor = System.Drawing.Color.White;
             this.class11.UseVisualStyleBackColor = false;
             this.class11.Click += new System.EventHandler(this.class11_Click);
-            // 
-            // newTextBox1
-            // 
-            this.newTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.newTextBox1.BorderColor = System.Drawing.Color.Silver;
-            this.newTextBox1.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.newTextBox1.BorderSize = 2;
-            this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTextBox1.ForeColor = System.Drawing.Color.Silver;
-            this.newTextBox1.Location = new System.Drawing.Point(231, 304);
-            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.newTextBox1.Multiline = false;
-            this.newTextBox1.Name = "newTextBox1";
-            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7);
-            this.newTextBox1.PasswordChar = false;
-            this.newTextBox1.Size = new System.Drawing.Size(312, 35);
-            this.newTextBox1.TabIndex = 13;
-            this.newTextBox1.Texts = "";
-            this.newTextBox1.UnderlinedStyle = false;
             // 
             // SignIn
             // 
