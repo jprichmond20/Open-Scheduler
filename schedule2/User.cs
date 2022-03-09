@@ -21,17 +21,17 @@ namespace schedule2
         protected string[] saturday = new string[31];
         protected string[] sunday = new string[31];
         public List<string[]> days;
-        protected string[] major;
+        public string[] major;
         protected string maj;
-        protected string[] minor;
+        public string[] minor;
         protected string min;
-        protected string yearsWorked;
-        protected string hoursPer;
-        protected string first;
-        protected string last;
+        public string yearsWorked;
+        public string hoursPer;
+        public string first;
+        public string last;
         protected string username;
         protected string password;
-        protected string userID;
+        public string userID;
         protected string[] demographicInfo;
 
 
@@ -77,8 +77,8 @@ namespace schedule2
         //Register user, hash password and add to our "db"
         public void RegisterUser()
         {
-        Database db = new Database();
-        db.RegisterUser(username, password, demographicInfo);
+            Database db = new Database();
+            db.RegisterUser(username, password, this);
         }
         
         //private void Initialize(string[] demographicInfo)

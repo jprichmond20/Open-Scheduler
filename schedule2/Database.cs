@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
  
 
 namespace schedule2
@@ -57,7 +58,7 @@ namespace schedule2
             return Convert.ToBase64String(bytes);
         }
 
-        public DBReturnMessage RegisterUser(string username, string password, string[] user_info)
+        public DBReturnMessage RegisterUser(string username, string password, User user)
         {
             DBReturnMessage return_message = new DBReturnMessage();
             try {
@@ -67,6 +68,10 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
+
+                string json_file_name = "users/" + uuid + ".json";
+                string json_text = JsonConvert.SerializeObject(user);
+                File.WriteAllText(json_file_name, json_text);
             }
             catch (Exception e)
             {
