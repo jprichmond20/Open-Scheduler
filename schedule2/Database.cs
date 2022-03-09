@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 
 namespace schedule2
 {
-    internal class Database
+    public class Database
     {
 
         public struct DBReturnMessage

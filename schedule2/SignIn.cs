@@ -12,12 +12,12 @@ namespace schedule2
 {
     public partial class SignIn : Form
     {
-        private Database db;
+        //public Database db;
         public SignIn()
         {
             //Databse will initialize a JSON file soon that contains user info
             InitializeComponent();
-            db = new Database();
+            //db = new Database();
         }
 
         private void label1_Click(object sender, EventArgs e)
