@@ -32,6 +32,7 @@ namespace schedule2
         protected string username;
         protected string password;
         public string userID;
+        public bool isDirector;
         protected string[] demographicInfo;
 
 
@@ -122,11 +123,6 @@ namespace schedule2
         {
             Initialize(demographicInfo);
         }
-        public bool isDirector()
-        {
-            return true;
-        }
-
         private void Initialize(string[] demographicInfo)
         {
             this.demographicInfo = demographicInfo;
@@ -156,10 +152,6 @@ namespace schedule2
         public Consultant(string[] demographicInfo)
         {
             Initialize(demographicInfo);
-        }
-        public bool isDirector()
-        {
-            return false;
         }
         private void Initialize(string[] demographicInfo)
         {
