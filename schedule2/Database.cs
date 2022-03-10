@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
  
 
 namespace schedule2
@@ -12,36 +13,67 @@ namespace schedule2
     public class Database
     {
 
+        public struct Schedule
+        {
+            public string[] monday;
+            public string[] tuesday;
+            public string[] wednesday;
+            public string[] thursday;
+            public string[] friday;
+            public string[] saturday;
+            public string[] sunday;
+        } 
+
+
         public struct DBReturnMessage
         {
             public bool success;
             public string[] error_messages;
         }
 
+        public struct SignInMessage
+        {
+            public bool success;
+            public User user;
+            public string[] error_messages;
+        }
 
-        //username, (hashpass, salt, userId)
-        private Dictionary<string, string[]> accounts;
+
+        //username, (hashpass, salt, user)
+        private Dictionary<string, object[]> accounts;
         public Database()
         {
-            accounts = new Dictionary<string, string[]>();
+            accounts = new Dictionary<string, object[]>();
 
             var lines = File.ReadAllLines("pwds.txt");
             foreach (string line in lines)
             {
                 string[] split_line = line.Split(',');
+                User user = getUserById(split_line[3]).user;
                 string[] output = { split_line[1], split_line[2], split_line[3]};
                 accounts.Add(split_line[0], output);
             }
         }
 
-        public bool AuthenticateUser(string username, string password)
+        public SignInMessage AuthenticateUser(string username, string password)
         {
+            SignInMessage message = new SignInMessage();
+            message.success = false;
             try {
-                string[] pwd_and_hash = accounts[username];
-                return pwd_and_hash[0] == ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(pwd_and_hash[1]));
+                object[] pwd_and_hash = accounts[username];
+                if (pwd_and_hash[0].ToString() == ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(pwd_and_hash[1].ToString())))
+                {
+                    message.success = true;
+                    message.user = (User)pwd_and_hash[2];
+                }
+                else
+                {
+                    message.error_messages = <"test">;
+                }
             }
             catch (KeyNotFoundException) { return false; };
 
+            return message;
 
         }
         private string ComputeHash(byte[] bytesToHash, byte[] salt)
@@ -57,7 +89,7 @@ namespace schedule2
             return Convert.ToBase64String(bytes);
         }
 
-        public DBReturnMessage RegisterUser(string username, string password, string[] user_info)
+        public DBReturnMessage RegisterUser(string username, string password, User user)
         {
             DBReturnMessage return_message = new DBReturnMessage();
             try {
@@ -67,6 +99,27 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
+                if (user.IsDirector())
+                {
+                    string json_file_name = "masterAvailability.json";
+
+                    Schedule schedule = new Schedule();
+                    schedule.monday = user.days[0];
+                    schedule.tuesday = user.days[1];
+                    schedule.wednesday = user.days[2];
+                    schedule.thurday = user.days[3];
+                    schedule.friday = user.days[4];
+                    schedule.saturday = user.days[5];
+                    schedule.sunday = user.days[6];
+                    string json_text = JsonConvert.SerializeObject(schedule);
+                }
+                else
+                {
+                    string json_file_name = "users/" + uuid + ".json";
+                    string json_text = JsonConvert.SerializeObject(user);
+                }
+               
+                File.WriteAllText(json_file_name, json_text);
             }
             catch (Exception e)
             {
@@ -78,6 +131,24 @@ namespace schedule2
 
             return return_message;
 
+        }
+
+        public SignInMessage getUserById(string uuid)
+        {
+            SignInMessage message = new SignInMessage();
+            message.success = false;
+            try
+            {
+                string json_text = File.ReadAllText("user/" + uuid + ".json");
+                message.user = JsonConvert.DeserializeObject<User>(json_text);
+            }
+            catch(Exception e)
+            {
+                message.success = false;
+                string[] error = { e.ToString() };
+                message.error_messages = error;
+            }
+            return message;
         }
 
 

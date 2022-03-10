@@ -292,3 +292,7 @@ Main()#Activates the program automatically
 
 
 
+raw data, algo running, make some changes, save results
+
+
+
