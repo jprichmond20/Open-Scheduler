@@ -52,7 +52,6 @@ namespace schedule2
                 object[] output = { split_line[1], split_line[2], user};
                 accounts.Add(split_line[0], output);
             }
-            System.Windows.Forms.MessageBox.Show(accounts["nmbaker"][0].ToString());
 
         }
 
@@ -65,7 +64,7 @@ namespace schedule2
                 if (pwd_and_hash[0].ToString() == ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(pwd_and_hash[1].ToString())))
                 {
                     message.success = true;
-                    message.user = (User)pwd_and_hash[2];
+                    message.user = (User) pwd_and_hash[2];
                 }
                 else
                 {
@@ -107,9 +106,7 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
-
-               
-
+                
                 if (user.IsDirector())
                 {
                     json_file_name = "masterAvailability.json";
@@ -123,15 +120,12 @@ namespace schedule2
                     schedule.saturday = user.days[5];
                     schedule.sunday = user.days[6];
                     json_text = JsonConvert.SerializeObject(schedule);
+                    File.WriteAllText(json_file_name, json_text);
                 }
-                //else
-                //{
-                    Directory.CreateDirectory("users/");
-                    json_file_name = "users/" + uuid + ".json";
-                    json_text = JsonConvert.SerializeObject(user);
-                //}
-               
-                File.WriteAllText(json_file_name, json_text);
+                 Directory.CreateDirectory("users/");
+                 json_file_name = "users/" + uuid + ".json";
+                 json_text = JsonConvert.SerializeObject(user);
+                 File.WriteAllText(json_file_name, json_text);
             }
             catch (Exception e)
             {

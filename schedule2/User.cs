@@ -96,6 +96,7 @@ namespace schedule2
         }
         private void Initialize()
         {
+            this.userID = Guid.NewGuid().ToString();
             director = true;
             try
             {

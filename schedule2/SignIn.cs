@@ -70,7 +70,7 @@ namespace schedule2
             if (Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).success)
             {
                 User user = Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).user;
-                var frm = new ScheduleView();
+                //var frm = new ScheduleView();
                 label3.Text = "";
                 if (user.IsDirector())
                 {
