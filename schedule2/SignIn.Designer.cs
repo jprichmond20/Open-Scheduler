@@ -46,9 +46,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Crimson;
-            this.label1.Location = new System.Drawing.Point(12, 183);
+            this.label1.Location = new System.Drawing.Point(9, 149);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 42);
+            this.label1.Size = new System.Drawing.Size(149, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -58,9 +59,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Crimson;
-            this.label2.Location = new System.Drawing.Point(21, 297);
+            this.label2.Location = new System.Drawing.Point(16, 241);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 42);
+            this.label2.Size = new System.Drawing.Size(141, 35);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -68,23 +70,24 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Crimson;
-            this.panel1.Location = new System.Drawing.Point(23, 257);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(17, 209);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(551, 10);
+            this.panel1.Size = new System.Drawing.Size(413, 8);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(561, 137);
+            this.pictureBox1.Size = new System.Drawing.Size(421, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
@@ -92,10 +95,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Crimson;
-            this.label3.Location = new System.Drawing.Point(113, 350);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(85, 284);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 25);
+            this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 10;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -107,13 +109,13 @@
             this.newTextBox1.BorderSize = 2;
             this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.newTextBox1.Location = new System.Drawing.Point(204, 300);
-            this.newTextBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.newTextBox1.Location = new System.Drawing.Point(153, 244);
+            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.newTextBox1.Multiline = false;
             this.newTextBox1.Name = "newTextBox1";
-            this.newTextBox1.Padding = new System.Windows.Forms.Padding(9);
+            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.newTextBox1.PasswordChar = false;
-            this.newTextBox1.Size = new System.Drawing.Size(370, 39);
+            this.newTextBox1.Size = new System.Drawing.Size(278, 32);
             this.newTextBox1.TabIndex = 1;
             this.newTextBox1.Texts = "";
             this.newTextBox1.UnderlinedStyle = false;
@@ -126,13 +128,13 @@
             this.newTextBox2.BorderSize = 2;
             this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox2.ForeColor = System.Drawing.Color.Black;
-            this.newTextBox2.Location = new System.Drawing.Point(204, 186);
-            this.newTextBox2.Margin = new System.Windows.Forms.Padding(5);
+            this.newTextBox2.Location = new System.Drawing.Point(153, 151);
+            this.newTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.newTextBox2.Multiline = false;
             this.newTextBox2.Name = "newTextBox2";
-            this.newTextBox2.Padding = new System.Windows.Forms.Padding(9);
+            this.newTextBox2.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.newTextBox2.PasswordChar = false;
-            this.newTextBox2.Size = new System.Drawing.Size(370, 39);
+            this.newTextBox2.Size = new System.Drawing.Size(278, 32);
             this.newTextBox2.TabIndex = 0;
             this.newTextBox2.Texts = "";
             this.newTextBox2.UnderlinedStyle = false;
@@ -148,10 +150,9 @@
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(410, 388);
-            this.class12.Margin = new System.Windows.Forms.Padding(4);
+            this.class12.Location = new System.Drawing.Point(308, 315);
             this.class12.Name = "class12";
-            this.class12.Size = new System.Drawing.Size(164, 56);
+            this.class12.Size = new System.Drawing.Size(123, 46);
             this.class12.TabIndex = 3;
             this.class12.Text = "Register";
             this.class12.TextColor = System.Drawing.Color.White;
@@ -169,10 +170,9 @@
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(194, 388);
-            this.class11.Margin = new System.Windows.Forms.Padding(4);
+            this.class11.Location = new System.Drawing.Point(146, 315);
             this.class11.Name = "class11";
-            this.class11.Size = new System.Drawing.Size(164, 56);
+            this.class11.Size = new System.Drawing.Size(123, 46);
             this.class11.TabIndex = 2;
             this.class11.Text = "Sign In";
             this.class11.TextColor = System.Drawing.Color.White;
@@ -181,10 +181,10 @@
             // 
             // SignIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(596, 472);
+            this.ClientSize = new System.Drawing.Size(447, 384);
             this.Controls.Add(this.newTextBox1);
             this.Controls.Add(this.newTextBox2);
             this.Controls.Add(this.class12);
@@ -194,7 +194,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SignIn";
             this.Text = "Sign In";
             this.Load += new System.EventHandler(this.Form1_Load);

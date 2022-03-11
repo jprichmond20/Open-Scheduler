@@ -64,15 +64,30 @@ namespace schedule2
         {
             //Sign-in button
             //Checks against username and password on file
-            if (Program.db.AuthenticateUser(newTextBox2.Text, newTextBox1.Text))
+            if (Program.db.AuthenticateUser(newTextBox2.Text, newTextBox1.Text).success)
             {
-                label3.Text = "";
+                User user = Program.db.AuthenticateUser(newTextBox2.Text, newTextBox1.Texts).user;
                 var frm = new ScheduleView();
-                this.Hide();
-                frm.Location = this.Location;
-                frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Close(); };
-                frm.Show();
+                label3.Text = "";
+                if (user.IsDirector())
+                {
+                    var frm1 = new DirectorLanding(user);
+                    this.Hide();
+                    frm1.Location = this.Location;
+                    frm1.StartPosition = FormStartPosition.Manual;
+                    frm1.FormClosing += delegate { this.Close(); };
+                    frm1.Show();
+                }
+                else
+                {
+                    var frm2 = new ScheduleView();
+                    this.Hide();
+                    frm2.Location = this.Location;
+                    frm2.StartPosition = FormStartPosition.Manual;
+                    frm2.FormClosing += delegate { this.Close(); };
+                    frm2.Show();
+                }
+                
             }
             else
             {
@@ -91,6 +106,11 @@ namespace schedule2
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
