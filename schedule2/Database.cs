@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
- 
 
 namespace schedule2
 {
@@ -125,6 +124,7 @@ namespace schedule2
                 }
                 else
                 {
+                    Directory.CreateDirectory("users/");
                     json_file_name = "users/" + uuid + ".json";
                     json_text = JsonConvert.SerializeObject(user);
                 }
