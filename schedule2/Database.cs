@@ -68,10 +68,14 @@ namespace schedule2
                 }
                 else
                 {
-                    message.error_messages = <"test">;
+                    string[] errors = { "incorrect password" };
+                    message.error_messages = errors;
                 }
             }
-            catch (KeyNotFoundException) { return false; };
+            catch (KeyNotFoundException) {
+                string[] errors = { "no account" };
+                message.error_messages = errors;
+            };
 
             return message;
 
@@ -92,6 +96,9 @@ namespace schedule2
         public DBReturnMessage RegisterUser(string username, string password, User user)
         {
             DBReturnMessage return_message = new DBReturnMessage();
+            string json_file_name;
+            string json_text;
+
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
@@ -99,9 +106,9 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
-                if (user.IsDirector)
+                if (user.isDirector)
                 {
-                    string json_file_name = "masterAvailability.json";
+                    json_file_name = "masterAvailability.json";
 
                     Schedule schedule = new Schedule();
                     schedule.monday = user.days[0];
@@ -111,12 +118,12 @@ namespace schedule2
                     schedule.friday = user.days[4];
                     schedule.saturday = user.days[5];
                     schedule.sunday = user.days[6];
-                    string json_text = JsonConvert.SerializeObject(schedule);
+                    json_text = JsonConvert.SerializeObject(schedule);
                 }
                 else
                 {
-                    string json_file_name = "users/" + uuid + ".json";
-                    string json_text = JsonConvert.SerializeObject(user);
+                    json_file_name = "users/" + uuid + ".json";
+                    json_text = JsonConvert.SerializeObject(user);
                 }
                
                 File.WriteAllText(json_file_name, json_text);
