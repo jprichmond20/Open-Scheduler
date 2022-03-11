@@ -64,9 +64,12 @@ namespace schedule2
         {
             //Sign-in button
             //Checks against username and password on file
-            if (Program.db.AuthenticateUser(newTextBox2.Text, newTextBox1.Text).success)
+            //Database.SignInMessage message = Program.db.AuthenticateUser(newTextBox1.Text, newTextBox2.Text);
+            //MessageBox.Show(message.error_messages[0]);
+
+            if (Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).success)
             {
-                User user = Program.db.AuthenticateUser(newTextBox2.Text, newTextBox1.Texts).user;
+                User user = Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).user;
                 var frm = new ScheduleView();
                 label3.Text = "";
                 if (user.IsDirector())

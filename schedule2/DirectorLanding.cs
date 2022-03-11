@@ -61,7 +61,7 @@ namespace schedule2
         {
             //Allow director to open up the schedule creator to set new hours of operation
             this.Hide();
-            var frm = new RegScheduler(user);
+            var frm = new DirScheduler((Director)user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;

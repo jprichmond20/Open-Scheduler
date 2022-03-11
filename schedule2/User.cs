@@ -86,54 +86,37 @@ namespace schedule2
         {
             return director;
         }
-        //private void Initialize(string[] demographicInfo)
-        //{
-        //    first = demographicInfo[0];
-        //    last = demographicInfo[1];
-        //    username = demographicInfo[2];
-        //    password = demographicInfo[3];
-        //    maj = demographicInfo[4];
-        //    min = demographicInfo[5];
-        //    major = maj.Split(',');
-        //    minor = min.Split(',');
-        //    yearsWorked = demographicInfo[6];
-        //    hoursPer = demographicInfo[7];
-        //    userID = demographicInfo[8];
-        //    this.demographicInfo = demographicInfo;
-
-        //    for (int i = 0; i < 31; i++)
-        //    {
-        //        monday[i] = "";
-        //        tuesday[i] = "";
-        //        wednesday[i] = "";
-        //        thursday[i] = "";
-        //        friday[i] = "";
-        //        saturday[i] = "";
-        //        sunday[i] = "";
-        //    }
-        //    days = new List<string[]>{ monday, tuesday, wednesday, thursday, friday, saturday, sunday };
-        //}
-
-        //public void RegisterUser()
-        //{
-        //    Database db = new Database();
-        //    db.RegisterUser(username, password, demographicInfo);
-        //}
 
     }
     public class Director : User
     {
-        public Director(string[] demographicInfo)
+        public Director()
         {
-            Initialize(demographicInfo);
+            Initialize();
         }
-        private void Initialize(string[] demographicInfo)
+        private void Initialize()
         {
-            this.demographicInfo = demographicInfo;
             director = true;
-            schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
-            days = new List<string[]> { masterSched.monday, masterSched.tuesday, masterSched.wednesday, masterSched.thursday, masterSched.friday, masterSched.saturday, masterSched.sunday };
-        }
+            try
+            {
+                schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
+                days = new List<string[]> { masterSched.monday, masterSched.tuesday, masterSched.wednesday, masterSched.thursday, masterSched.friday, masterSched.saturday, masterSched.sunday };
+            }
+            catch(Exception e)
+            {
+                for (int i = 0; i < 31; i++)
+                {
+                    monday[i] = "";
+                    tuesday[i] = "";
+                    wednesday[i] = "";
+                    thursday[i] = "";
+                    friday[i] = "";
+                    saturday[i] = "";
+                    sunday[i] = "";
+                }
+                days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+            }
+            }
         public void update2CurrentSched(List<string[]> currSched)
         {
             for (int i = 0; i < currSched.Count(); i++)

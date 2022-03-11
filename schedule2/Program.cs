@@ -17,6 +17,7 @@ namespace schedule2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //db.RegisterUser("admin1", "admin1", new Director());
             Application.Run(new SignIn());
         }
     }

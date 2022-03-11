@@ -49,9 +49,11 @@ namespace schedule2
             {
                 string[] split_line = line.Split(',');
                 User user = getUserById(split_line[3]).user;
-                string[] output = { split_line[1], split_line[2], split_line[3]};
+                object[] output = { split_line[1], split_line[2], user};
                 accounts.Add(split_line[0], output);
             }
+            System.Windows.Forms.MessageBox.Show(accounts["nmbaker"][0].ToString());
+
         }
 
         public SignInMessage AuthenticateUser(string username, string password)
@@ -122,12 +124,12 @@ namespace schedule2
                     schedule.sunday = user.days[6];
                     json_text = JsonConvert.SerializeObject(schedule);
                 }
-                else
-                {
+                //else
+                //{
                     Directory.CreateDirectory("users/");
                     json_file_name = "users/" + uuid + ".json";
                     json_text = JsonConvert.SerializeObject(user);
-                }
+                //}
                
                 File.WriteAllText(json_file_name, json_text);
             }
