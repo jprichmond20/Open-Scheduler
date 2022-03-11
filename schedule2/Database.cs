@@ -109,7 +109,7 @@ namespace schedule2
 
                
 
-                if (user.isDirector)
+                if (user.IsDirector())
                 {
                     json_file_name = "masterAvailability.json";
 
