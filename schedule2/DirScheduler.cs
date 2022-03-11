@@ -44,7 +44,7 @@ namespace schedule2
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             DataGridViewCellStyle sched = new DataGridViewCellStyle();
-            sched.BackColor = Color.Crimson;
+            sched.BackColor = Color.Gold;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 for (int j = 1; j < dataGridView1.Columns.Count; j++)
@@ -94,8 +94,8 @@ namespace schedule2
         private void button1_Click(object sender, EventArgs e)
         {
             user.PopulateSched(dataGridView1);
-            MessageBox.Show("Registration Successful");
-            user.RegisterUser();
+            MessageBox.Show("Schedule Successfully Updated!");
+            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
             var frm = new ScheduleView();
             this.Hide();
             frm.Location = this.Location;
@@ -127,6 +127,26 @@ namespace schedule2
                 }
             }
         
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellStyle sched = new DataGridViewCellStyle();
+            sched.BackColor = Color.Gold;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                {
+                    if (i > 0)
+                    {
+                        // Columns are the associated to the times
+                        if (user.days[i][j] == " ")
+                        {
+                            dataGridView1[j, i].Style.BackColor = sched.BackColor;
+                        }
+                    }
+                }
+            }
         }
     }
 }

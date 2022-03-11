@@ -32,7 +32,7 @@ namespace schedule2
         protected string username;
         protected string password;
         public string userID;
-        public bool isDirector;
+        public bool director;
         protected string[] demographicInfo;
 
 
@@ -82,6 +82,10 @@ namespace schedule2
             db.RegisterUser(username, password, this);
         }
         
+        public Boolean IsDirector()
+        {
+            return director;
+        }
         //private void Initialize(string[] demographicInfo)
         //{
         //    first = demographicInfo[0];
@@ -126,18 +130,9 @@ namespace schedule2
         private void Initialize(string[] demographicInfo)
         {
             this.demographicInfo = demographicInfo;
-
-            for (int i = 0; i < 31; i++)
-            {
-                monday[i] = "";
-                tuesday[i] = "";
-                wednesday[i] = "";
-                thursday[i] = "";
-                friday[i] = "";
-                saturday[i] = "";
-                sunday[i] = "";
-            }
-            days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+            director = true;
+            schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
+            days = new List<string[]> { masterSched.monday, masterSched.tuesday, masterSched.wednesday, masterSched.thursday, masterSched.friday, masterSched.saturday, masterSched.sunday };
         }
         public void update2CurrentSched(List<string[]> currSched)
         {
@@ -155,6 +150,7 @@ namespace schedule2
         }
         private void Initialize(string[] demographicInfo)
         {
+            director = false;
             first = demographicInfo[0];
             last = demographicInfo[1];
             username = demographicInfo[2];
