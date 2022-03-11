@@ -12,10 +12,10 @@ namespace schedule2
 {
     public partial class ScheduleView : Form
     {
-        public CurrentSchedule CurrentSched;
-        public ScheduleView(List<string[]> days)
+        public static CurrentSchedule CurrentSched;
+        public ScheduleView()
         {
-            CurrentSched = new CurrentSchedule(days);
+            CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
             InitializeComponent();
         }
 

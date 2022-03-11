@@ -10,12 +10,15 @@ namespace schedule2
     {
         public List<string[]> days;
 
-        public CurrentSchedule(List<string[]> currSched)
+        public CurrentSchedule(schedule2.Database.Schedule currSched)
         {
-            for(int i = 0; i < currSched.Count(); i++)
-            {
-                days.Add(currSched[i]);
-            }
+            days[0] = currSched.monday;
+            days[1] = currSched.tuesday;
+            days[2] = currSched.wednesday;
+            days[3] = currSched.thursday;
+            days[4] = currSched.friday;
+            days[5] = currSched.saturday;
+            days[6] = currSched.sunday;
         }
 
         public void UpdateCurrentSchedule(List<string[]> updatedSched)

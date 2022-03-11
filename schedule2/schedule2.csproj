@@ -128,6 +128,9 @@
     <EmbeddedResource Include="CustomButtons\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirScheduler.resx">
+      <DependentUpon>DirScheduler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>

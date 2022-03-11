@@ -117,16 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
-    <value>To start with a blank schedule press Clear.
-To reset to the current Writing Center Schedule, press Reset.
-To change the current Writing Center Schedule click on the
-highlighted boxs that correspond with the days and times 
-you would like to change. 
-Press Submit when you are done
--- We should add a pas semesters button to recall past calanders-- 
- </value>
-  </data>
   <metadata name="database1DataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
