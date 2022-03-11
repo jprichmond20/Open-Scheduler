@@ -99,7 +99,7 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
-                if (user.IsDirector())
+                if (user.IsDirector)
                 {
                     string json_file_name = "masterAvailability.json";
 
@@ -107,7 +107,7 @@ namespace schedule2
                     schedule.monday = user.days[0];
                     schedule.tuesday = user.days[1];
                     schedule.wednesday = user.days[2];
-                    schedule.thurday = user.days[3];
+                    schedule.thursday = user.days[3];
                     schedule.friday = user.days[4];
                     schedule.saturday = user.days[5];
                     schedule.sunday = user.days[6];
@@ -149,6 +149,12 @@ namespace schedule2
                 message.error_messages = error;
             }
             return message;
+        }
+
+        public Schedule getMasterAvalibility()
+        {
+            string json_text = File.ReadAllText("masterAvailability.json");
+            return JsonConvert.DeserializeObject<Schedule>(json_text);
         }
 
 
