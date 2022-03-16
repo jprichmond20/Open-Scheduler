@@ -11,17 +11,20 @@ using System.Windows.Forms;
 namespace schedule2
 {
     public partial class ScheduleView : Form
+    // this is our main Schedule View for both Consultants and Directors
     {
-        public static CurrentSchedule CurrentSched;
+        public static CurrentSchedule CurrentSched; // We initialize a currentSchedule object (for the schedule) 
         public ScheduleView()
         {
             CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
+            // We set the current schedule to that in our mast availability file
             InitializeComponent();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            // Initializes the date in the schedule
+            // Column headers
             dataGridView1.Columns.Add("Time", "Time");
             dataGridView1.Columns.Add("Monday", "Mon");
             dataGridView1.Columns.Add("Tuesday", "Tues");
@@ -30,18 +33,22 @@ namespace schedule2
             dataGridView1.Columns.Add("Friday", "Fri");
             dataGridView1.Columns.Add("Saturday", "Sat");
             dataGridView1.Columns.Add("Sunday", "Sun");
+            // Row headers (not technically headers by dataGridView standards though)
             String[] times = new String[] {"8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am",
              "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm", "4:00pm",
              "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm", "8:00pm", "8:30pm", "9:00pm", "9:30pm",
              "10:00pm", "10:30pm", "11:00pm"};
+            // currently the schedule stays blank, once the alghorithm is impemented this will change
             for (int i = 0; i < times.Length; i++)
             {
                 dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
             }
 
+            // Set some settings for display
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
+            // fits dataGridView to data both in height and width
             int height = 0;
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
@@ -56,7 +63,8 @@ namespace schedule2
             }
             dataGridView1.ClientSize = new Size(width + 2, height + 2);
 
-
+            //Populate the schedule view with the current schedule
+            // If the writing center is closed, it is represented by a black square
             DataGridViewCellStyle notOpen = new DataGridViewCellStyle();
             notOpen.BackColor = Color.Black;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -73,30 +81,6 @@ namespace schedule2
                     }
                 }
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

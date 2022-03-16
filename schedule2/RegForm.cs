@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace schedule2
 {
     public partial class RegForm : Form
+    // this is the Consultant registration form 
     {
         private Database db;
         public RegForm()
@@ -19,93 +20,27 @@ namespace schedule2
             db = new Database();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void class12_Click(object sender, EventArgs e)
+        //This function is called when the user clicks the Submit button
+        // it Stores all user info and creates a new user 
         {
-            //Submit button
-            //Stores all user info and creates a new user 
+            // Gets first, last, username, password, majors, minors, years worked and hours per week
             string fName = newTextBox6.Text;
             string lName = newTextBox5.Text;
             string username = newTextBox4.Text;
             string password = newTextBox3.Text;
             string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
             string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
-
-
             string yearsWorked = newTextBox1.Text;
             string hoursPer = newTextBox2.Text;
 
 
-
+            // Input validation to make sure user inputs all information
+            // ALTERNATIVE:
+            //if(username == "" || password == "" || major == "" || yearsWorked == "" || hoursPer == "")
+            //{
+            //    label3.Text = "Please fill in all fields.";
+            //}
             if (username == "")
             {
                 label3.Text = "Please fill in all fields.";
@@ -127,8 +62,8 @@ namespace schedule2
                 label3.Text = "Please fill in all fields.";
             }
             //
-            //Gather user data and create user, open availability form
-            //
+            // Gathers user data, generates a user ID then creates a new consulatant
+            // Then it launches the scheudler so they can input their availability
             string userID = Guid.NewGuid().ToString();
             string[] userInfo = { fName, lName, username, password, major, minor, yearsWorked, hoursPer, userID };
             Consultant newUser = new Consultant(userInfo);
@@ -142,8 +77,8 @@ namespace schedule2
         }
 
         private void class11_Click(object sender, EventArgs e)
+        // When clicked this button takes the user back to the sign in form 
         {
-            //Back button to sign-in form
             this.Hide();
             var frm = new SignIn();
             this.Hide();

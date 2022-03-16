@@ -10,9 +10,10 @@ using Newtonsoft.Json;
 namespace schedule2
 {
     public class Database
+    // This class is our database that we use to store all our information 
     {
 
-        public struct Schedule
+        public struct Schedule // Scruct to hold a schedule
         {
             public string[] monday;
             public string[] tuesday;
@@ -24,13 +25,13 @@ namespace schedule2
         } 
 
 
-        public struct DBReturnMessage
+        public struct DBReturnMessage // Struct for default return message from database
         {
             public bool success;
             public string[] error_messages;
         }
 
-        public struct SignInMessage
+        public struct SignInMessage // struct for return message on sign in 
         {
             public bool success;
             public User user;
@@ -39,9 +40,11 @@ namespace schedule2
 
 
         //username, (hashpass, salt, user)
+        // Intialize dictionary to hold all of our accounts that have been generated
         private Dictionary<string, object[]> accounts;
         public Database()
         {
+            // When constructor is called, we initialize our accounts dictionary
             accounts = new Dictionary<string, object[]>();
 
             var lines = File.ReadAllLines("pwds.txt");
@@ -56,36 +59,43 @@ namespace schedule2
         }
 
         public SignInMessage AuthenticateUser(string username, string password)
+        // this function authenitcates our user and gets us their information after they login
         {
-            SignInMessage message = new SignInMessage();
-            message.success = false;
+            SignInMessage message = new SignInMessage(); // create a new sign in message
+            message.success = false; // by default we set success to false
             try {
+                // This code will all execute if the suer has an account but the password is incorrect
                 object[] pwd_and_hash = accounts[username];
                 if (pwd_and_hash[0].ToString() == ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(pwd_and_hash[1].ToString())))
+                // If the login is correct we set success to true and set the user 
                 {
                     message.success = true;
                     message.user = (User) pwd_and_hash[2];
                 }
                 else
+                // Otherwise we tell them its an incorrect password
                 {
                     string[] errors = { "incorrect password" };
                     message.error_messages = errors;
                 }
             }
             catch (KeyNotFoundException) {
+                // This code will execute if there is no account
                 string[] errors = { "no account" };
                 message.error_messages = errors;
             };
 
-            return message;
+            return message; // return our sign in message 
 
         }
         private string ComputeHash(byte[] bytesToHash, byte[] salt)
+        // function to compute hash 
         {
             var byteResult = new Rfc2898DeriveBytes(bytesToHash, salt, 10000);
             return Convert.ToBase64String(byteResult.GetBytes(24));
         }
         private string GenerateSalt()
+        // function to generate salt
         {
             var bytes = new byte[128 / 8];
             var rng = new RNGCryptoServiceProvider();
@@ -94,6 +104,7 @@ namespace schedule2
         }
 
         public DBReturnMessage RegisterUser(string username, string password, User user)
+        // This function registers a user to our database
         {
             DBReturnMessage return_message = new DBReturnMessage();
             string json_file_name;
@@ -140,6 +151,7 @@ namespace schedule2
         }
 
         public SignInMessage getUserById(string uuid)
+        // Gets a user from our database using their user id
         {
             SignInMessage message = new SignInMessage();
             message.success = false;
@@ -158,6 +170,7 @@ namespace schedule2
         }
 
         public Schedule getMasterAvalibility()
+        // Gets the master availability from our database and returns a schedule
         {
             string json_text = File.ReadAllText("masterAvailability.json");
             return JsonConvert.DeserializeObject<Schedule>(json_text);

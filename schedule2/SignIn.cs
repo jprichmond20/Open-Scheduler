@@ -20,59 +20,25 @@ namespace schedule2
             //db = new Database();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void class11_Click(object sender, EventArgs e)
         {
             //Sign-in button
             //Checks against username and password on file
-            //Database.SignInMessage message = Program.db.AuthenticateUser(newTextBox1.Text, newTextBox2.Text);
-            //MessageBox.Show(message.error_messages[0]);
-
+            // POTENTIAL FIX??
+            //Database.SignInMessage signIn = Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts);
+            //if (SignIn.success)
+            //{
+            //    User user = SignIn.user;
+            //}
             if (Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).success)
             {
+                // Creates our user if the sign in is successful 
                 User user = Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).user;
-                //var frm = new ScheduleView();
-                label3.Text = "";
-                if (user.IsDirector())
+                
+                label3.Text = ""; // Resets the output message 
+
+                if (user.IsDirector()) // Checks to see if the user is a director,
+                // if they are, they are taken to the director landing page 
                 {
                     var frm1 = new DirectorLanding(user);
                     this.Hide();
@@ -82,6 +48,7 @@ namespace schedule2
                     frm1.Show();
                 }
                 else
+                // If they arent a director, take them to the current schedule
                 {
                     var frm2 = new ScheduleView();
                     this.Hide();
@@ -94,14 +61,14 @@ namespace schedule2
             }
             else
             {
-                //Catch-all error
+                //Catch-all error for failed login
                 label3.Text = "Login has failed! Try another password?";
             }
         }
 
         private void class12_Click(object sender, EventArgs e)
         {
-            //Open form to register new user
+            //Opens form to register new user
             label3.Text = "";
             this.Hide();
             var frm = new RegForm();
@@ -109,11 +76,6 @@ namespace schedule2
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

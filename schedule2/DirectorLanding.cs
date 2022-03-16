@@ -12,42 +12,19 @@ namespace schedule2
 {
     //Only accessible by director users
     public partial class DirectorLanding : Form
+    // This form is the directors landing page
     {
-        public User user;
-        public DirectorLanding(User user)
+        public Director user;
+        public DirectorLanding(Director user)
         {
             this.user = user;
             InitializeComponent();
         }
 
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void class12_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void class11_Click(object sender, EventArgs e)
+        //Button to allow user to view the current schedule
         {
-            //Button to allow user to view the current schedule
             this.Hide();
             var frm = new ScheduleView();
             this.Hide();
@@ -58,8 +35,10 @@ namespace schedule2
         }
 
         private void class13_Click(object sender, EventArgs e)
+        //Allow director to open up the schedule creator to set new hours of operation
+        // or modify the current hours of operation
         {
-            //Allow director to open up the schedule creator to set new hours of operation
+
             this.Hide();
             var frm = new DirScheduler((Director)user);
             this.Hide();

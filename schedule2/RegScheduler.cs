@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace schedule2
 {
     public partial class RegScheduler : Form
+    // this for allows a consultant to se their availability to work at the writing center
     {
         public User user;
         public RegScheduler(User user)
@@ -21,8 +22,11 @@ namespace schedule2
 
         private void RegScheduler_Load(object sender, EventArgs e)
         {
+            // Intialize event handler for when the user selection changes
             dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
+            // Tell it not to create columns automatically
             dataGridView1.AutoGenerateColumns = false;
+            // intialize column and row headers
             dataGridView1.Columns.Add("Time", "Time");
             dataGridView1.Columns.Add("Monday", "Mon");
             dataGridView1.Columns.Add("Tuesday", "Tues");
@@ -35,23 +39,25 @@ namespace schedule2
              "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm", "4:00pm",
              "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm", "8:00pm", "8:30pm", "9:00pm", "9:30pm",
              "10:00pm", "10:30pm", "11:00pm"};
+            // Populate the data grid with "data" (just nothing)
             for(int i = 0; i < times.Length; i++)
             {
                 dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
             }
-
+            // Set the columns to autosize and set the default backcolor 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
+
+            //Once we have the direcotr schedule saving correctly it will be brought into here
+            // So the users know the hours of the writing center
             
      
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
+        // this function is where the magic happens. When a user selects a cell
+        // the cell color is updated to the opposite of its current state
+        // i.e. if its red (available) it becomes gainsboro (unavailable) 
         {
             DataGridViewCellStyle unsel = new DataGridViewCellStyle();
             DataGridViewCellStyle sel = new DataGridViewCellStyle();
@@ -76,6 +82,7 @@ namespace schedule2
             }
         }
         private void button1_Click(object sender, EventArgs e)
+        // This function is called when the user clicks the "submit" button
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Registration Successful");
@@ -88,20 +95,20 @@ namespace schedule2
             frm.Show();
         }
         private void scheduleConsultants()
+        // not sure wtf this is tbh
         {
             int numShifts;
             int consecShifts;
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
+        // this function resets the data grid when the user clicks clear
+        // This will repopulate with the writing center schedule when we have it
         {
-            //clear
+            
 
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
@@ -114,6 +121,7 @@ namespace schedule2
         }
 
         private void class12_Click(object sender, EventArgs e)
+        // This function is called when the user clicks the "submit" button
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Registration Successful");
@@ -127,6 +135,8 @@ namespace schedule2
         }
 
         private void class11_Click(object sender, EventArgs e)
+        // this function resets the data grid when the user clicks clear
+        // This will repopulate with the writing center schedule when we have it
         {
             //clear
 
@@ -137,11 +147,6 @@ namespace schedule2
                     cell.Style.BackColor = Color.Gainsboro;
                 }
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

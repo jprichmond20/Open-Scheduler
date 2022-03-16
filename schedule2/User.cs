@@ -9,6 +9,8 @@ using System.Windows.Forms;
 namespace schedule2
 {
     public class User
+    // This is the User parent class which has the information and basic methods
+    // that both the consultant and the director use 
     {
         //
         //All the users demographic info
@@ -35,20 +37,11 @@ namespace schedule2
         public bool director;
         protected string[] demographicInfo;
 
-
-        //public User(string[] demographicInfo)
-        //{
-        //    first = demographicInfo[0];
-        //    last = demographicInfo[1];
-        //    username = demographicInfo[2];
-        //    password = demographicInfo[3];
-        //}
-        //public bool isDirector()
-        //{
-        //    return false;
-        //}
-
         public void PopulateSched(DataGridView schedule)
+        // This function will populate the Users internal schedule with
+        // whatever schedule is passed to it
+        // This function is for when the director changes the schedule or
+        // a consultant changes or sets their availability
         {
             //
             //User availability stored
@@ -75,26 +68,40 @@ namespace schedule2
             }
 
         }
-        //Register user, hash password and add to our "db"
+        
         public void RegisterUser()
+        //Function to register the user
+        //It stores their information (username, password, demographic info)
+        //in the database in a json file
         {
-            Database db = new Database();
-            db.RegisterUser(username, password, this);
+            //Database db = new Database();
+            Program.db.RegisterUser(username, password, this);
+            // could be
+            // Program.db.RegisterUser(this)?
         }
         
         public Boolean IsDirector()
+        // Function returns a bool value as to whether user is a director or not
+        // True = director
         {
             return director;
         }
 
     }
     public class Director : User
+    // this is the director subclass that has the user as a parent class
+
     {
         public Director()
+        // Director constructor, calls the initialize function below
         {
             Initialize();
         }
         private void Initialize()
+        // this function initializes our director when they are first created
+        // they are assigned a user ID, given director permissions and then
+        // they get the master availability schedule (if there is one otherwise they get a blank schedule)
+        // There may be more added later
         {
             this.userID = Guid.NewGuid().ToString();
             director = true;
@@ -119,6 +126,8 @@ namespace schedule2
             }
             }
         public void update2CurrentSched(List<string[]> currSched)
+        // this director method takes a current schedule and updates the
+        // directors internal schedule to match (this is for schedule changes) 
         {
             for (int i = 0; i < currSched.Count(); i++)
             {
@@ -127,12 +136,17 @@ namespace schedule2
         }
     }
     public class Consultant : User
+    // This consultant class is a subclass of user used to represent our consultants
     {
         public Consultant(string[] demographicInfo)
+        // Consultant calls the private initialize function
         {
             Initialize(demographicInfo);
         }
         private void Initialize(string[] demographicInfo)
+        // Here is the initialization of the consulant. They do not get directors permissions
+        // Then all of their information is assigned to their various fields and a blank schedule is generated
+        // the schedule will be filled with their current availability once theu put it in
         {
             director = false;
             first = demographicInfo[0];
