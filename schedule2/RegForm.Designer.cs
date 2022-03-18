@@ -78,7 +78,7 @@
             this.label8.Size = new System.Drawing.Size(276, 42);
             this.label8.TabIndex = 27;
             this.label8.Text = "Hours per Week:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            //this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -101,7 +101,7 @@
             this.label10.Size = new System.Drawing.Size(133, 42);
             this.label10.TabIndex = 29;
             this.label10.Text = "Majors:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            //this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label3
             // 
@@ -113,7 +113,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 35);
             this.label3.TabIndex = 32;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label6
             // 
@@ -268,7 +268,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(245, 157);
             this.checkedListBox1.TabIndex = 4;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            //this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // checkedListBox2
             // 
@@ -584,7 +584,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegForm";
             this.Text = "Registration";
-            this.Load += new System.EventHandler(this.Form3_Load);
+            //this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
