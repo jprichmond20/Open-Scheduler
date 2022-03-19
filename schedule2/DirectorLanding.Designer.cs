@@ -102,7 +102,7 @@
             this.class12.Text = "Availability Changes";
             this.class12.TextColor = System.Drawing.Color.White;
             this.class12.UseVisualStyleBackColor = false;
-            this.class12.Click += new System.EventHandler(this.class12_Click);
+            //this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
             // DirectorLanding
             // 
@@ -116,7 +116,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DirectorLanding";
             this.Text = "Home";
-            this.Load += new System.EventHandler(this.Form4_Load);
+            //this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

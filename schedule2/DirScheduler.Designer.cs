@@ -65,7 +65,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(469, 603);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
@@ -95,7 +95,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 522);
             this.label2.TabIndex = 3;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button2
             // 
