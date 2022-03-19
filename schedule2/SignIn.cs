@@ -17,6 +17,7 @@ namespace schedule2
         {
             //Databse will initialize a JSON file soon that contains user info
             InitializeComponent();
+            this.AcceptButton = class11;
             //db = new Database();
         }
 
