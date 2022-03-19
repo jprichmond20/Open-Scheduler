@@ -40,7 +40,7 @@ namespace schedule2
                 if (user.IsDirector()) // Checks to see if the user is a director,
                 // if they are, they are taken to the director landing page 
                 {
-                    var frm1 = new DirectorLanding(user);
+                    var frm1 = new DirectorLanding(new Director(user));
                     this.Hide();
                     frm1.Location = this.Location;
                     frm1.StartPosition = FormStartPosition.Manual;

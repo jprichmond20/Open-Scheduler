@@ -67,16 +67,16 @@ namespace schedule2
             // If the writing center is closed, it is represented by a black square
             DataGridViewCellStyle notOpen = new DataGridViewCellStyle();
             notOpen.BackColor = Color.Black;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                for (int j = 1; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0)
                     {
                         // Columns are the associated to the times
-                        if (CurrentSched.days[i][j] == "NULL")
+                        if (CurrentSched.days[i-1][j] == "NULL")
                         {
-                            dataGridView1[j, i].Style.BackColor = notOpen.BackColor;
+                            dataGridView1[i, j].Style.BackColor = notOpen.BackColor;
                         }
                     }
                 }

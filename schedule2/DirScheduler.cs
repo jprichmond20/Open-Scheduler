@@ -49,17 +49,17 @@ namespace schedule2
             // Set the columns to autosize and set the default backcolor 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
-
+            MessageBox.Show(dataGridView1.Rows.Count.ToString());
             // Read in the current schedule from the director
             DataGridViewCellStyle sched = new DataGridViewCellStyle();
             sched.BackColor = Color.Gold;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                for (int j = 1; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0) {
                         // Columns are the associated to the times
-                        if (user.days[i][j] == " ")
+                        if (user.days[i-1][j] == " ")
                         {
                             dataGridView1[j, i].Style.BackColor = sched.BackColor;
                         }
@@ -103,8 +103,8 @@ namespace schedule2
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Schedule Successfully Updated!");
-            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
             var frm = new ScheduleView();
+            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -140,14 +140,14 @@ namespace schedule2
         {
             DataGridViewCellStyle sched = new DataGridViewCellStyle();
             sched.BackColor = Color.Gold;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                for (int j = 1; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0)
                     {
                         // Columns are the associated to the times
-                        if (user.days[i][j] == " ")
+                        if (user.days[i-1][j] == " ")
                         {
                             dataGridView1[j, i].Style.BackColor = sched.BackColor;
                         }

@@ -99,12 +99,26 @@ namespace schedule2
             this.password = user.password;
             this.maj = user.maj;
             this.min = user.min;
-            this.major = maj.Split(',');
-            this.minor = min.Split(',');
+            this.major = null;
+            this.minor = null;
             this.yearsWorked = user.yearsWorked;
             this.hoursPer = user.hoursPer;
             this.userID = user.userID;
             this.demographicInfo = user.demographicInfo;
+            try
+            {
+                schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
+                days = new List<string[]> { masterSched.monday, masterSched.tuesday, masterSched.wednesday, masterSched.thursday, masterSched.friday, masterSched.saturday, masterSched.sunday };
+            }
+            catch (Exception e)
+            {
+                string[] day = new string[31];
+                for (int i = 0; i < 31; i++)
+                {
+                    day[i] = "";
+                }
+                days = new List<string[]> { day, day, day, day, day, day, day };
+            }
         }
         private void Initialize()
         // this function initializes our director when they are first created

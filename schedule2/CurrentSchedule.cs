@@ -9,7 +9,7 @@ namespace schedule2
     public class CurrentSchedule
     // This class is used to represent the current schedule
     {
-        public List<string[]> days;
+        public List<string[]> days = new List<string[]>();
 
         public CurrentSchedule(schedule2.Database.Schedule currSched)
         {
