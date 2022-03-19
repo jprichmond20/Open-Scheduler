@@ -13,11 +13,9 @@ namespace schedule2
     public partial class RegForm : Form
     // this is the Consultant registration form 
     {
-        private Database db;
         public RegForm()
         {
             InitializeComponent();
-            db = new Database();
         }
 
         private void class12_Click(object sender, EventArgs e)
