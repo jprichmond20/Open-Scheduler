@@ -98,8 +98,6 @@ namespace schedule2
         {
             this.userID = Guid.NewGuid().ToString();
             director = true;
-            //major = ["O", "N"];
-            //minor = new String["N","O"];
 
             try
             {
