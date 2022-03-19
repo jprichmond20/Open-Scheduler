@@ -77,5 +77,10 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+
+        private void SignIn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

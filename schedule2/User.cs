@@ -15,13 +15,6 @@ namespace schedule2
         //
         //All the users demographic info
         //
-        protected string[] monday = new string[31];
-        protected string[] tuesday = new string[31];
-        protected string[] wednesday = new string[31];
-        protected string[] thursday = new string[31];
-        protected string[] friday = new string[31];
-        protected string[] saturday = new string[31];
-        protected string[] sunday = new string[31];
         public List<string[]> days;
         public string[] major;
         protected string maj;
@@ -105,6 +98,9 @@ namespace schedule2
         {
             this.userID = Guid.NewGuid().ToString();
             director = true;
+            //major = ["O", "N"];
+            //minor = new String["N","O"];
+
             try
             {
                 schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
@@ -112,17 +108,12 @@ namespace schedule2
             }
             catch(Exception e)
             {
+                string[] day = new string[31];
                 for (int i = 0; i < 31; i++)
                 {
-                    monday[i] = "";
-                    tuesday[i] = "";
-                    wednesday[i] = "";
-                    thursday[i] = "";
-                    friday[i] = "";
-                    saturday[i] = "";
-                    sunday[i] = "";
+                    day[i] = "";
                 }
-                days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+                days = new List<string[]> { day, day, day, day, day, day, day};
             }
             }
         public void update2CurrentSched(List<string[]> currSched)
@@ -138,6 +129,7 @@ namespace schedule2
     public class Consultant : User
     // This consultant class is a subclass of user used to represent our consultants
     {
+        
         public Consultant(string[] demographicInfo)
         // Consultant calls the private initialize function
         {
@@ -162,17 +154,12 @@ namespace schedule2
             userID = demographicInfo[8];
             this.demographicInfo = demographicInfo;
 
+            string[] day = new string[31];
             for (int i = 0; i < 31; i++)
             {
-                monday[i] = "";
-                tuesday[i] = "";
-                wednesday[i] = "";
-                thursday[i] = "";
-                friday[i] = "";
-                saturday[i] = "";
-                sunday[i] = "";
+                day[i] = "";
             }
-            days = new List<string[]> { monday, tuesday, wednesday, thursday, friday, saturday, sunday };
+            days = new List<string[]> { day, day, day, day, day, day, day };
         }
         
 }

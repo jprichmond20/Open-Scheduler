@@ -157,7 +157,7 @@ namespace schedule2
             message.success = false;
             try
             {
-                string json_text = File.ReadAllText("user/" + uuid + ".json");
+                string json_text = File.ReadAllText("users/" + uuid + ".json");
                 message.user = JsonConvert.DeserializeObject<User>(json_text);
             }
             catch(Exception e)

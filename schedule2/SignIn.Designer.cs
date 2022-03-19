@@ -52,7 +52,6 @@
             this.label1.Size = new System.Drawing.Size(149, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -65,29 +64,26 @@
             this.label2.Size = new System.Drawing.Size(141, 35);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Crimson;
             this.panel1.Location = new System.Drawing.Point(17, 209);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(413, 8);
             this.panel1.TabIndex = 5;
-            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(14, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(421, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
@@ -99,7 +95,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 10;
-            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // newTextBox1
             // 
@@ -110,10 +105,10 @@
             this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox1.ForeColor = System.Drawing.Color.Black;
             this.newTextBox1.Location = new System.Drawing.Point(153, 244);
-            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox1.Multiline = false;
             this.newTextBox1.Name = "newTextBox1";
-            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.newTextBox1.Padding = new System.Windows.Forms.Padding(7);
             this.newTextBox1.PasswordChar = false;
             this.newTextBox1.Size = new System.Drawing.Size(278, 32);
             this.newTextBox1.TabIndex = 1;
@@ -129,10 +124,10 @@
             this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox2.ForeColor = System.Drawing.Color.Black;
             this.newTextBox2.Location = new System.Drawing.Point(153, 151);
-            this.newTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.newTextBox2.Multiline = false;
             this.newTextBox2.Name = "newTextBox2";
-            this.newTextBox2.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.newTextBox2.Padding = new System.Windows.Forms.Padding(7);
             this.newTextBox2.PasswordChar = false;
             this.newTextBox2.Size = new System.Drawing.Size(278, 32);
             this.newTextBox2.TabIndex = 0;
@@ -197,7 +192,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SignIn";
             this.Text = "Sign In";
-            //this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.SignIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -14,10 +14,10 @@ namespace schedule2
     public partial class DirectorLanding : Form
     // This form is the directors landing page
     {
-        //public Director user;
+        public Director user;
         public DirectorLanding(Director user)
         {
-            //this.user = user;
+            this.user = user;
             InitializeComponent();
         }
 
