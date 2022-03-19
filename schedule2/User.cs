@@ -17,18 +17,18 @@ namespace schedule2
         //
         public List<string[]> days;
         public string[] major;
-        protected string maj;
+        public string maj;
         public string[] minor;
-        protected string min;
+        public string min;
         public string yearsWorked;
         public string hoursPer;
         public string first;
         public string last;
-        protected string username;
-        protected string password;
+        public string username;
+        public string password;
         public string userID;
         public bool director;
-        protected string[] demographicInfo;
+        public string[] demographicInfo;
 
         public void PopulateSched(DataGridView schedule)
         // This function will populate the Users internal schedule with
@@ -89,6 +89,22 @@ namespace schedule2
         // Director constructor, calls the initialize function below
         {
             Initialize();
+        }
+        public Director(User user)
+        {
+            this.director = user.director;
+            this.first = user.first;
+            this.last = user.last;
+            this.username = user.username;
+            this.password = user.password;
+            this.maj = user.maj;
+            this.min = user.min;
+            this.major = maj.Split(',');
+            this.minor = min.Split(',');
+            this.yearsWorked = user.yearsWorked;
+            this.hoursPer = user.hoursPer;
+            this.userID = user.userID;
+            this.demographicInfo = user.demographicInfo;
         }
         private void Initialize()
         // this function initializes our director when they are first created
