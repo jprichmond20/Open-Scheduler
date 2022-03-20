@@ -178,7 +178,10 @@ namespace schedule2
 
         public Schedule createSchedule()
         {
-            Schedule schedule = new Schedule();
+            List<List<List<User>>> return_schedule_list = getEmptyScheduleForList();
+
+            Schedule return_sched = getEmptySchedule();
+
 
             try {
                 List<Consultant> consultant_list = getAllConsultants();
@@ -193,11 +196,17 @@ namespace schedule2
 
                 // Workers get distributed to all available work times
                 foreach (Consultant worker in consultant_list) {
-                    foreach (string[] days in worker.days) {
-                        foreach (var (item, index) in hour_option_list.Select((value, i) => (value, i))) {
-                            if TimeAvailable == Shift.hour:
-                                Shift.workerNames.append(worker)
-                                worker.numberOfShifts += 1;
+                    for(int x = 0; x < hour_option_list.Count; x++) {
+                        for(int y = 0; y < hour_option_list[0].Length; y++)
+                        {
+                            if(hour_option_list[x][y] == "")
+                            {
+                                if(worker.days[x][y] == "")
+                                {
+                                    return_schedule_list[x][y].Add(worker);
+                                    worker.numberOfShifts += 1;
+                                }
+                            }
                         }
                     }
                 }
@@ -214,9 +223,10 @@ namespace schedule2
                             ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[3], False, Choices_List[0], Choices_List[1], Choices_List[2])
                     priority -= 1
 
-
+                /*
                 CreateOutputFile(Hour_OptionsList, WorkersList)#Creates the "Schedule.csv" file
                 PrintErrorReport(Hour_OptionsList, WorkersList, Choices_List[4], Choices_List[3])#Prints Efficiencies to Shell
+                */            
             }
             catch(Exception e) { Console.WriteLine(e); }
 
@@ -234,6 +244,140 @@ namespace schedule2
                 }
             }
             return consultants;
+        }
+
+        private Schedule getEmptySchedule()
+        {
+            Schedule new_sched = new Schedule();
+            Schedule master = getMasterAvalibility();
+
+            string[] days = new string[master.monday.Length];
+            for (int i = 0; i < master.monday.Length; i++)
+            {
+                days[i] = "";
+            }
+
+            new_sched.monday = days;
+            new_sched.tuesday = days;
+            new_sched.wednesday = days;
+            new_sched.thursday = days;
+            new_sched.friday = days;
+            new_sched.saturday = days;
+            new_sched.sunday = days;
+
+            return new_sched;
+        }
+        private List<List<List<User>>> getEmptyScheduleForList()
+        {
+            List<List<List<User>>> new_sched = new List<List<List<User>>>();
+            Schedule master = getMasterAvalibility();
+
+            List<List<User>> days = new List<List<User>>();
+            for (int i = 0; i < master.monday.Length; i++)
+            {
+                days.Add(new List<User>());
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                new_sched.Add(days);
+            }
+
+            return new_sched;
+        }
+
+        private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count) {
+            //will be the actual goal later
+            int num_worker_goal = 3;
+            List<List<int>> num_extra_workers = new List<List<int>>();
+            for(int i = 0; i < shifts.Count; i++)
+            {
+                num_extra_workers.Add(new List<int>());
+                foreach (List<User> shift in shifts[i])
+                {
+                    num_extra_workers[i].Add(shift.Count - num_worker_goal);
+                }
+            }
+          NumExtraWorkers = len(Hour_OptionsList[Shift].workerNames) - numWorkerGoal
+          if (NumExtraWorkers > 0):
+              LargestNumberOfShifts = 0
+              NumberOfUpperClassmen = 0
+              TempKickList =[]
+              for worker in Hour_OptionsList[Shift].workerNames:
+                  if worker.NumberOfShifts > worker.Hours_Wanted:
+                      TempKickList.append(worker)##apending all workers scheduled for to many shifts
+                      LargestNumberOfShifts = max(LargestNumberOfShifts, worker.NumberOfShifts)
+                  if (worker.Year == "Senior" or worker.Year == "Junior"):
+                      NumberOfUpperClassmen += 1
+
+              # Ages
+            if MIX_AGES:
+                 if (CountUpper and NumberOfUpperClassmen == 1):##Removes upperclass if only one
+                   for staff in TempKickList:
+                      if (staff.Year == "Senior" or staff.Year == "Junior"):
+                          TempKickList.remove(staff)
+
+              # Consecutive Shifts
+            if MULTIPLE_SHIFTS:
+                  for staff in TempKickList:
+                      if NumExtraWorkers > 0:
+                          if staff in Hour_OptionsList[Shift - 1].workerNames or staff in Hour_OptionsList[min(Shift + 1, len(Hour_OptionsList) - 1)].workerNames:
+                              if len(TempKickList) > NumExtraWorkers:
+                                #Removes Staff from temp list
+                                TempKickList.remove(staff)
+              else:
+                  for staff in TempKickList:
+                    if NumExtraWorkers > 0:
+                         if staff in Hour_OptionsList[Shift - 1].workerNames or staff in Hour_OptionsList[min(Shift + 1, len(Hour_OptionsList) - 1)].workerNames:
+                            #Removes Staff from shift
+                            NumExtraWorkers -= 1
+                            staff.NumberOfShifts -= 1
+                            TempKickList.remove(staff)
+                            Hour_OptionsList[Shift].workerNames.remove(staff)
+
+        # Mixing Majors
+            matches_found = True
+              if MIX_MAJORS:
+                 while (len(TempKickList) > 0 and NumExtraWorkers> 0 and matches_found):
+                    MostMatchesOverall = -1
+                    CurrentLargestFieldWorker = BlankWorker
+
+
+                    for staff in TempKickList:
+                        MostMatches = -1
+                        for FieldStudy in staff.Field_Of_Study:##Possible to have more than 1 major
+                             MajorMatches = 0
+                             for otherstaff in Hour_OptionsList[Shift].workerNames:
+                                if FieldStudy in otherstaff.Field_Of_Study:
+                                    MajorMatches += 1
+                             if MajorMatches > MostMatches:
+                              MostMatches = MajorMatches
+                        if MostMatches >= MostMatchesOverall:
+                          MostMatchesOverall = MostMatches
+                          CurrentLargestFieldWorker = staff
+
+                    if MostMatchesOverall > 1:#probably 1 and not 0
+                        #Removes Staff from shift
+                        NumExtraWorkers -= 1
+                        CurrentLargestFieldWorker.NumberOfShifts -= 1
+                        TempKickList.remove(CurrentLargestFieldWorker)
+                        Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
+                    else:
+                        matches_found = False
+
+              # Largest Differences
+            while (len(TempKickList) > 0 and NumExtraWorkers> 0):
+                CurrentLargestFieldWorker = BlankWorker
+                biggest_diff = 0
+                for staff in TempKickList:
+                    if (staff.NumberOfShifts - staff.Hours_Wanted) > biggest_diff:
+                        CurrentLargestFieldWorker = staff
+                        biggest_diff = staff.NumberOfShifts - staff.Hours_Wanted
+
+                # Removes Staff from shift
+            NumExtraWorkers -= 1
+                CurrentLargestFieldWorker.NumberOfShifts -= 1
+                TempKickList.remove(CurrentLargestFieldWorker)
+                Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
         }
 
     }
