@@ -29,6 +29,7 @@ namespace schedule2
         public string userID;
         public bool director;
         public string[] demographicInfo;
+        public int numberOfShifts = 0;
 
         public void PopulateSched(DataGridView schedule)
         // This function will populate the Users internal schedule with

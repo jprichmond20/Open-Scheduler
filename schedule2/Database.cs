@@ -176,6 +176,65 @@ namespace schedule2
             return JsonConvert.DeserializeObject<Schedule>(json_text);
         }
 
+        public Schedule createSchedule()
+        {
+            Schedule schedule = new Schedule();
+
+            try {
+                List<Consultant> consultant_list = getAllConsultants();
+                Schedule master_availibility = getMasterAvalibility();
+                List<string[]> hour_option_list = new List<string[]> { 
+                    master_availibility.monday, master_availibility.tuesday, master_availibility.wednesday, 
+                    master_availibility.thursday, master_availibility.friday, master_availibility.saturday, 
+                    master_availibility.sunday 
+                };
+
+                //Choices_List = [MULTIPLE_SHIFTS,MIX_MAJORS,MIX_AGES,SHIFT_MINIMUM_WORKERS,SHIFT_MAXIMUM_WORKERS]//Need to imlement
+
+                // Workers get distributed to all available work times
+                foreach (Consultant worker in consultant_list) {
+                    foreach (string[] days in worker.days) {
+                        foreach (var (item, index) in hour_option_list.Select((value, i) => (value, i))) {
+                            if TimeAvailable == Shift.hour:
+                                Shift.workerNames.append(worker)
+                                worker.numberOfShifts += 1;
+                        }
+                    }
+                }
+
+
+                for Shift in range(len(Hour_OptionsList)):##Tries to reduce under SHIFT_MAXIMUM_WORKERS
+                    ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[4], True, Choices_List[0], Choices_List[1], Choices_List[2])
+
+
+                priority = 3
+                while (priority >= 1):#Tries to reduce to SHIFT_MINIMUM_WORKERS using priority
+                    for Shift in range(len(Hour_OptionsList)):
+                        if Hour_OptionsList[Shift].priority == priority:
+                            ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[3], False, Choices_List[0], Choices_List[1], Choices_List[2])
+                    priority -= 1
+
+
+                CreateOutputFile(Hour_OptionsList, WorkersList)#Creates the "Schedule.csv" file
+                PrintErrorReport(Hour_OptionsList, WorkersList, Choices_List[4], Choices_List[3])#Prints Efficiencies to Shell
+            }
+            catch(Exception e) { Console.WriteLine(e); }
+
+
+            return schedule;
+        }
+
+
+        private List<Consultant> getAllConsultants()
+        {
+            List<Consultant> consultants = new List<Consultant>();
+            foreach(object[] account_info in accounts.Values){
+                if (((User)account_info[2]).director){
+                    consultants.Add((Consultant)account_info[2]);
+                }
+            }
+            return consultants;
+        }
 
     }
 }
