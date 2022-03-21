@@ -61,7 +61,7 @@ namespace schedule2
                         // Columns are the associated to the times
                         if (user.days[i-1][j] == " ")
                         {
-                            dataGridView1[j, i].Style.BackColor = sched.BackColor;
+                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
                         }
                             }
                 }
@@ -105,6 +105,7 @@ namespace schedule2
             MessageBox.Show("Schedule Successfully Updated!");
             var frm = new ScheduleView();
             schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+            Program.db.setMasterAvailibility(user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -119,7 +120,7 @@ namespace schedule2
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         // this function resets the data grid when the user clicks reset
         // This will NOT repopulate with the writing center schedule
         {
@@ -134,7 +135,7 @@ namespace schedule2
         
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         // this function resets the data grid when the user clicks clear
         // This will repopulate with the writing center schedule
         {
@@ -149,11 +150,20 @@ namespace schedule2
                         // Columns are the associated to the times
                         if (user.days[i-1][j] == " ")
                         {
-                            dataGridView1[j, i].Style.BackColor = sched.BackColor;
+                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
+                        }
+                        else
+                        {
+                            dataGridView1[i, j].Style.BackColor = Color.Gainsboro;
                         }
                     }
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -66,7 +66,7 @@ namespace schedule2
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(27, 61);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -91,7 +91,7 @@ namespace schedule2
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(622, 459);
             this.dataGridView1.TabIndex = 10;
-            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label8
             // 
@@ -104,7 +104,6 @@ namespace schedule2
             this.label8.Size = new System.Drawing.Size(754, 61);
             this.label8.TabIndex = 8;
             this.label8.Text = "Current Writing Center Schedule";
-            //this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // button1
             // 
@@ -115,7 +114,6 @@ namespace schedule2
             this.button1.TabIndex = 11;
             this.button1.Text = "Set New Schedule";
             this.button1.UseVisualStyleBackColor = true;
-            //this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ScheduleView
             // 

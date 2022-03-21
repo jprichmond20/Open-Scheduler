@@ -46,7 +46,7 @@ namespace schedule2
             {
                 for(int j = 1; j < schedule.Columns.Count; j++)
                 {
-                    if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor)
+                    if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor || schedule.Rows[i].Cells[j].Style.BackColor == Color.Gold)
                     {
                         days[j - 1][i] = " ";
                     }
@@ -153,6 +153,10 @@ namespace schedule2
             {
                 days[i] = currSched[i];
             }
+        }
+        public void updatefromMasterSched(Database.Schedule masterSched)
+        {
+            days = new List<string[]> { masterSched.monday, masterSched.tuesday, masterSched.wednesday, masterSched.thursday, masterSched.friday, masterSched.saturday, masterSched.sunday };
         }
     }
     public class Consultant : User
