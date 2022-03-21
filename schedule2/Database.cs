@@ -13,6 +13,24 @@ namespace schedule2
     // This class is our database that we use to store all our information 
     {
 
+        public struct UserListSchedule
+        {
+            public List<List<User>> monday;
+            public List<List<User>> tuesday;
+            public List<List<User>> wednesday;
+            public List<List<User>> thursday;
+            public List<List<User>> friday;
+            public List<List<User>> saturday;
+            public List<List<User>> sunday;
+        }
+        private struct DirectorSettings
+        {
+            public bool mix_ages;
+            public bool multiple_shifts;
+            public bool multiple_majors;
+        }
+
+
         public struct Schedule // Scruct to hold a schedule
         {
             public string[] monday;
@@ -176,6 +194,290 @@ namespace schedule2
             return JsonConvert.DeserializeObject<Schedule>(json_text);
         }
 
+        public UserListSchedule createSchedule()
+        {
+            List<List<List<User>>> return_schedule_list = getEmptyScheduleForList();
+
+            UserListSchedule return_sched = new UserListSchedule();
+            try {
+                List<Consultant> consultant_list = getAllConsultants();
+                Schedule master_availibility = getMasterAvalibility();
+                List<string[]> hour_option_list = new List<string[]> { 
+                    master_availibility.monday, master_availibility.tuesday, master_availibility.wednesday, 
+                    master_availibility.thursday, master_availibility.friday, master_availibility.saturday, 
+                    master_availibility.sunday 
+                };
+
+                //Choices_List = [MULTIPLE_SHIFTS,MIX_MAJORS,MIX_AGES,SHIFT_MINIMUM_WORKERS,SHIFT_MAXIMUM_WORKERS]//Need to imlement
+
+                // Workers get distributed to all available work times
+                foreach (Consultant worker in consultant_list) {
+                    for(int x = 0; x < hour_option_list.Count; x++) {
+                        for(int y = 0; y < hour_option_list[0].Length; y++)
+                        {
+                            if(hour_option_list[x][y] == "")
+                            {
+                                if(worker.days[x][y] == "")
+                                {
+                                    return_schedule_list[x][y].Add(worker);
+                                    worker.numberOfShifts += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                return_schedule_list = ScheduleTrimmer1(return_schedule_list, true);
+                return_sched.monday = return_schedule_list[0];
+                return_sched.tuesday = return_schedule_list[1];
+                return_sched.wednesday = return_schedule_list[2];
+                return_sched.thursday = return_schedule_list[3];
+                return_sched.friday = return_schedule_list[4];
+                return_sched.saturday = return_schedule_list[5];
+                return_sched.sunday = return_schedule_list[6];
+                //priority = 3
+                //while (priority >= 1):#Tries to reduce to SHIFT_MINIMUM_WORKERS using priority
+                //    for Shift in range(len(Hour_OptionsList)):
+                //        if Hour_OptionsList[Shift].priority == priority:
+                //            ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[3], False, Choices_List[0], Choices_List[1], Choices_List[2])
+                //    priority -= 1
+
+                /*
+                CreateOutputFile(Hour_OptionsList, WorkersList)#Creates the "Schedule.csv" file
+                PrintErrorReport(Hour_OptionsList, WorkersList, Choices_List[4], Choices_List[3])#Prints Efficiencies to Shell
+                */
+                
+
+            }
+            catch(Exception e) { Console.WriteLine(e); }
+
+
+            return return_sched;
+        }
+
+
+        private List<Consultant> getAllConsultants()
+        {
+            List<Consultant> consultants = new List<Consultant>();
+            foreach(object[] account_info in accounts.Values){
+                if (((User)account_info[2]).director){
+                    consultants.Add((Consultant)account_info[2]);
+                }
+            }
+            return consultants;
+        }
+
+        private Schedule getEmptySchedule()
+        {
+            Schedule new_sched = new Schedule();
+            Schedule master = getMasterAvalibility();
+
+            string[] days = new string[master.monday.Length];
+            for (int i = 0; i < master.monday.Length; i++)
+            {
+                days[i] = "";
+            }
+
+            new_sched.monday = days;
+            new_sched.tuesday = days;
+            new_sched.wednesday = days;
+            new_sched.thursday = days;
+            new_sched.friday = days;
+            new_sched.saturday = days;
+            new_sched.sunday = days;
+
+            return new_sched;
+        }
+        private List<List<List<User>>> getEmptyScheduleForList()
+        {
+            List<List<List<User>>> new_sched = new List<List<List<User>>>();
+            Schedule master = getMasterAvalibility();
+
+            List<List<User>> days = new List<List<User>>();
+            for (int i = 0; i < master.monday.Length; i++)
+            {
+                days.Add(new List<User>());
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                new_sched.Add(days);
+            }
+
+            return new_sched;
+        }
+
+        private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count) {
+            //will be the actual goal later
+            int num_worker_goal = 4;
+            int num_min_worker = 2;
+            DirectorSettings director_settings = getDirectorSettings();
+
+            List<List<int>> num_extra_workers = new List<List<int>>();
+            for (int i = 0; i < shifts.Count; i++)
+            {
+                num_extra_workers.Add(new List<int>());
+                foreach (List<User> shift in shifts[i])
+                {
+                    num_extra_workers[i].Add(shift.Count - num_worker_goal);
+                }
+            }
+
+            for (int x = 0; x < num_extra_workers.Count; x++)
+            {
+                for (int y = 0; y < num_extra_workers[x].Count; y++)
+                {
+                    if (num_extra_workers[x][y] > 0)
+                    {
+                        int largest_number_of_shifts = 0;
+                        int number_of_upperclassmen = 0;
+                        List<Consultant> temp_kick_list = new List<Consultant>();
+
+                        int current_extra_workers = num_extra_workers[x][y];
+
+                        foreach (Consultant worker in shifts[x][y])
+                        {
+                            if (worker.numberOfShifts > int.Parse(worker.hoursPer) * 2)
+                            {
+                                temp_kick_list.Add(worker);
+                            }
+                            if (int.Parse(worker.yearsWorked) > 2)
+                            {
+                                number_of_upperclassmen++;
+                            }
+
+                            // Ages
+                            if (director_settings.mix_ages)
+                            {
+                                if (count && number_of_upperclassmen == 1)
+                                {
+                                    foreach (Consultant staff in temp_kick_list)
+                                    {
+                                        if (int.Parse(staff.yearsWorked) > 2)
+                                        {
+                                            temp_kick_list.Remove(staff);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (director_settings.multiple_shifts)
+                            {
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if(current_extra_workers > 0)
+                                    {
+                                        if(y > 0)
+                                        {
+                                            if (y < shifts[x].Count - 1)
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if(shifts[x][y - 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if(shifts[x][y + 1].Contains(staff))
+                                            {
+                                                temp_kick_list.Remove(staff);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if(current_extra_workers > 0)
+                                    {
+                                        if (y > 0)
+                                        {
+                                            if (y < shifts[x].Count - 1)
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                    current_extra_workers++;
+                                                    shifts[x][y].Remove(staff);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                    current_extra_workers--;
+                                                    shifts[x][y].Remove(staff);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (shifts[x][y + 1].Contains(staff))
+                                            {
+                                                temp_kick_list.Remove(staff);
+                                                current_extra_workers--;
+                                                shifts[x][y].Remove(staff);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (director_settings.multiple_majors)
+                            {
+                                //find major matches
+                                foreach (Consultant staff in temp_kick_list)
+                                {
+
+                                }
+                            }
+
+                            while(temp_kick_list.Count > 0 && current_extra_workers > 0)
+                            {
+                                Consultant largest_gap_staff = temp_kick_list[0];
+                                int largest_gap = 0;
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
+                                    {
+                                        largest_gap_staff = staff;
+                                        largest_gap = staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2);
+                                    }
+                                }
+                                
+                                current_extra_workers--;
+                                largest_gap_staff.numberOfShifts--;
+                                temp_kick_list.Remove(largest_gap_staff);
+                                shifts[x][y].Remove(largest_gap_staff);
+                            }
+                        }
+
+                    }
+                }
+            }
+            return shifts;
+        }
+
+
+        private DirectorSettings getDirectorSettings()
+        {
+            DirectorSettings director_settings = new DirectorSettings();
+            director_settings.multiple_majors = true;
+            director_settings.mix_ages = true;
+            director_settings.multiple_shifts = true;
+            return director_settings;
+        }
 
     }
 }
