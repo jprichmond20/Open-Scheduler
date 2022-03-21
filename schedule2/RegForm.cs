@@ -23,14 +23,14 @@ namespace schedule2
         // it Stores all user info and creates a new user 
         {
             // Gets first, last, username, password, majors, minors, years worked and hours per week
-            string fName = newTextBox6.Text;
-            string lName = newTextBox5.Text;
-            string username = newTextBox4.Text;
-            string password = newTextBox3.Text;
+            string fName = newTextBox6.Texts;
+            string lName = newTextBox5.Texts;
+            string username = newTextBox4.Texts;
+            string password = newTextBox3.Texts;
             string major = checkedListBox1.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
             string minor = checkedListBox2.CheckedItems.Cast<string>().Aggregate(string.Empty, (current, item) => current + item.ToString() + ",");
-            string yearsWorked = newTextBox1.Text;
-            string hoursPer = newTextBox2.Text;
+            string yearsWorked = newTextBox1.Texts;
+            string hoursPer = newTextBox2.Texts;
 
 
             // Input validation to make sure user inputs all information

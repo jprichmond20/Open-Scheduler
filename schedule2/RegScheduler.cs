@@ -13,8 +13,8 @@ namespace schedule2
     public partial class RegScheduler : Form
     // this for allows a consultant to se their availability to work at the writing center
     {
-        public User user;
-        public RegScheduler(User user)
+        public Consultant user;
+        public RegScheduler(Consultant user)
         {
             this.user = user;
             InitializeComponent();
