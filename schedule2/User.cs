@@ -56,10 +56,10 @@ namespace schedule2
                     }
                 }
             }
-            for (int k = 0; k < 6; k++)
-            {
-                MessageBox.Show(string.Join(",", days[k]));
-            }
+            //for (int k = 0; k < 6; k++)
+            //{
+            //    MessageBox.Show(string.Join(",", days[k]));
+            //}
 
         }
         

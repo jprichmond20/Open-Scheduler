@@ -138,18 +138,6 @@ namespace schedule2
                 
                 if (user.IsDirector())
                 {
-                    //json_file_name = "masterAvailability.json";
-
-                    //Schedule schedule = new Schedule();
-                    //schedule.monday = user.days[0];
-                    //schedule.tuesday = user.days[1];
-                    //schedule.wednesday = user.days[2];
-                    //schedule.thursday = user.days[3];
-                    //schedule.friday = user.days[4];
-                    //schedule.saturday = user.days[5];
-                    //schedule.sunday = user.days[6];
-                    //json_text = JsonConvert.SerializeObject(schedule);
-                    //File.WriteAllText(json_file_name, json_text);
                     Director director = new Director(user);
                     director.updatefromMasterSched(getMasterAvalibility());
                     
