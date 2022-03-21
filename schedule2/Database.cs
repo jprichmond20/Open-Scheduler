@@ -13,6 +13,16 @@ namespace schedule2
     // This class is our database that we use to store all our information 
     {
 
+        public struct UserListSchedule
+        {
+            public List<List<User>> monday;
+            public List<List<User>> tuesday;
+            public List<List<User>> wednesday;
+            public List<List<User>> thursday;
+            public List<List<User>> friday;
+            public List<List<User>> saturday;
+            public List<List<User>> sunday;
+        }
         private struct DirectorSettings
         {
             public bool mix_ages;
@@ -184,13 +194,11 @@ namespace schedule2
             return JsonConvert.DeserializeObject<Schedule>(json_text);
         }
 
-        public Schedule createSchedule()
+        public UserListSchedule createSchedule()
         {
             List<List<List<User>>> return_schedule_list = getEmptyScheduleForList();
 
-            Schedule return_sched = getEmptySchedule();
-
-
+            UserListSchedule return_sched = new UserListSchedule();
             try {
                 List<Consultant> consultant_list = getAllConsultants();
                 Schedule master_availibility = getMasterAvalibility();
@@ -220,26 +228,32 @@ namespace schedule2
                 }
 
 
-                for Shift in range(len(Hour_OptionsList)):##Tries to reduce under SHIFT_MAXIMUM_WORKERS
-                    ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[4], True, Choices_List[0], Choices_List[1], Choices_List[2])
-
-
-                priority = 3
-                while (priority >= 1):#Tries to reduce to SHIFT_MINIMUM_WORKERS using priority
-                    for Shift in range(len(Hour_OptionsList)):
-                        if Hour_OptionsList[Shift].priority == priority:
-                            ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[3], False, Choices_List[0], Choices_List[1], Choices_List[2])
-                    priority -= 1
+                return_schedule_list = ScheduleTrimmer1(return_schedule_list, true);
+                return_sched.monday = return_schedule_list[0];
+                return_sched.tuesday = return_schedule_list[1];
+                return_sched.wednesday = return_schedule_list[2];
+                return_sched.thursday = return_schedule_list[3];
+                return_sched.friday = return_schedule_list[4];
+                return_sched.saturday = return_schedule_list[5];
+                return_sched.sunday = return_schedule_list[6];
+                //priority = 3
+                //while (priority >= 1):#Tries to reduce to SHIFT_MINIMUM_WORKERS using priority
+                //    for Shift in range(len(Hour_OptionsList)):
+                //        if Hour_OptionsList[Shift].priority == priority:
+                //            ScheduleTrimmer1(Hour_OptionsList, Shift, Choices_List[3], False, Choices_List[0], Choices_List[1], Choices_List[2])
+                //    priority -= 1
 
                 /*
                 CreateOutputFile(Hour_OptionsList, WorkersList)#Creates the "Schedule.csv" file
                 PrintErrorReport(Hour_OptionsList, WorkersList, Choices_List[4], Choices_List[3])#Prints Efficiencies to Shell
-                */            
+                */
+                
+
             }
             catch(Exception e) { Console.WriteLine(e); }
 
 
-            return schedule;
+            return return_sched;
         }
 
 
@@ -454,51 +468,6 @@ namespace schedule2
             }
             return shifts;
         }
-
-            //# Mixing Majors
-            //matches_found = True
-            //      if MIX_MAJORS:
-            //         while (len(TempKickList) > 0 and NumExtraWorkers> 0 and matches_found):
-            //            MostMatchesOverall = -1
-            //            CurrentLargestFieldWorker = BlankWorker
-
-
-            //            for staff in TempKickList:
-            //                MostMatches = -1
-            //                for FieldStudy in staff.Field_Of_Study:##Possible to have more than 1 major
-            //                     MajorMatches = 0
-            //                     for otherstaff in Hour_OptionsList[Shift].workerNames:
-            //                        if FieldStudy in otherstaff.Field_Of_Study:
-            //                            MajorMatches += 1
-            //                     if MajorMatches > MostMatches:
-            //                      MostMatches = MajorMatches
-            //                if MostMatches >= MostMatchesOverall:
-            //                  MostMatchesOverall = MostMatches
-            //                  CurrentLargestFieldWorker = staff
-
-            //            if MostMatchesOverall > 1:#probably 1 and not 0
-            //                #Removes Staff from shift
-            //                NumExtraWorkers -= 1
-            //                CurrentLargestFieldWorker.NumberOfShifts -= 1
-            //                TempKickList.remove(CurrentLargestFieldWorker)
-            //                Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
-            //            else:
-            //                matches_found = False
-
-            //      # Largest Differences
-            //while (len(TempKickList) > 0 and NumExtraWorkers> 0):
-            //        CurrentLargestFieldWorker = BlankWorker
-            //        biggest_diff = 0
-            //        for staff in TempKickList:
-            //            if (staff.NumberOfShifts - staff.Hours_Wanted) > biggest_diff:
-            //                CurrentLargestFieldWorker = staff
-            //                biggest_diff = staff.NumberOfShifts - staff.Hours_Wanted
-
-            //        # Removes Staff from shift
-            //NumExtraWorkers -= 1
-            //        CurrentLargestFieldWorker.NumberOfShifts -= 1
-            //        TempKickList.remove(CurrentLargestFieldWorker)
-            //        Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
 
 
         private DirectorSettings getDirectorSettings()
