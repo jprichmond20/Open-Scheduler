@@ -13,6 +13,14 @@ namespace schedule2
     // This class is our database that we use to store all our information 
     {
 
+        private struct DirectorSettings
+        {
+            public bool mix_ages;
+            public bool multiple_shifts;
+            public bool multiple_majors;
+        }
+
+
         public struct Schedule // Scruct to hold a schedule
         {
             public string[] monday;
@@ -287,9 +295,12 @@ namespace schedule2
 
         private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count) {
             //will be the actual goal later
-            int num_worker_goal = 3;
+            int num_worker_goal = 4;
+            int num_min_worker = 2;
+            DirectorSettings director_settings = getDirectorSettings();
+
             List<List<int>> num_extra_workers = new List<List<int>>();
-            for(int i = 0; i < shifts.Count; i++)
+            for (int i = 0; i < shifts.Count; i++)
             {
                 num_extra_workers.Add(new List<int>());
                 foreach (List<User> shift in shifts[i])
@@ -297,87 +308,206 @@ namespace schedule2
                     num_extra_workers[i].Add(shift.Count - num_worker_goal);
                 }
             }
-          NumExtraWorkers = len(Hour_OptionsList[Shift].workerNames) - numWorkerGoal
-          if (NumExtraWorkers > 0):
-              LargestNumberOfShifts = 0
-              NumberOfUpperClassmen = 0
-              TempKickList =[]
-              for worker in Hour_OptionsList[Shift].workerNames:
-                  if worker.NumberOfShifts > worker.Hours_Wanted:
-                      TempKickList.append(worker)##apending all workers scheduled for to many shifts
-                      LargestNumberOfShifts = max(LargestNumberOfShifts, worker.NumberOfShifts)
-                  if (worker.Year == "Senior" or worker.Year == "Junior"):
-                      NumberOfUpperClassmen += 1
 
-              # Ages
-            if MIX_AGES:
-                 if (CountUpper and NumberOfUpperClassmen == 1):##Removes upperclass if only one
-                   for staff in TempKickList:
-                      if (staff.Year == "Senior" or staff.Year == "Junior"):
-                          TempKickList.remove(staff)
+            for (int x = 0; x < num_extra_workers.Count; x++)
+            {
+                for (int y = 0; y < num_extra_workers[x].Count; y++)
+                {
+                    if (num_extra_workers[x][y] > 0)
+                    {
+                        int largest_number_of_shifts = 0;
+                        int number_of_upperclassmen = 0;
+                        List<Consultant> temp_kick_list = new List<Consultant>();
 
-              # Consecutive Shifts
-            if MULTIPLE_SHIFTS:
-                  for staff in TempKickList:
-                      if NumExtraWorkers > 0:
-                          if staff in Hour_OptionsList[Shift - 1].workerNames or staff in Hour_OptionsList[min(Shift + 1, len(Hour_OptionsList) - 1)].workerNames:
-                              if len(TempKickList) > NumExtraWorkers:
-                                #Removes Staff from temp list
-                                TempKickList.remove(staff)
-              else:
-                  for staff in TempKickList:
-                    if NumExtraWorkers > 0:
-                         if staff in Hour_OptionsList[Shift - 1].workerNames or staff in Hour_OptionsList[min(Shift + 1, len(Hour_OptionsList) - 1)].workerNames:
-                            #Removes Staff from shift
-                            NumExtraWorkers -= 1
-                            staff.NumberOfShifts -= 1
-                            TempKickList.remove(staff)
-                            Hour_OptionsList[Shift].workerNames.remove(staff)
+                        int current_extra_workers = num_extra_workers[x][y];
 
-        # Mixing Majors
-            matches_found = True
-              if MIX_MAJORS:
-                 while (len(TempKickList) > 0 and NumExtraWorkers> 0 and matches_found):
-                    MostMatchesOverall = -1
-                    CurrentLargestFieldWorker = BlankWorker
+                        foreach (Consultant worker in shifts[x][y])
+                        {
+                            if (worker.numberOfShifts > int.Parse(worker.hoursPer) * 2)
+                            {
+                                temp_kick_list.Add(worker);
+                            }
+                            if (int.Parse(worker.yearsWorked) > 2)
+                            {
+                                number_of_upperclassmen++;
+                            }
+
+                            // Ages
+                            if (director_settings.mix_ages)
+                            {
+                                if (count && number_of_upperclassmen == 1)
+                                {
+                                    foreach (Consultant staff in temp_kick_list)
+                                    {
+                                        if (int.Parse(staff.yearsWorked) > 2)
+                                        {
+                                            temp_kick_list.Remove(staff);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (director_settings.multiple_shifts)
+                            {
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if(current_extra_workers > 0)
+                                    {
+                                        if(y > 0)
+                                        {
+                                            if (y < shifts[x].Count - 1)
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if(shifts[x][y - 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if(shifts[x][y + 1].Contains(staff))
+                                            {
+                                                temp_kick_list.Remove(staff);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if(current_extra_workers > 0)
+                                    {
+                                        if (y > 0)
+                                        {
+                                            if (y < shifts[x].Count - 1)
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                    current_extra_workers++;
+                                                    shifts[x][y].Remove(staff);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (shifts[x][y - 1].Contains(staff))
+                                                {
+                                                    temp_kick_list.Remove(staff);
+                                                    current_extra_workers--;
+                                                    shifts[x][y].Remove(staff);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (shifts[x][y + 1].Contains(staff))
+                                            {
+                                                temp_kick_list.Remove(staff);
+                                                current_extra_workers--;
+                                                shifts[x][y].Remove(staff);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (director_settings.multiple_majors)
+                            {
+                                //find major matches
+                                foreach (Consultant staff in temp_kick_list)
+                                {
+
+                                }
+                            }
+
+                            while(temp_kick_list.Count > 0 && current_extra_workers > 0)
+                            {
+                                Consultant largest_gap_staff = temp_kick_list[0];
+                                int largest_gap = 0;
+                                foreach(Consultant staff in temp_kick_list)
+                                {
+                                    if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
+                                    {
+                                        largest_gap_staff = staff;
+                                        largest_gap = staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2);
+                                    }
+                                }
+                                
+                                current_extra_workers--;
+                                largest_gap_staff.numberOfShifts--;
+                                temp_kick_list.Remove(largest_gap_staff);
+                                shifts[x][y].Remove(largest_gap_staff);
+                            }
+                        }
+
+                    }
+                }
+            }
+            return shifts;
+        }
+
+            //# Mixing Majors
+            //matches_found = True
+            //      if MIX_MAJORS:
+            //         while (len(TempKickList) > 0 and NumExtraWorkers> 0 and matches_found):
+            //            MostMatchesOverall = -1
+            //            CurrentLargestFieldWorker = BlankWorker
 
 
-                    for staff in TempKickList:
-                        MostMatches = -1
-                        for FieldStudy in staff.Field_Of_Study:##Possible to have more than 1 major
-                             MajorMatches = 0
-                             for otherstaff in Hour_OptionsList[Shift].workerNames:
-                                if FieldStudy in otherstaff.Field_Of_Study:
-                                    MajorMatches += 1
-                             if MajorMatches > MostMatches:
-                              MostMatches = MajorMatches
-                        if MostMatches >= MostMatchesOverall:
-                          MostMatchesOverall = MostMatches
-                          CurrentLargestFieldWorker = staff
+            //            for staff in TempKickList:
+            //                MostMatches = -1
+            //                for FieldStudy in staff.Field_Of_Study:##Possible to have more than 1 major
+            //                     MajorMatches = 0
+            //                     for otherstaff in Hour_OptionsList[Shift].workerNames:
+            //                        if FieldStudy in otherstaff.Field_Of_Study:
+            //                            MajorMatches += 1
+            //                     if MajorMatches > MostMatches:
+            //                      MostMatches = MajorMatches
+            //                if MostMatches >= MostMatchesOverall:
+            //                  MostMatchesOverall = MostMatches
+            //                  CurrentLargestFieldWorker = staff
 
-                    if MostMatchesOverall > 1:#probably 1 and not 0
-                        #Removes Staff from shift
-                        NumExtraWorkers -= 1
-                        CurrentLargestFieldWorker.NumberOfShifts -= 1
-                        TempKickList.remove(CurrentLargestFieldWorker)
-                        Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
-                    else:
-                        matches_found = False
+            //            if MostMatchesOverall > 1:#probably 1 and not 0
+            //                #Removes Staff from shift
+            //                NumExtraWorkers -= 1
+            //                CurrentLargestFieldWorker.NumberOfShifts -= 1
+            //                TempKickList.remove(CurrentLargestFieldWorker)
+            //                Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
+            //            else:
+            //                matches_found = False
 
-              # Largest Differences
-            while (len(TempKickList) > 0 and NumExtraWorkers> 0):
-                CurrentLargestFieldWorker = BlankWorker
-                biggest_diff = 0
-                for staff in TempKickList:
-                    if (staff.NumberOfShifts - staff.Hours_Wanted) > biggest_diff:
-                        CurrentLargestFieldWorker = staff
-                        biggest_diff = staff.NumberOfShifts - staff.Hours_Wanted
+            //      # Largest Differences
+            //while (len(TempKickList) > 0 and NumExtraWorkers> 0):
+            //        CurrentLargestFieldWorker = BlankWorker
+            //        biggest_diff = 0
+            //        for staff in TempKickList:
+            //            if (staff.NumberOfShifts - staff.Hours_Wanted) > biggest_diff:
+            //                CurrentLargestFieldWorker = staff
+            //                biggest_diff = staff.NumberOfShifts - staff.Hours_Wanted
 
-                # Removes Staff from shift
-            NumExtraWorkers -= 1
-                CurrentLargestFieldWorker.NumberOfShifts -= 1
-                TempKickList.remove(CurrentLargestFieldWorker)
-                Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
+            //        # Removes Staff from shift
+            //NumExtraWorkers -= 1
+            //        CurrentLargestFieldWorker.NumberOfShifts -= 1
+            //        TempKickList.remove(CurrentLargestFieldWorker)
+            //        Hour_OptionsList[Shift].workerNames.remove(CurrentLargestFieldWorker)
+
+
+        private DirectorSettings getDirectorSettings()
+        {
+            DirectorSettings director_settings = new DirectorSettings();
+            director_settings.multiple_majors = true;
+            director_settings.mix_ages = true;
+            director_settings.multiple_shifts = true;
+            return director_settings;
         }
 
     }
