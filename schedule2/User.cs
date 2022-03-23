@@ -28,7 +28,7 @@ namespace schedule2
         public string password;
         public string userID;
         public bool director;
-        public string[] demographicInfo;
+        //public string[] demographicInfo;
         public int numberOfShifts = 0;
 
         public void PopulateSched(DataGridView schedule)
@@ -105,7 +105,7 @@ namespace schedule2
             this.yearsWorked = user.yearsWorked;
             this.hoursPer = user.hoursPer;
             this.userID = user.userID;
-            this.demographicInfo = user.demographicInfo;
+            //this.demographicInfo = user.demographicInfo;
             try
             {
                 schedule2.Database.Schedule masterSched = Program.db.getMasterAvalibility();
@@ -189,7 +189,7 @@ namespace schedule2
             yearsWorked = demographicInfo[6];
             hoursPer = demographicInfo[7];
             userID = demographicInfo[8];
-            this.demographicInfo = demographicInfo;
+            //this.demographicInfo = demographicInfo;
 
             string[] day = new string[31];
             for (int i = 0; i < 31; i++)
