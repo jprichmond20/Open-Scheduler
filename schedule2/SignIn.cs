@@ -31,10 +31,10 @@ namespace schedule2
             //{
             //    User user = SignIn.user;
             //}
-            if (Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).success)
+            if (Program.db.AuthenticateUser(newTextBox2.Texts, newTextBox1.Texts).success)
             {
                 // Creates our user if the sign in is successful 
-                User user = Program.db.AuthenticateUser(newTextBox1.Texts, newTextBox2.Texts).user;
+                User user = Program.db.AuthenticateUser(newTextBox2.Texts, newTextBox1.Texts).user;
                 
                 label3.Text = ""; // Resets the output message 
 
