@@ -88,7 +88,7 @@ def pickMajorsOrMinors(majMin):
     subjects = []
     numOf = random.randint(0,4)
     for i in range(numOf):
-        nexSubj = random.randint(0,len(majMin))
+        nexSubj = random.randint(0,len(majMin)-1)
         subjects.append(majMin[nexSubj])
     return subjects
 
@@ -137,7 +137,7 @@ def consultantDriver(numUsers):
             "userID": str(uuid.uuid4()),
             "director": False
         }
-        with open(str(dictionary["userID"])+".json", 'w') as outfile:
+        with open("users/" + str(dictionary["userID"])+".json", 'w') as outfile:
             json.dump(dictionary, outfile)
 
 
