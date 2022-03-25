@@ -47,5 +47,16 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new RunForm();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
     }
 }

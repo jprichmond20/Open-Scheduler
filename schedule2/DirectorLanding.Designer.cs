@@ -99,10 +99,10 @@
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(182, 71);
             this.class12.TabIndex = 14;
-            this.class12.Text = "Availability Changes";
+            this.class12.Text = "Create Schedule";
             this.class12.TextColor = System.Drawing.Color.White;
             this.class12.UseVisualStyleBackColor = false;
-            //this.class12.Click += new System.EventHandler(this.class12_Click);
+            this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
             // DirectorLanding
             // 
@@ -116,7 +116,6 @@
             this.Controls.Add(this.label1);
             this.Name = "DirectorLanding";
             this.Text = "Home";
-            //this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,8 +123,8 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private CustomButtons.Buttons.class1 class12;
-        private CustomButtons.Buttons.class1 class11;
         private CustomButtons.Buttons.class1 class13;
+        private CustomButtons.Buttons.class1 class11;
+        private CustomButtons.Buttons.class1 class12;
     }
 }
