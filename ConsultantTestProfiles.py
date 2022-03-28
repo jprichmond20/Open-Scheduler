@@ -118,10 +118,13 @@ def setAvailability():
     return days
 
 def consultantDriver(numUsers):
+    pwd = {}
     for i in range(numUsers):
         majors = pickMajorsOrMinors(majMin)
         minors = pickMajorsOrMinors(majMin)
         first, last = setFirstAndLast()
+        username = str(uuid.uuid4())
+        password = "test"
         dictionary = {
             "days": setAvailability(),
             "major": majors,
@@ -132,13 +135,15 @@ def consultantDriver(numUsers):
             "hoursPer": str(setHoursPerWeek()),
             "first": first,
             "last": last,
-            "username": first+last,
-            "password": "test",
-            "userID": str(uuid.uuid4()),
+            "username": username,
+            "password": password,
+            "userID": username,
             "director": False
         }
         with open("users/" + str(dictionary["userID"])+".json", 'w') as outfile:
             json.dump(dictionary, outfile)
+        with open("pwd.txt", "a") as outfile:
+            outfile.write("\n" + username + "," + password + ",aaaah," + username)
 
 
-consultantDriver(10)
+consultantDriver(25)
