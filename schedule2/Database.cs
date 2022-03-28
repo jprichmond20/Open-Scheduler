@@ -281,7 +281,7 @@ namespace schedule2
         {
             List<Consultant> consultants = new List<Consultant>();
             foreach(object[] account_info in accounts.Values){
-                if (((User)account_info[2]).director){
+                if (!((User)account_info[2]).director){
                     consultants.Add((Consultant)account_info[2]);
                 }
             }
