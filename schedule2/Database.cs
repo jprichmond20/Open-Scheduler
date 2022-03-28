@@ -201,6 +201,19 @@ namespace schedule2
             File.WriteAllText(json_file_name, json_text);
         }
 
+        public void saveSchedule(UserListSchedule schedule)
+        {
+            String json_file_name = "userSchedule.json";
+            String json_text = JsonConvert.SerializeObject(schedule);
+            File.WriteAllText(json_file_name, json_text);
+        }
+
+        public UserListSchedule getUserSchedule()
+        {
+            String json_text = File.ReadAllText("userSchedule.json");
+            return JsonConvert.DeserializeObject<UserListSchedule>(json_text);
+        }
+
         public UserListSchedule createSchedule()
         {
             List<List<List<User>>> return_schedule_list = getEmptyScheduleForList();

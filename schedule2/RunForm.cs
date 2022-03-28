@@ -19,7 +19,8 @@ namespace schedule2
 
         private void class12_Click(object sender, EventArgs e)
         {
-            Program.db.createSchedule();
+            Database.UserListSchedule userSchedule = Program.db.createSchedule();
+            Program.db.saveSchedule(userSchedule);
             var frm = new ScheduleView();
             this.Hide();
             frm.Location = this.Location;
