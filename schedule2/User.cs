@@ -162,7 +162,21 @@ namespace schedule2
     public class Consultant : User
     // This consultant class is a subclass of user used to represent our consultants
     {
-        
+        public Consultant(User user)
+        {
+            this.director = user.director;
+            this.first = user.first;
+            this.last = user.last;
+            this.username = user.username;
+            this.password = user.password;
+            this.maj = user.maj;
+            this.min = user.min;
+            this.major = null;
+            this.minor = null;
+            this.yearsWorked = user.yearsWorked;
+            this.hoursPer = user.hoursPer;
+            this.userID = user.userID;
+        }
         public Consultant(string[] demographicInfo)
         // Consultant calls the private initialize function
         {
