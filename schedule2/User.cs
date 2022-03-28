@@ -176,6 +176,7 @@ namespace schedule2
             this.yearsWorked = user.yearsWorked;
             this.hoursPer = user.hoursPer;
             this.userID = user.userID;
+            this.days = user.days;
         }
         public Consultant(string[] demographicInfo)
         // Consultant calls the private initialize function

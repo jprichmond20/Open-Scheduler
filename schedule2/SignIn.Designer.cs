@@ -114,6 +114,7 @@
             this.newTextBox1.TabIndex = 1;
             this.newTextBox1.Texts = "";
             this.newTextBox1.UnderlinedStyle = false;
+            this.newTextBox1._TextChanged += new System.EventHandler(this.newTextBox1__TextChanged);
             // 
             // newTextBox2
             // 

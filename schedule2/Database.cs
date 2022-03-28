@@ -235,9 +235,9 @@ namespace schedule2
                     for(int x = 0; x < hour_option_list.Count; x++) {
                         for(int y = 0; y < hour_option_list[0].Length; y++)
                         {
-                            if(hour_option_list[x][y] == "")
+                            if(hour_option_list[x][y] == " ")
                             {
-                                if(worker.days[x][y] == "")
+                                if(worker.days[x][y] == " ")
                                 {
                                     return_schedule_list[x][y].Add(worker);
                                     worker.numberOfShifts += 1;
@@ -282,7 +282,7 @@ namespace schedule2
             List<Consultant> consultants = new List<Consultant>();
             foreach(object[] account_info in accounts.Values){
                 if (!((User)account_info[2]).director){
-                    consultants.Add((Consultant)account_info[2]);
+                    consultants.Add(new Consultant((User)account_info[2]));
                 }
             }
             return consultants;

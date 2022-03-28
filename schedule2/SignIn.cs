@@ -83,5 +83,10 @@ namespace schedule2
         {
 
         }
+
+        private void newTextBox1__TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
