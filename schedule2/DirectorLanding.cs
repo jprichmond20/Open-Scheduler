@@ -50,8 +50,28 @@ namespace schedule2
 
         private void class12_Click(object sender, EventArgs e)
         {
+            /*this.Hide();
+            var frm = new RunForm(user);
             this.Hide();
-            var frm = new RunForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+            */
+            Database.UserListSchedule userSchedule = Program.db.createSchedule();
+            Program.db.saveSchedule(userSchedule);
+            var frm = new ScheduleView();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void class14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;

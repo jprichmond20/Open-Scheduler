@@ -98,7 +98,7 @@ namespace schedule2
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         // This function is called when the user clicks the "submit" button
         {
             user.PopulateSched(dataGridView1);
@@ -112,6 +112,7 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+*/
         private void scheduleConsultants()
         // I still dont know wtf this is tbh 
         {
@@ -120,7 +121,7 @@ namespace schedule2
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /*private void button3_Click(object sender, EventArgs e)
         // this function resets the data grid when the user clicks reset
         // This will NOT repopulate with the writing center schedule
         {
@@ -134,8 +135,9 @@ namespace schedule2
             }
         
         }
+        */
 
-        private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         // this function resets the data grid when the user clicks clear
         // This will repopulate with the writing center schedule
         {
@@ -160,10 +162,80 @@ namespace schedule2
                 }
             }
         }
+        */
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void class13_Click(object sender, EventArgs e)
+        {
+            user.PopulateSched(dataGridView1);
+            MessageBox.Show("Schedule Successfully Updated!");
+            var frm = new ScheduleView();
+            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+            Program.db.setMasterAvailibility(user);
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellStyle sched = new DataGridViewCellStyle();
+            sched.BackColor = Color.Gold;
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                for (int j = 1; j < dataGridView1.Rows.Count; j++)
+                {
+                    if (i > 0)
+                    {
+                        // Columns are the associated to the times
+                        if (user.days[i - 1][j] == " ")
+                        {
+                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
+                        }
+                        else
+                        {
+                            dataGridView1[i, j].Style.BackColor = Color.Gainsboro;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.Gainsboro;
+                }
+            }
+        }
+
+        private void class14_Click(object sender, EventArgs e)
+        {
+            var frm = new DirectorLanding(user);
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void class15_Click(object sender, EventArgs e)
+        {
+            var frm = new SignIn();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }
