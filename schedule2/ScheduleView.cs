@@ -40,11 +40,11 @@ namespace schedule2
              "10:00pm", "10:30pm", "11:00pm"};
 
             // Try
-            Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
-            for (int i = 0; i < times.Length; i++)
-            {
+            //Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
+            //for (int i = 0; i < times.Length; i++)
+            //{
 
-            }
+            //}
             // Except
 
             // currently the schedule stays blank, once the alghorithm is impemented this will change
