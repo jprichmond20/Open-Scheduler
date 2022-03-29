@@ -352,6 +352,7 @@ namespace schedule2
                         int largest_number_of_shifts = 0;
                         int number_of_upperclassmen = 0;
                         List<Consultant> temp_kick_list = new List<Consultant>();
+                        List<Consultant> temp_kick_list2 = new List<Consultant>();
 
                         int current_extra_workers = num_extra_workers[x][y];
 
@@ -380,7 +381,7 @@ namespace schedule2
                                     }
                                 }
                             }
-
+                            temp_kick_list2 = temp_kick_list;
                             if (director_settings.multiple_shifts)
                             {
                                 foreach(Consultant staff in temp_kick_list)
