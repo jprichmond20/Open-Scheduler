@@ -337,7 +337,7 @@ namespace schedule2
             for (int i = 0; i < shifts.Count; i++)
             {
                 num_extra_workers.Add(new List<int>());
-                foreach (List<User> shift in shifts[i])
+                foreach (List<User> shift in shifts[i].ToList())
                 {
                     num_extra_workers[i].Add(shift.Count - num_worker_goal);
                 }
@@ -352,11 +352,10 @@ namespace schedule2
                         int largest_number_of_shifts = 0;
                         int number_of_upperclassmen = 0;
                         List<Consultant> temp_kick_list = new List<Consultant>();
-                        List<Consultant> temp_kick_list2 = new List<Consultant>();
 
                         int current_extra_workers = num_extra_workers[x][y];
 
-                        foreach (Consultant worker in shifts[x][y])
+                        foreach (Consultant worker in shifts[x][y].ToList())
                         {
                             if (worker.numberOfShifts > int.Parse(worker.hoursPer) * 2)
                             {
@@ -372,7 +371,7 @@ namespace schedule2
                             {
                                 if (count && number_of_upperclassmen == 1)
                                 {
-                                    foreach (Consultant staff in temp_kick_list)
+                                    foreach (Consultant staff in temp_kick_list.ToList())
                                     {
                                         if (int.Parse(staff.yearsWorked) > 2)
                                         {
@@ -381,10 +380,9 @@ namespace schedule2
                                     }
                                 }
                             }
-                            temp_kick_list2 = temp_kick_list;
                             if (director_settings.multiple_shifts)
                             {
-                                foreach(Consultant staff in temp_kick_list)
+                                foreach(Consultant staff in temp_kick_list.ToList())
                                 {
                                     if(current_extra_workers > 0)
                                     {
@@ -417,7 +415,7 @@ namespace schedule2
                             }
                             else
                             {
-                                foreach(Consultant staff in temp_kick_list)
+                                foreach(Consultant staff in temp_kick_list.ToList())
                                 {
                                     if(current_extra_workers > 0)
                                     {
@@ -468,7 +466,7 @@ namespace schedule2
                             {
                                 Consultant largest_gap_staff = temp_kick_list[0];
                                 int largest_gap = 0;
-                                foreach(Consultant staff in temp_kick_list)
+                                foreach(Consultant staff in temp_kick_list.ToList())
                                 {
                                     if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
                                     {
