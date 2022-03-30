@@ -173,7 +173,7 @@ namespace schedule2
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Schedule Successfully Updated!");
-            var frm = new ScheduleView();
+            var frm = new ScheduleView(user);
             schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
             Program.db.setMasterAvailibility(user);
             this.Hide();
