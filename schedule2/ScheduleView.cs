@@ -14,8 +14,24 @@ namespace schedule2
     // this is our main Schedule View for both Consultants and Directors
     {
         public static CurrentSchedule CurrentSched; // We initialize a currentSchedule object (for the schedule) 
+        public User user;
+        public Director director;
         public ScheduleView()
         {
+            CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
+            // We set the current schedule to that in our mast availability file
+            InitializeComponent();
+        }
+        public ScheduleView(User user)
+        {
+            this.user = user;
+            CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
+            // We set the current schedule to that in our mast availability file
+            InitializeComponent();
+        }
+        public ScheduleView(Director director)
+        {
+            this.director = director;
             CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
             // We set the current schedule to that in our mast availability file
             InitializeComponent();
@@ -81,11 +97,11 @@ namespace schedule2
                 width += col.Width;
             }
             dataGridView1.ClientSize = new Size(width + 2, height + 2);
-
+            
             //Populate the schedule view with the current schedule
             // If the writing center is closed, it is represented by a black square
             DataGridViewCellStyle notOpen = new DataGridViewCellStyle();
-            notOpen.BackColor = Color.Black;
+            notOpen.BackColor = Color.Crimson;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 //MessageBox.Show("Columns " + dataGridView1.Columns.Count.ToString() + "\nCurrentSched " + CurrentSched.days.Count.ToString() + "\nRows " + dataGridView1.Rows.Count.ToString());
@@ -128,9 +144,45 @@ namespace schedule2
             dataGridView1.ClearSelection();
         }
 
-        private void class12_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+            if (director != null)
+            {
+                this.Hide();
+                var frm = new DirectorLanding(director);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            else
+            {
+                this.Hide();
+                var frm = new SignIn();
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            
+        }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new SignIn();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }
