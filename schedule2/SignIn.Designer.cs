@@ -82,6 +82,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
@@ -104,10 +105,10 @@
             this.newTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox1.ForeColor = System.Drawing.Color.Black;
             this.newTextBox1.Location = new System.Drawing.Point(204, 300);
-            this.newTextBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.newTextBox1.Margin = new System.Windows.Forms.Padding(5);
             this.newTextBox1.Multiline = false;
             this.newTextBox1.Name = "newTextBox1";
-            this.newTextBox1.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.newTextBox1.Padding = new System.Windows.Forms.Padding(9);
             this.newTextBox1.PasswordChar = false;
             this.newTextBox1.Size = new System.Drawing.Size(371, 39);
             this.newTextBox1.TabIndex = 1;
@@ -124,10 +125,10 @@
             this.newTextBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTextBox2.ForeColor = System.Drawing.Color.Black;
             this.newTextBox2.Location = new System.Drawing.Point(204, 186);
-            this.newTextBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.newTextBox2.Margin = new System.Windows.Forms.Padding(5);
             this.newTextBox2.Multiline = false;
             this.newTextBox2.Name = "newTextBox2";
-            this.newTextBox2.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.newTextBox2.Padding = new System.Windows.Forms.Padding(9);
             this.newTextBox2.PasswordChar = false;
             this.newTextBox2.Size = new System.Drawing.Size(371, 39);
             this.newTextBox2.TabIndex = 0;
@@ -146,7 +147,7 @@
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
             this.class12.Location = new System.Drawing.Point(411, 388);
-            this.class12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.class12.Margin = new System.Windows.Forms.Padding(4);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(164, 57);
             this.class12.TabIndex = 3;
@@ -167,7 +168,7 @@
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
             this.class11.Location = new System.Drawing.Point(195, 388);
-            this.class11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.class11.Margin = new System.Windows.Forms.Padding(4);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(164, 57);
             this.class11.TabIndex = 2;
