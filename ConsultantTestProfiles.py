@@ -138,7 +138,8 @@ def consultantDriver(numUsers):
             "username": username,
             "password": password,
             "userID": username,
-            "director": False
+            "director": False,
+            "numberOfShifts":0
         }
         with open("users/" + str(dictionary["userID"])+".json", 'w') as outfile:
             json.dump(dictionary, outfile)
