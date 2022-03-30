@@ -51,7 +51,7 @@ namespace schedule2
                 else
                 // If they arent a director, take them to the current schedule
                 {
-                    var frm2 = new ScheduleView();
+                    var frm2 = new ScheduleView(user);
                     this.Hide();
                     frm2.Location = this.Location;
                     frm2.StartPosition = FormStartPosition.Manual;
@@ -85,6 +85,11 @@ namespace schedule2
         }
 
         private void newTextBox1__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
