@@ -64,7 +64,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(469, 603);
             this.dataGridView1.TabIndex = 0;
-            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -75,7 +75,6 @@
             this.label1.Size = new System.Drawing.Size(196, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "Weekly Availability";
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -86,7 +85,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Click and drag to enter you availability to work at the Writing Center. Press Sub" +
     "mit when finished or press Clear to restart.";
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // database1DataSet1
             // 
@@ -105,7 +103,7 @@
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
             this.class11.Location = new System.Drawing.Point(718, 132);
-            this.class11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class11.Margin = new System.Windows.Forms.Padding(2);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(136, 58);
             this.class11.TabIndex = 2;
@@ -126,7 +124,7 @@
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
             this.class12.Location = new System.Drawing.Point(718, 56);
-            this.class12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class12.Margin = new System.Windows.Forms.Padding(2);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(136, 58);
             this.class12.TabIndex = 1;

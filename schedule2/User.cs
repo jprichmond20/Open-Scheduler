@@ -190,10 +190,10 @@ namespace schedule2
         public Consultant(string[] demographicInfo)
         // Consultant calls the private initialize function
         {
-            for (int k = 0; k < demographicInfo.Length; k++)
-            {
-                MessageBox.Show(string.Join(",", demographicInfo[k]));
-            }
+            //for (int k = 0; k < demographicInfo.Length; k++)
+            //{
+                //MessageBox.Show(string.Join(",", demographicInfo[k]));
+            //}
             Initialize(demographicInfo);
         }
         private void Initialize(string[] demographicInfo)

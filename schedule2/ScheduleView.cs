@@ -88,7 +88,8 @@ namespace schedule2
             notOpen.BackColor = Color.Black;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Rows.Count; j++)
+                //MessageBox.Show("Columns " + dataGridView1.Columns.Count.ToString() + "\nCurrentSched " + CurrentSched.days.Count.ToString() + "\nRows " + dataGridView1.Rows.Count.ToString());
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0)
                     {
@@ -120,6 +121,11 @@ namespace schedule2
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }

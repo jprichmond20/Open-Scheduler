@@ -44,6 +44,28 @@ namespace schedule2
             {
                 dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
             }
+
+
+            CurrentSchedule masterSchedule = new CurrentSchedule(Program.db.getMasterAvalibility());
+            
+            DataGridViewCellStyle sched = new DataGridViewCellStyle();
+            sched.BackColor = Color.Black;
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                {
+                    if (i > 0)
+                    {
+                        // Columns are the associated to the times
+                        if (masterSchedule.days[i - 1][j] == " ")
+                        {
+                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
+                        }
+                    }
+                }
+            }
+
+
             // Set the columns to autosize and set the default backcolor 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
@@ -147,6 +169,11 @@ namespace schedule2
                     cell.Style.BackColor = Color.Gainsboro;
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
