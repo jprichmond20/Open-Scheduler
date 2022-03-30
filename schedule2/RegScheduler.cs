@@ -57,7 +57,7 @@ namespace schedule2
                     if (i > 0)
                     {
                         // Columns are the associated to the times
-                        if (masterSchedule.days[i - 1][j] == " ")
+                        if (masterSchedule.days[i - 1][j] == "NULL")
                         {
                             dataGridView1[i, j].Style.BackColor = sched.BackColor;
                         }

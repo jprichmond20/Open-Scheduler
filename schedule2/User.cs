@@ -46,12 +46,15 @@ namespace schedule2
             {
                 for(int j = 1; j < schedule.Columns.Count; j++)
                 {
+                    //MessageBox.Show(schedule.Rows[i].Cells[j].Style.BackColor.ToString());
                     if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor || schedule.Rows[i].Cells[j].Style.BackColor == Color.Gold)
                     {
+                        //MessageBox.Show(days[j - 1][i]);
                         days[j - 1][i] = " ";
                     }
                     else
                     {
+                        //MessageBox.Show(days[j - 1][i]);
                         days[j - 1][i] = "NULL";
                     }
                 }
@@ -215,12 +218,24 @@ namespace schedule2
             userID = demographicInfo[8];
             //this.demographicInfo = demographicInfo;
 
-            string[] day = new string[31];
+            string[] day1 = new string[31];
+            string[] day2 = new string[31];
+            string[] day3 = new string[31];
+            string[] day4 = new string[31];
+            string[] day5 = new string[31];
+            string[] day6 = new string[31];
+            string[] day7 = new string[31];
             for (int i = 0; i < 31; i++)
             {
-                day[i] = "";
+                day1[i] = "";
+                day2[i] = "";
+                day3[i] = "";
+                day4[i] = "";
+                day5[i] = "";
+                day6[i] = "";
+                day7[i] = "";
             }
-            days = new List<string[]> { day, day, day, day, day, day, day };
+            days = new List<string[]> { day1, day2, day3, day4, day5, day6, day7 };
         }
 
         
