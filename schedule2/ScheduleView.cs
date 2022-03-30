@@ -127,5 +127,10 @@ namespace schedule2
         {
             dataGridView1.ClearSelection();
         }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

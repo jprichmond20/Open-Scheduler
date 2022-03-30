@@ -702,6 +702,16 @@ namespace schedule2
                             shifts[x][y].Remove(largest_gap_staff);
                         }
 
+                        if(current_extra_workers > 0)
+                        {
+                            Random random = new Random();
+                            for (int i = 0; i < current_extra_workers; i++)
+                            {
+                                int remove = random.Next(0, shifts[x][y].Count);
+                                shifts[x][y].RemoveAt(remove);
+                            }
+                        }
+
                     }
                 }
             }
