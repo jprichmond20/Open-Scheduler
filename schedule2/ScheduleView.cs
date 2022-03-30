@@ -40,18 +40,28 @@ namespace schedule2
              "10:00pm", "10:30pm", "11:00pm"};
 
             // Try
-            //Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
-            //for (int i = 0; i < times.Length; i++)
-            //{
+            Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
+            for (int i = 0; i < times.Length; i++)
+            {
 
-            //}
+                dataGridView1.Rows.Add(new object[] {
+                    times[i],
+                    formatNamesAtTime(currentUserSchedule.monday[i]),
+                    formatNamesAtTime(currentUserSchedule.tuesday[i]),
+                    formatNamesAtTime(currentUserSchedule.wednesday[i]),
+                    formatNamesAtTime(currentUserSchedule.thursday[i]),
+                    formatNamesAtTime(currentUserSchedule.friday[i]),
+                    formatNamesAtTime(currentUserSchedule.saturday[i]),
+                    formatNamesAtTime(currentUserSchedule.sunday[i])
+                });
+            }
             // Except
 
             // currently the schedule stays blank, once the alghorithm is impemented this will change
-            for (int i = 0; i < times.Length; i++)
-            {
-                dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
-            }
+            //for (int i = 0; i < times.Length; i++)
+            //{
+            //    dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
+            //}
 
             // Set some settings for display
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -90,6 +100,16 @@ namespace schedule2
                     }
                 }
             }
+        }
+
+        private string formatNamesAtTime(List<User> scheduled)
+        {
+            string formattedOutput = "";
+            foreach(User consult in scheduled)
+            {
+                formattedOutput += consult.getFirstandLast() + "\n";
+            }
+            return formattedOutput;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -81,6 +81,15 @@ namespace schedule2
             return director;
         }
 
+        public string getFirstandLast()
+        {
+            if (this.first == null && this.last == null)
+            {
+                return "";
+            }
+            return this.first + " " + this.last;
+        }
+
     }
     public class Director : User
     // this is the director subclass that has the user as a parent class
@@ -213,6 +222,8 @@ namespace schedule2
             }
             days = new List<string[]> { day, day, day, day, day, day, day };
         }
+
+        
         
 }
 }

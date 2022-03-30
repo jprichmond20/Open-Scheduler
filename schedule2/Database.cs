@@ -23,6 +23,17 @@ namespace schedule2
             public List<List<User>> saturday;
             public List<List<User>> sunday;
         }
+
+        public struct UserListSchedGUID
+        {
+            public List<List<String>> monday;
+            public List<List<String>> tuesday;
+            public List<List<String>> wednesday;
+            public List<List<String>> thursday;
+            public List<List<String>> friday;
+            public List<List<String>> saturday;
+            public List<List<String>> sunday;
+        }
         private struct DirectorSettings
         {
             public bool mix_ages;
@@ -204,85 +215,221 @@ namespace schedule2
         public void saveSchedule(UserListSchedule schedule)
         {
             String json_file_name = "userSchedule.json";
-            String json_text = "{ \"monday\":{";
+            String json_text = "{ \"monday\":[";
             foreach(List<User> slot in schedule.monday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
 
-            json_text += "} \"tuesday\":{";
+            json_text += "], \"tuesday\":[";
             foreach (List<User> slot in schedule.tuesday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "} \"wednesday\":{";
+            json_text += "], \"wednesday\":[";
             foreach (List<User> slot in schedule.wednesday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "} \"thursday\":{";
+            json_text += "], \"thursday\":[";
             foreach (List<User> slot in schedule.thursday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "} \"friday\":{";
+            json_text += "], \"friday\":[";
             foreach (List<User> slot in schedule.friday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "} \"saturday\":{";
+            json_text += "], \"saturday\":[";
             foreach (List<User> slot in schedule.saturday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "} \"sunday\":{";
+            json_text += "], \"sunday\":[";
             foreach (List<User> slot in schedule.sunday)
             {
-                json_text += "{";
+                json_text += "[";
                 foreach (User consultant in slot)
                 {
-                    json_text += "\"" + consultant.first + " " + consultant.last + "\",";
+                    json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text += "}";
+                json_text += "],";
             }
-            json_text += "}";
+            json_text += "]}";
             File.WriteAllText(json_file_name, json_text);
         }
 
         public UserListSchedule getUserSchedule()
         {
             String json_text = File.ReadAllText("userSchedule.json");
-            return JsonConvert.DeserializeObject<UserListSchedule>(json_text);
+            UserListSchedGUID userListSchedIDs = JsonConvert.DeserializeObject<UserListSchedGUID>(json_text);
+            UserListSchedule userSchedule = new UserListSchedule();
+            userSchedule.monday = new List<List<User>>();
+            userSchedule.tuesday = new List<List<User>>();
+            userSchedule.wednesday = new List<List<User>>();
+            userSchedule.thursday = new List<List<User>>();
+            userSchedule.friday = new List<List<User>>();
+            userSchedule.saturday = new List<List<User>>();
+            userSchedule.sunday = new List<List<User>>();
+            foreach (List<String> idList in userListSchedIDs.monday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach(String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+                 
+                }
+                userSchedule.monday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.tuesday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.tuesday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.wednesday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.wednesday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.thursday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.thursday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.friday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.friday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.saturday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.saturday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.sunday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.sunday.Add(temp_user_time);
+
+            }
+
+            return userSchedule;
         }
 
         public UserListSchedule createSchedule()
