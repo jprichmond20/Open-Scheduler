@@ -143,21 +143,16 @@ namespace schedule2
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
                 string uuid = Guid.NewGuid().ToString();
-                string[] user_login_info = { hash, salt, uuid };
+                object[] user_login_info = { hash, salt, user };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
-
+                
                 if (user.IsDirector())
                 {
-                    
                     Director director = new Director(user);
                     director.updatefromMasterSched(getMasterAvalibility());
-
+                    
                 }
-                /*else
-                {
-                    Consultant user = new Consultant(user);
-                }*/
                  Directory.CreateDirectory("users/");
                  json_file_name = "users/" + uuid + ".json";
                  json_text = JsonConvert.SerializeObject(user);
@@ -228,10 +223,9 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
+
             json_text += "], \"tuesday\":[";
             foreach (List<User> slot in schedule.tuesday)
             {
@@ -240,10 +234,8 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');                
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
             json_text += "], \"wednesday\":[";
             foreach (List<User> slot in schedule.wednesday)
             {
@@ -252,10 +244,8 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
             json_text += "], \"thursday\":[";
             foreach (List<User> slot in schedule.thursday)
             {
@@ -264,7 +254,6 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
             json_text += "], \"friday\":[";
@@ -275,10 +264,8 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
             json_text += "], \"saturday\":[";
             foreach (List<User> slot in schedule.saturday)
             {
@@ -287,10 +274,8 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
             json_text += "], \"sunday\":[";
             foreach (List<User> slot in schedule.sunday)
             {
@@ -299,10 +284,8 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
-                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-            json_text = json_text.TrimEnd(',');
             json_text += "]}";
             File.WriteAllText(json_file_name, json_text);
         }
