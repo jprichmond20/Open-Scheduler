@@ -211,7 +211,7 @@ namespace schedule2
             director = false;
             first = demographicInfo[0];
             last = demographicInfo[1];
-            username = demographicInfo[8];
+            username = demographicInfo[2];
             password = demographicInfo[3];
             maj = demographicInfo[4];
             min = demographicInfo[5];
@@ -219,7 +219,7 @@ namespace schedule2
             minor = min.Split(',');
             yearsWorked = demographicInfo[6];
             hoursPer = demographicInfo[7];
-            userID = demographicInfo[2];
+            userID = demographicInfo[8];
             //this.demographicInfo = demographicInfo;
 
             string[] day1 = new string[31];

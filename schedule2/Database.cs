@@ -223,9 +223,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
-
+            json_text = json_text.TrimEnd(',');
             json_text += "], \"tuesday\":[";
             foreach (List<User> slot in schedule.tuesday)
             {
@@ -234,8 +235,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');                
                 json_text += "],";
             }
+            json_text = json_text.TrimEnd(',');
             json_text += "], \"wednesday\":[";
             foreach (List<User> slot in schedule.wednesday)
             {
@@ -244,8 +247,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
+            json_text = json_text.TrimEnd(',');
             json_text += "], \"thursday\":[";
             foreach (List<User> slot in schedule.thursday)
             {
@@ -254,6 +259,7 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
             json_text += "], \"friday\":[";
@@ -264,8 +270,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
+            json_text = json_text.TrimEnd(',');
             json_text += "], \"saturday\":[";
             foreach (List<User> slot in schedule.saturday)
             {
@@ -274,8 +282,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
+            json_text = json_text.TrimEnd(',');
             json_text += "], \"sunday\":[";
             foreach (List<User> slot in schedule.sunday)
             {
@@ -284,8 +294,10 @@ namespace schedule2
                 {
                     json_text += "\"" + consultant.userID + "\",";
                 }
+                json_text = json_text.TrimEnd(',');
                 json_text += "],";
             }
+            json_text = json_text.TrimEnd(',');
             json_text += "]}";
             File.WriteAllText(json_file_name, json_text);
         }
