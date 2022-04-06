@@ -146,12 +146,16 @@ namespace schedule2
                 string[] user_login_info = { hash, salt, uuid };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
-                
+
                 if (user.IsDirector())
                 {
                     Director director = new Director(user);
                     director.updatefromMasterSched(getMasterAvalibility());
-                    
+
+                }
+                else
+                {
+                    Consultant user = new Consultant(user);
                 }
                  Directory.CreateDirectory("users/");
                  json_file_name = "users/" + uuid + ".json";
