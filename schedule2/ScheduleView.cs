@@ -136,7 +136,10 @@ namespace schedule2
             string formattedOutput = "";
             foreach(User consult in scheduled)
             {
-                formattedOutput += consult.getFirstandLast() + "\n";
+                if (consult != null)
+                { 
+                    formattedOutput += consult.getFirstandLast() + "\n";
+                }
             }
             return formattedOutput;
         }

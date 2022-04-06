@@ -30,6 +30,7 @@ namespace schedule2
         public bool director;
         //public string[] demographicInfo;
         public int numberOfShifts = 0;
+        
 
         public void PopulateSched(DataGridView schedule)
         // This function will populate the Users internal schedule with
@@ -68,6 +69,12 @@ namespace schedule2
         //It stores their information (username, password, demographic info)
         //in the database in a json file
         {
+            MessageBox.Show(days[0][0]);
+            MessageBox.Show(days[0][1]);
+            MessageBox.Show(days[0][2]);
+            MessageBox.Show(days[0][3]);
+            MessageBox.Show(days[0][4]);
+            MessageBox.Show(days[0][5]);
             //Database db = new Database();
             Program.db.RegisterUser(username, password, this);
             // could be
@@ -204,7 +211,7 @@ namespace schedule2
             director = false;
             first = demographicInfo[0];
             last = demographicInfo[1];
-            username = demographicInfo[2];
+            username = demographicInfo[8];
             password = demographicInfo[3];
             maj = demographicInfo[4];
             min = demographicInfo[5];
@@ -212,15 +219,29 @@ namespace schedule2
             minor = min.Split(',');
             yearsWorked = demographicInfo[6];
             hoursPer = demographicInfo[7];
-            userID = demographicInfo[8];
+            userID = demographicInfo[2];
             //this.demographicInfo = demographicInfo;
 
-            string[] day = new string[31];
+            string[] day1 = new string[31];
+            string[] day2 = new string[31];
+            string[] day3 = new string[31];
+            string[] day4 = new string[31];
+            string[] day5 = new string[31];
+            string[] day6 = new string[31];
+            string[] day7 = new string[31];
+
+
             for (int i = 0; i < 31; i++)
             {
-                day[i] = "";
+                day1[i] = "";
+                day2[i] = "";
+                day3[i] = "";
+                day4[i] = "";
+                day5[i] = "";
+                day6[i] = "";
+                day7[i] = "";
             }
-            days = new List<string[]> { day, day, day, day, day, day, day };
+            days = new List<string[]> { day1, day2, day3, day4, day5, day6, day7 };
         }
 
         
