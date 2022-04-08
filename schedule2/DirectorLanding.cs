@@ -26,7 +26,7 @@ namespace schedule2
         //Button to allow user to view the current schedule
         {
             this.Hide();
-            var frm = new ScheduleView();
+            var frm = new ScheduleView(user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -60,7 +60,7 @@ namespace schedule2
             */
             Database.UserListSchedule userSchedule = Program.db.createSchedule();
             Program.db.saveSchedule(userSchedule);
-            var frm = new ScheduleView();
+            var frm = new ScheduleView(user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -77,6 +77,11 @@ namespace schedule2
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
+        }
+
+        private void DirectorLanding_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,6 +23,17 @@ namespace schedule2
             public List<List<User>> saturday;
             public List<List<User>> sunday;
         }
+
+        public struct UserListSchedGUID
+        {
+            public List<List<String>> monday;
+            public List<List<String>> tuesday;
+            public List<List<String>> wednesday;
+            public List<List<String>> thursday;
+            public List<List<String>> friday;
+            public List<List<String>> saturday;
+            public List<List<String>> sunday;
+        }
         private struct DirectorSettings
         {
             public bool mix_ages;
@@ -131,10 +142,9 @@ namespace schedule2
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
-                string uuid = Guid.NewGuid().ToString();
-                string[] user_login_info = { hash, salt, uuid };
+                object[] user_login_info = { hash, salt, user };
                 accounts.Add(username, user_login_info);
-                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
+                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID );
                 
                 if (user.IsDirector())
                 {
@@ -143,7 +153,7 @@ namespace schedule2
                     
                 }
                  Directory.CreateDirectory("users/");
-                 json_file_name = "users/" + uuid + ".json";
+                 json_file_name = "users/" + user.userID + ".json";
                  json_text = JsonConvert.SerializeObject(user);
                  File.WriteAllText(json_file_name, json_text);
             }
@@ -204,14 +214,221 @@ namespace schedule2
         public void saveSchedule(UserListSchedule schedule)
         {
             String json_file_name = "userSchedule.json";
-            String json_text = JsonConvert.SerializeObject(schedule);
+            String json_text = "{ \"monday\":[";
+            foreach(List<User> slot in schedule.monday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+
+            json_text += "], \"tuesday\":[";
+            foreach (List<User> slot in schedule.tuesday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "], \"wednesday\":[";
+            foreach (List<User> slot in schedule.wednesday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "], \"thursday\":[";
+            foreach (List<User> slot in schedule.thursday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "], \"friday\":[";
+            foreach (List<User> slot in schedule.friday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "], \"saturday\":[";
+            foreach (List<User> slot in schedule.saturday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "], \"sunday\":[";
+            foreach (List<User> slot in schedule.sunday)
+            {
+                json_text += "[";
+                foreach (User consultant in slot)
+                {
+                    json_text += "\"" + consultant.userID + "\",";
+                }
+                json_text += "],";
+            }
+            json_text += "]}";
             File.WriteAllText(json_file_name, json_text);
         }
 
         public UserListSchedule getUserSchedule()
         {
             String json_text = File.ReadAllText("userSchedule.json");
-            return JsonConvert.DeserializeObject<UserListSchedule>(json_text);
+            UserListSchedGUID userListSchedIDs = JsonConvert.DeserializeObject<UserListSchedGUID>(json_text);
+            UserListSchedule userSchedule = new UserListSchedule();
+            userSchedule.monday = new List<List<User>>();
+            userSchedule.tuesday = new List<List<User>>();
+            userSchedule.wednesday = new List<List<User>>();
+            userSchedule.thursday = new List<List<User>>();
+            userSchedule.friday = new List<List<User>>();
+            userSchedule.saturday = new List<List<User>>();
+            userSchedule.sunday = new List<List<User>>();
+            foreach (List<String> idList in userListSchedIDs.monday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach(String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+                 
+                }
+                userSchedule.monday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.tuesday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.tuesday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.wednesday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.wednesday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.thursday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.thursday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.friday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.friday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.saturday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.saturday.Add(temp_user_time);
+
+            }
+            foreach (List<String> idList in userListSchedIDs.sunday)
+            {
+                List<User> temp_user_time = new List<User>();
+                if (idList.Count == 0)
+                {
+                    temp_user_time.Add(new User());
+                }
+                else
+                {
+                    foreach (String id in idList)
+                    {
+                        temp_user_time.Add(getUserById(id).user);
+                    }
+
+                }
+                userSchedule.sunday.Add(temp_user_time);
+
+            }
+
+            return userSchedule;
         }
 
         public UserListSchedule createSchedule()
@@ -231,24 +448,24 @@ namespace schedule2
                 //Choices_List = [MULTIPLE_SHIFTS,MIX_MAJORS,MIX_AGES,SHIFT_MINIMUM_WORKERS,SHIFT_MAXIMUM_WORKERS]//Need to imlement
 
                 // Workers get distributed to all available work times
-                foreach (Consultant worker in consultant_list) {
-                    for(int x = 0; x < hour_option_list.Count; x++) {
-                        for(int y = 0; y < hour_option_list[0].Length; y++)
-                        {
-                            if(hour_option_list[x][y] == " ")
+            for(int x = 0; x < hour_option_list.Count; x++) {
+                 for(int y = 0; y < hour_option_list[0].Length; y++)
+                 {
+                      if(hour_option_list[x][y] == " ")
+                      {
+                            foreach (Consultant worker in consultant_list)
                             {
-                                if(worker.days[x][y] == " ")
+                                if (worker.days[x][y] == " ")
                                 {
                                     return_schedule_list[x][y].Add(worker);
                                     worker.numberOfShifts += 1;
                                 }
                             }
-                        }
-                    }
-                }
-
-
-                return_schedule_list = ScheduleTrimmer1(return_schedule_list, true);
+                      }
+                 }
+            }
+                List<List<List<User>>> return_schedule_list_temp = ScheduleTrimmer1(return_schedule_list, true);
+                return_schedule_list = return_schedule_list_temp;
                 return_sched.monday = return_schedule_list[0];
                 return_sched.tuesday = return_schedule_list[1];
                 return_sched.wednesday = return_schedule_list[2];
@@ -313,14 +530,14 @@ namespace schedule2
         {
             List<List<List<User>>> new_sched = new List<List<List<User>>>();
             Schedule master = getMasterAvalibility();
-
-            List<List<User>> days = new List<List<User>>();
-            for (int i = 0; i < master.monday.Length; i++)
-            {
-                days.Add(new List<User>());
-            }
+            
             for (int i = 0; i < 7; i++)
             {
+                List<List<User>> days = new List<List<User>>();
+                for (int x = 0; x < master.monday.Length; x++)
+                {
+                    days.Add(new List<User>());
+                }
                 new_sched.Add(days);
             }
 
@@ -337,7 +554,7 @@ namespace schedule2
             for (int i = 0; i < shifts.Count; i++)
             {
                 num_extra_workers.Add(new List<int>());
-                foreach (List<User> shift in shifts[i])
+                foreach (List<User> shift in shifts[i].ToList())
                 {
                     num_extra_workers[i].Add(shift.Count - num_worker_goal);
                 }
@@ -352,11 +569,10 @@ namespace schedule2
                         int largest_number_of_shifts = 0;
                         int number_of_upperclassmen = 0;
                         List<Consultant> temp_kick_list = new List<Consultant>();
-                        List<Consultant> temp_kick_list2 = new List<Consultant>();
 
                         int current_extra_workers = num_extra_workers[x][y];
 
-                        foreach (Consultant worker in shifts[x][y])
+                        foreach (Consultant worker in shifts[x][y].ToList())
                         {
                             if (worker.numberOfShifts > int.Parse(worker.hoursPer) * 2)
                             {
@@ -366,13 +582,15 @@ namespace schedule2
                             {
                                 number_of_upperclassmen++;
                             }
-
+                        }
                             // Ages
-                            if (director_settings.mix_ages)
+                        if (director_settings.mix_ages)
+                        {
+                            if (count && number_of_upperclassmen == 1)
                             {
-                                if (count && number_of_upperclassmen == 1)
+                                foreach (Consultant staff in temp_kick_list.ToList())
                                 {
-                                    foreach (Consultant staff in temp_kick_list)
+                                    if (temp_kick_list.Count - current_extra_workers > 0)
                                     {
                                         if (int.Parse(staff.yearsWorked) > 2)
                                         {
@@ -381,70 +599,60 @@ namespace schedule2
                                     }
                                 }
                             }
-                            temp_kick_list2 = temp_kick_list;
-                            if (director_settings.multiple_shifts)
+                        }
+                        if (director_settings.multiple_shifts)
+                        {
+                            foreach(Consultant staff in temp_kick_list.ToList())
                             {
-                                foreach(Consultant staff in temp_kick_list)
+                                if (temp_kick_list.Count - current_extra_workers > 0)
                                 {
-                                    if(current_extra_workers > 0)
+                                    if (y > 0)
                                     {
-                                        if(y > 0)
+                                        if (y < shifts[x].Count - 1)
                                         {
-                                            if (y < shifts[x].Count - 1)
+                                            if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
                                             {
-                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
-                                                {
-                                                    temp_kick_list.Remove(staff);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if(shifts[x][y - 1].Contains(staff))
-                                                {
-                                                    temp_kick_list.Remove(staff);
-                                                }
+                                                temp_kick_list.Remove(staff);
                                             }
                                         }
                                         else
                                         {
-                                            if(shifts[x][y + 1].Contains(staff))
+                                            if(shifts[x][y - 1].Contains(staff))
                                             {
                                                 temp_kick_list.Remove(staff);
                                             }
                                         }
                                     }
+                                    else
+                                    {
+                                        if(shifts[x][y + 1].Contains(staff))
+                                        {
+                                            temp_kick_list.Remove(staff);
+                                        }
+                                    }
                                 }
                             }
-                            else
+                        }
+                        else
+                        {
+                            foreach(Consultant staff in temp_kick_list.ToList())
                             {
-                                foreach(Consultant staff in temp_kick_list)
+                                if(temp_kick_list.Count - current_extra_workers > 0)
                                 {
-                                    if(current_extra_workers > 0)
+                                    if (y > 0)
                                     {
-                                        if (y > 0)
+                                        if (y < shifts[x].Count - 1)
                                         {
-                                            if (y < shifts[x].Count - 1)
+                                            if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
                                             {
-                                                if (shifts[x][y - 1].Contains(staff) || shifts[x][y + 1].Contains(staff))
-                                                {
-                                                    temp_kick_list.Remove(staff);
-                                                    current_extra_workers++;
-                                                    shifts[x][y].Remove(staff);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if (shifts[x][y - 1].Contains(staff))
-                                                {
-                                                    temp_kick_list.Remove(staff);
-                                                    current_extra_workers--;
-                                                    shifts[x][y].Remove(staff);
-                                                }
+                                                temp_kick_list.Remove(staff);
+                                                current_extra_workers++;
+                                                shifts[x][y].Remove(staff);
                                             }
                                         }
                                         else
                                         {
-                                            if (shifts[x][y + 1].Contains(staff))
+                                            if (shifts[x][y - 1].Contains(staff))
                                             {
                                                 temp_kick_list.Remove(staff);
                                                 current_extra_workers--;
@@ -452,35 +660,54 @@ namespace schedule2
                                             }
                                         }
                                     }
-                                }
-                            }
-
-                            if (director_settings.multiple_majors)
-                            {
-                                //find major matches
-                                foreach (Consultant staff in temp_kick_list)
-                                {
-
-                                }
-                            }
-
-                            while(temp_kick_list.Count > 0 && current_extra_workers > 0)
-                            {
-                                Consultant largest_gap_staff = temp_kick_list[0];
-                                int largest_gap = 0;
-                                foreach(Consultant staff in temp_kick_list)
-                                {
-                                    if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
+                                    else
                                     {
-                                        largest_gap_staff = staff;
-                                        largest_gap = staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2);
+                                        if (shifts[x][y + 1].Contains(staff))
+                                        {
+                                            temp_kick_list.Remove(staff);
+                                            current_extra_workers--;
+                                            shifts[x][y].Remove(staff);
+                                        }
                                     }
                                 }
+                            }
+                        }
+
+                        if (director_settings.multiple_majors)
+                        {
+                            //find major matches
+                            foreach (Consultant staff in temp_kick_list)
+                            {
+
+                            }
+                        }
+
+                        while(temp_kick_list.Count > 0 && current_extra_workers > 0)
+                        {
+                            Consultant largest_gap_staff = temp_kick_list[0];
+                            int largest_gap = 0;
+                            foreach(Consultant staff in temp_kick_list.ToList())
+                            {
+                                if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
+                                {
+                                    largest_gap_staff = staff;
+                                    largest_gap = staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2);
+                                }
+                            }
                                 
-                                current_extra_workers--;
-                                largest_gap_staff.numberOfShifts--;
-                                temp_kick_list.Remove(largest_gap_staff);
-                                shifts[x][y].Remove(largest_gap_staff);
+                            current_extra_workers--;
+                            largest_gap_staff.numberOfShifts--;
+                            temp_kick_list.Remove(largest_gap_staff);
+                            shifts[x][y].Remove(largest_gap_staff);
+                        }
+
+                        if(current_extra_workers > 0)
+                        {
+                            Random random = new Random();
+                            for (int i = 0; i < current_extra_workers; i++)
+                            {
+                                int remove = random.Next(0, shifts[x][y].Count);
+                                shifts[x][y].RemoveAt(remove);
                             }
                         }
 

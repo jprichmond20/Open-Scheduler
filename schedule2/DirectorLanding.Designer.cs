@@ -140,6 +140,7 @@
             this.Controls.Add(this.class12);
             this.Name = "DirectorLanding";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.DirectorLanding_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

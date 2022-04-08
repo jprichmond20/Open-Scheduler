@@ -14,8 +14,24 @@ namespace schedule2
     // this is our main Schedule View for both Consultants and Directors
     {
         public static CurrentSchedule CurrentSched; // We initialize a currentSchedule object (for the schedule) 
+        public User user;
+        public Director director;
         public ScheduleView()
         {
+            CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
+            // We set the current schedule to that in our mast availability file
+            InitializeComponent();
+        }
+        public ScheduleView(User user)
+        {
+            this.user = user;
+            CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
+            // We set the current schedule to that in our mast availability file
+            InitializeComponent();
+        }
+        public ScheduleView(Director director)
+        {
+            this.director = director;
             CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
             // We set the current schedule to that in our mast availability file
             InitializeComponent();
@@ -40,21 +56,43 @@ namespace schedule2
              "10:00pm", "10:30pm", "11:00pm"};
 
             // Try
-            //Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
-            //for (int i = 0; i < times.Length; i++)
-            //{
+            Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
+            for (int i = 0; i < times.Length; i++)
+            {
 
-            //}
+                dataGridView1.Rows.Add(new object[] {
+                    times[i],
+                    formatNamesAtTime(currentUserSchedule.monday[i]),
+                    formatNamesAtTime(currentUserSchedule.tuesday[i]),
+                    formatNamesAtTime(currentUserSchedule.wednesday[i]),
+                    formatNamesAtTime(currentUserSchedule.thursday[i]),
+                    formatNamesAtTime(currentUserSchedule.friday[i]),
+                    formatNamesAtTime(currentUserSchedule.saturday[i]),
+                    formatNamesAtTime(currentUserSchedule.sunday[i])
+                });
+            }
             // Except
 
             // currently the schedule stays blank, once the alghorithm is impemented this will change
-            for (int i = 0; i < times.Length; i++)
-            {
-                dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
-            }
+            //for (int i = 0; i < times.Length; i++)
+            //{
+            //    dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
+            //}
 
             // Set some settings for display
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            for (int i = 0; i < dataGridView1.Columns.Count - 1; i++)
+            {
+                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                int colw = dataGridView1.Columns[i].Width;
+                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dataGridView1.Columns[i].Width = colw;
+            }
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             // fits dataGridView to data both in height and width
@@ -71,14 +109,15 @@ namespace schedule2
                 width += col.Width;
             }
             dataGridView1.ClientSize = new Size(width + 2, height + 2);
-
+            
             //Populate the schedule view with the current schedule
             // If the writing center is closed, it is represented by a black square
             DataGridViewCellStyle notOpen = new DataGridViewCellStyle();
-            notOpen.BackColor = Color.Black;
+            notOpen.BackColor = Color.Crimson;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Rows.Count; j++)
+                //MessageBox.Show("Columns " + dataGridView1.Columns.Count.ToString() + "\nCurrentSched " + CurrentSched.days.Count.ToString() + "\nRows " + dataGridView1.Rows.Count.ToString());
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0)
                     {
@@ -92,6 +131,19 @@ namespace schedule2
             }
         }
 
+        private string formatNamesAtTime(List<User> scheduled)
+        {
+            string formattedOutput = "";
+            foreach(User consult in scheduled)
+            {
+                if (consult != null)
+                { 
+                    formattedOutput += consult.getFirstandLast() + "\n";
+                }
+            }
+            return formattedOutput;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -100,6 +152,63 @@ namespace schedule2
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+            if (director != null)
+            {
+                this.Hide();
+                var frm = new DirectorLanding(director);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            else
+            {
+                this.Hide();
+                var frm = new SignIn();
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            
+        }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new SignIn();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
+
+        private void class12_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new SignIn();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }

@@ -49,13 +49,13 @@ namespace schedule2
             // Set the columns to autosize and set the default backcolor 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
-            MessageBox.Show(dataGridView1.Rows.Count.ToString());
+            //MessageBox.Show(dataGridView1.Rows.Count.ToString());
             // Read in the current schedule from the director
             DataGridViewCellStyle sched = new DataGridViewCellStyle();
             sched.BackColor = Color.Gold;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Rows.Count; j++)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0) {
                         // Columns are the associated to the times
@@ -173,7 +173,7 @@ namespace schedule2
         {
             user.PopulateSched(dataGridView1);
             MessageBox.Show("Schedule Successfully Updated!");
-            var frm = new ScheduleView();
+            var frm = new ScheduleView(user);
             schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
             Program.db.setMasterAvailibility(user);
             this.Hide();
@@ -189,7 +189,7 @@ namespace schedule2
             sched.BackColor = Color.Gold;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 1; j < dataGridView1.Rows.Count; j++)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (i > 0)
                     {
