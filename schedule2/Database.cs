@@ -142,10 +142,9 @@ namespace schedule2
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
-                string uuid = Guid.NewGuid().ToString();
                 object[] user_login_info = { hash, salt, user };
                 accounts.Add(username, user_login_info);
-                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + uuid );
+                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID );
                 
                 if (user.IsDirector())
                 {
@@ -154,7 +153,7 @@ namespace schedule2
                     
                 }
                  Directory.CreateDirectory("users/");
-                 json_file_name = "users/" + uuid + ".json";
+                 json_file_name = "users/" + user.userID + ".json";
                  json_text = JsonConvert.SerializeObject(user);
                  File.WriteAllText(json_file_name, json_text);
             }
