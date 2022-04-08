@@ -149,14 +149,15 @@ namespace schedule2
 
                 if (user.IsDirector())
                 {
+                    
                     Director director = new Director(user);
                     director.updatefromMasterSched(getMasterAvalibility());
 
                 }
-                else
+                /*else
                 {
                     Consultant user = new Consultant(user);
-                }
+                }*/
                  Directory.CreateDirectory("users/");
                  json_file_name = "users/" + uuid + ".json";
                  json_text = JsonConvert.SerializeObject(user);
