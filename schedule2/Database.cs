@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace schedule2
 {
     public class Database
     // This class is our database that we use to store all our information 
     {
-        DirectorSettings director_settings = new DirectorSettings();
+        public DirectorSettings director_settings = new DirectorSettings();
 
         public struct UserListSchedule
         {
@@ -35,7 +36,7 @@ namespace schedule2
             public List<List<String>> saturday;
             public List<List<String>> sunday;
         }
-        private struct DirectorSettings
+        public struct DirectorSettings
         {
             public bool mix_ages;
             public bool multiple_shifts;
@@ -466,6 +467,31 @@ namespace schedule2
                       }
                  }
             }
+                if (director_settings.multiple_shifts)
+                {
+                    MessageBox.Show("True");
+                }
+                else
+                {
+                    MessageBox.Show("False");
+                }
+                if (director_settings.multiple_majors)
+                {
+                    MessageBox.Show("True");
+                }
+                else
+                {
+                    MessageBox.Show("False");
+                }
+                if (director_settings.mix_ages)
+                {
+                    MessageBox.Show("True");
+                }
+                else
+                {
+                    MessageBox.Show("False");
+                }
+
                 List<List<List<User>>> return_schedule_list_temp = ScheduleTrimmer1(return_schedule_list, true, director_settings);
                 return_schedule_list = return_schedule_list_temp;
                 return_sched.monday = return_schedule_list[0];
