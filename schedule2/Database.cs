@@ -12,6 +12,7 @@ namespace schedule2
     public class Database
     // This class is our database that we use to store all our information 
     {
+        DirectorSettings director_settings = new DirectorSettings();
 
         public struct UserListSchedule
         {
@@ -73,6 +74,7 @@ namespace schedule2
         private Dictionary<string, object[]> accounts;
         public Database()
         {
+            
             // When constructor is called, we initialize our accounts dictionary
             accounts = new Dictionary<string, object[]>();
 
@@ -464,7 +466,7 @@ namespace schedule2
                       }
                  }
             }
-                List<List<List<User>>> return_schedule_list_temp = ScheduleTrimmer1(return_schedule_list, true);
+                List<List<List<User>>> return_schedule_list_temp = ScheduleTrimmer1(return_schedule_list, true, director_settings);
                 return_schedule_list = return_schedule_list_temp;
                 return_sched.monday = return_schedule_list[0];
                 return_sched.tuesday = return_schedule_list[1];
@@ -544,11 +546,10 @@ namespace schedule2
             return new_sched;
         }
 
-        private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count) {
+        private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count, DirectorSettings director_settings) {
             //will be the actual goal later
             int num_worker_goal = 4;
             int num_min_worker = 2;
-            DirectorSettings director_settings = getDirectorSettings();
 
             List<List<int>> num_extra_workers = new List<List<int>>();
             for (int i = 0; i < shifts.Count; i++)
@@ -720,11 +721,14 @@ namespace schedule2
 
         private DirectorSettings getDirectorSettings()
         {
-            DirectorSettings director_settings = new DirectorSettings();
-            director_settings.multiple_majors = true;
-            director_settings.mix_ages = true;
-            director_settings.multiple_shifts = true;
             return director_settings;
+        }
+        public void setDirectorSettings(bool ages, bool majors, bool multiShifts)
+        {
+            DirectorSettings director_settings = new DirectorSettings();
+            director_settings.multiple_majors = majors;
+            director_settings.mix_ages = ages;
+            director_settings.multiple_shifts = multiShifts;
         }
 
     }

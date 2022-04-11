@@ -58,6 +58,7 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
             */
+            Program.db.setDirectorSettings(radioButton1.Checked, radioButton2.Checked, radioButton3.Checked);
             Database.UserListSchedule userSchedule = Program.db.createSchedule();
             Program.db.saveSchedule(userSchedule);
             var frm = new ScheduleView(user);
@@ -83,5 +84,6 @@ namespace schedule2
         {
 
         }
+        
     }
 }
