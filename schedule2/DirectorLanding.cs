@@ -17,6 +17,7 @@ namespace schedule2
     {
         List<Consultant> short_list = new List<Consultant>();
         public Director user;
+        public string short_names;
         public DirectorLanding(Director user)
         {
             List<Consultant> consultant_list = Program.db.getAllConsultants();
@@ -40,6 +41,7 @@ namespace schedule2
         private void class11_Click(object sender, EventArgs e)
         //Button to allow user to view the current schedule
         {
+         
             this.Hide();
             var frm = new ScheduleView(user);
             this.Hide();
@@ -101,6 +103,16 @@ namespace schedule2
         {
 
         }
-        
+
+        private void class15_Click(object sender, EventArgs e)
+        {
+            short_names = "Consultants without desired number of shifts: \n";
+            foreach (Consultant c in short_list)
+            {
+                short_names += c.getFirstandLast() + "\n";
+                
+            }
+            MessageBox.Show(short_names);
+        }
     }
 }

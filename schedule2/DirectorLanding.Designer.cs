@@ -29,16 +29,97 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectorLanding));
-            this.class13 = new CustomButtons.Buttons.class1();
-            this.class11 = new CustomButtons.Buttons.class1();
-            this.class12 = new CustomButtons.Buttons.class1();
-            this.class14 = new CustomButtons.Buttons.class1();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.class15 = new CustomButtons.Buttons.class1();
+            this.class14 = new CustomButtons.Buttons.class1();
+            this.class13 = new CustomButtons.Buttons.class1();
+            this.class11 = new CustomButtons.Buttons.class1();
+            this.class12 = new CustomButtons.Buttons.class1();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(42, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(666, 82);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(553, 311);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(115, 20);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Sort by Majors";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(553, 341);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(142, 20);
+            this.checkBox2.TabIndex = 29;
+            this.checkBox2.Text = "Sort by Experience";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(553, 371);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(155, 20);
+            this.checkBox3.TabIndex = 30;
+            this.checkBox3.Text = "Sort by Multiple Shifts";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // class15
+            // 
+            this.class15.BackColor = System.Drawing.Color.Crimson;
+            this.class15.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class15.BorderColor = System.Drawing.Color.White;
+            this.class15.BorderRadius = 25;
+            this.class15.BorderSize = 2;
+            this.class15.FlatAppearance.BorderSize = 0;
+            this.class15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class15.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class15.ForeColor = System.Drawing.Color.White;
+            this.class15.Location = new System.Drawing.Point(42, 312);
+            this.class15.Name = "class15";
+            this.class15.Size = new System.Drawing.Size(182, 71);
+            this.class15.TabIndex = 31;
+            this.class15.Text = "Consultants not Full";
+            this.class15.TextColor = System.Drawing.Color.White;
+            this.class15.UseVisualStyleBackColor = false;
+            this.class15.Click += new System.EventHandler(this.class15_Click);
+            // 
+            // class14
+            // 
+            this.class14.BackColor = System.Drawing.Color.Crimson;
+            this.class14.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class14.BorderColor = System.Drawing.Color.White;
+            this.class14.BorderRadius = 25;
+            this.class14.BorderSize = 2;
+            this.class14.FlatAppearance.BorderSize = 0;
+            this.class14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class14.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class14.ForeColor = System.Drawing.Color.White;
+            this.class14.Location = new System.Drawing.Point(284, 320);
+            this.class14.Name = "class14";
+            this.class14.Size = new System.Drawing.Size(182, 71);
+            this.class14.TabIndex = 17;
+            this.class14.Text = "Sign Out";
+            this.class14.TextColor = System.Drawing.Color.White;
+            this.class14.UseVisualStyleBackColor = false;
+            this.class14.Click += new System.EventHandler(this.class14_Click);
             // 
             // class13
             // 
@@ -100,72 +181,13 @@
             this.class12.UseVisualStyleBackColor = false;
             this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
-            // class14
-            // 
-            this.class14.BackColor = System.Drawing.Color.Crimson;
-            this.class14.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class14.BorderColor = System.Drawing.Color.White;
-            this.class14.BorderRadius = 25;
-            this.class14.BorderSize = 2;
-            this.class14.FlatAppearance.BorderSize = 0;
-            this.class14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class14.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class14.ForeColor = System.Drawing.Color.White;
-            this.class14.Location = new System.Drawing.Point(284, 320);
-            this.class14.Name = "class14";
-            this.class14.Size = new System.Drawing.Size(182, 71);
-            this.class14.TabIndex = 17;
-            this.class14.Text = "Sign Out";
-            this.class14.TextColor = System.Drawing.Color.White;
-            this.class14.UseVisualStyleBackColor = false;
-            this.class14.Click += new System.EventHandler(this.class14_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(42, 54);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(666, 82);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(553, 311);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(115, 20);
-            this.checkBox1.TabIndex = 28;
-            this.checkBox1.Text = "Sort by Majors";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(553, 341);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(142, 20);
-            this.checkBox2.TabIndex = 29;
-            this.checkBox2.Text = "Sort by Experience";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(553, 371);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(155, 20);
-            this.checkBox3.TabIndex = 30;
-            this.checkBox3.Text = "Sort by Multiple Shifts";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
             // DirectorLanding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(750, 441);
+            this.Controls.Add(this.class15);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -192,5 +214,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
+        private CustomButtons.Buttons.class1 class15;
     }
 }
