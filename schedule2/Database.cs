@@ -522,7 +522,7 @@ namespace schedule2
         }
 
 
-        private List<Consultant> getAllConsultants()
+        public List<Consultant> getAllConsultants()
         {
             List<Consultant> consultants = new List<Consultant>();
             foreach(object[] account_info in accounts.Values){
@@ -741,6 +741,21 @@ namespace schedule2
                     }
                 }
             }
+            /*List<Consultant> consultant_list = getAllConsultants();
+            foreach (Consultant worker in consultant_list)
+            {
+                foreach (List<User> shift in shifts)
+                {
+                    foreach (User user in shift)
+                    {
+                        if (user.id == worker.id)
+                        {
+                            worker.numberOfShifts++;
+                        }
+                    }
+                }
+                
+            }*/
             return shifts;
         }
 
