@@ -117,7 +117,7 @@ namespace schedule2
             File.AppendAllText("dir_settings.txt", Program.db.director_settings.num_consultants_min.ToString());
             Database.UserListSchedule userSchedule = Program.db.createSchedule();
             Program.db.saveSchedule(userSchedule);
-            var frm = new ScheduleView(user);
+            var frm = new Form1(user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
