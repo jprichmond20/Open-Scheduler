@@ -171,16 +171,44 @@ namespace schedule2
 
         private void class13_Click(object sender, EventArgs e)
         {
-            user.PopulateSched(dataGridView1);
-            MessageBox.Show("Schedule Successfully Updated!");
-            var frm = new ScheduleView(user);
-            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
-            Program.db.setMasterAvailibility(user);
-            this.Hide();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            string msg = "Do you want to run the scheduler?";
+            string title = "Run Scheduler";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(msg, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                Program.db.director_settings.multiple_majors = true;
+                Program.db.director_settings.mix_ages = true;
+                Program.db.director_settings.multiple_shifts = true;
+                Program.db.director_settings.num_consultants_max = 4;
+                Program.db.director_settings.num_consultants_min = 2;
+                
+                user.PopulateSched(dataGridView1);
+                MessageBox.Show("Schedule Successfully Updated!");
+                var frm = new ScheduleView(user);
+                schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+                Program.db.setMasterAvailibility(user);
+                Database.UserListSchedule userSchedule = Program.db.createSchedule();
+                Program.db.saveSchedule(userSchedule);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            else {
+                user.PopulateSched(dataGridView1);
+                MessageBox.Show("Schedule Successfully Updated!");
+                var frm = new ScheduleView(user);
+                schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+                Program.db.setMasterAvailibility(user);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            
         }
 
         private void class11_Click(object sender, EventArgs e)

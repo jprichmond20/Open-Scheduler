@@ -78,6 +78,14 @@ namespace schedule2
             Program.db.director_settings.multiple_majors = checkBox1.Checked;
             Program.db.director_settings.mix_ages = checkBox2.Checked;
             Program.db.director_settings.multiple_shifts = checkBox3.Checked;
+            Program.db.director_settings.num_consultants_max = (int)numericUpDown1.Value;
+            Program.db.director_settings.num_consultants_min = ((int)numericUpDown1.Value)-2;
+            File.WriteAllText("dir_settings.txt", "");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.multiple_majors.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.mix_ages.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.multiple_shifts.ToString() + "\n"); 
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.num_consultants_max.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.num_consultants_min.ToString() + "\n");
             Database.UserListSchedule userSchedule = Program.db.createSchedule();
             Program.db.saveSchedule(userSchedule);
             var frm = new ScheduleView(user);

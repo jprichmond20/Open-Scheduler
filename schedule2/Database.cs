@@ -14,6 +14,7 @@ namespace schedule2
     // This class is our database that we use to store all our information 
     {
         public DirectorSettings director_settings = new DirectorSettings();
+        
 
         public struct UserListSchedule
         {
@@ -41,6 +42,8 @@ namespace schedule2
             public bool mix_ages;
             public bool multiple_shifts;
             public bool multiple_majors;
+            public int num_consultants_max;
+            public int num_consultants_min;
         }
 
 
@@ -574,8 +577,8 @@ namespace schedule2
 
         private List<List<List<User>>> ScheduleTrimmer1(List<List<List<User>>> shifts, bool count, DirectorSettings director_settings) {
             //will be the actual goal later
-            int num_worker_goal = 4;
-            int num_min_worker = 2;
+            int num_worker_goal = director_settings.num_consultants_max;
+            int num_min_worker = director_settings.num_consultants_min;
 
             List<List<int>> num_extra_workers = new List<List<int>>();
             for (int i = 0; i < shifts.Count; i++)
