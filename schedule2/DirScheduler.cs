@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -168,20 +169,43 @@ namespace schedule2
         {
 
         }
-
+        
         private void class13_Click(object sender, EventArgs e)
         {
             string msg = "Do you want to run the scheduler?";
             string title = "Run Scheduler";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(msg, title, buttons);
+            string[] list_settings = File.ReadAllLines("dir_settings.txt");
             if (result == DialogResult.Yes)
             {
-                Program.db.director_settings.multiple_majors = true;
-                Program.db.director_settings.mix_ages = true;
-                Program.db.director_settings.multiple_shifts = true;
-                Program.db.director_settings.num_consultants_max = 4;
-                Program.db.director_settings.num_consultants_min = 2;
+                if (list_settings[0] == "True")
+                {
+                    Program.db.director_settings.multiple_majors = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_majors = false;
+                }
+                if (list_settings[1] == "True")
+                {
+                    Program.db.director_settings.mix_ages = true;
+                }
+                else
+                {
+                    Program.db.director_settings.mix_ages = false;
+                }
+                if (list_settings[2] == "True")
+                {
+                    Program.db.director_settings.multiple_shifts = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_shifts = false;
+                }
+                
+                Program.db.director_settings.num_consultants_max = int.Parse(list_settings[3]);
+                Program.db.director_settings.num_consultants_min = int.Parse(list_settings[4]);
                 
                 user.PopulateSched(dataGridView1);
                 MessageBox.Show("Schedule Successfully Updated!");
