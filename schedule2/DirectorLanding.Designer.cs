@@ -38,7 +38,10 @@
             this.class13 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
             this.class12 = new CustomButtons.Buttons.class1();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -54,17 +57,18 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(553, 311);
+            this.checkBox1.Location = new System.Drawing.Point(553, 304);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(115, 20);
             this.checkBox1.TabIndex = 28;
             this.checkBox1.Text = "Sort by Majors";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(553, 341);
+            this.checkBox2.Location = new System.Drawing.Point(553, 333);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(142, 20);
             this.checkBox2.TabIndex = 29;
@@ -74,7 +78,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(553, 371);
+            this.checkBox3.Location = new System.Drawing.Point(553, 362);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(155, 20);
             this.checkBox3.TabIndex = 30;
@@ -181,12 +185,30 @@
             this.class12.UseVisualStyleBackColor = false;
             this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(553, 391);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(46, 22);
+            this.numericUpDown1.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(605, 394);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Consultants per Shift";
+            // 
             // DirectorLanding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(750, 441);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.class15);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -200,6 +222,7 @@
             this.Text = "Home";
             this.Load += new System.EventHandler(this.DirectorLanding_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +238,7 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private CustomButtons.Buttons.class1 class15;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label1;
     }
 }

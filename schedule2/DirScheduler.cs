@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -168,19 +169,77 @@ namespace schedule2
         {
 
         }
-
+        
         private void class13_Click(object sender, EventArgs e)
         {
-            user.PopulateSched(dataGridView1);
-            MessageBox.Show("Schedule Successfully Updated!");
-            var frm = new ScheduleView(user);
-            schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
-            Program.db.setMasterAvailibility(user);
-            this.Hide();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            string msg = "Do you want to run the scheduler?";
+            string title = "Run Scheduler";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(msg, title, buttons);
+            string[] list_settings = File.ReadAllLines("dir_settings.txt");
+            if (result == DialogResult.Yes)
+            {
+                if (list_settings[0] == "True")
+                {
+                    Program.db.director_settings.multiple_majors = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_majors = false;
+                }
+                if (list_settings[1] == "True")
+                {
+                    Program.db.director_settings.mix_ages = true;
+                }
+                else
+                {
+                    Program.db.director_settings.mix_ages = false;
+                }
+                if (list_settings[2] == "True")
+                {
+                    Program.db.director_settings.multiple_shifts = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_shifts = false;
+                }
+                
+                Program.db.director_settings.num_consultants_max = int.Parse(list_settings[3]);
+                Program.db.director_settings.num_consultants_min = int.Parse(list_settings[4]);
+                
+                user.PopulateSched(dataGridView1);
+                MessageBox.Show("Schedule Successfully Updated!");
+                var frm = new ScheduleView(user);
+                var frm2 = new Form2(user);
+                schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+                Program.db.setMasterAvailibility(user);
+                Database.UserListSchedule userSchedule = Program.db.createSchedule();
+                Program.db.saveSchedule(userSchedule);
+                this.Hide();
+                frm2.Location = this.Location;
+                frm2.StartPosition = FormStartPosition.Manual;
+                frm2.FormClosing += delegate { this.Close(); };
+                frm2.Show();
+                
+                /*this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();*/
+            }
+            else {
+                user.PopulateSched(dataGridView1);
+                MessageBox.Show("Schedule Successfully Updated!");
+                var frm = new ScheduleView(user);
+                schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
+                Program.db.setMasterAvailibility(user);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            
         }
 
         private void class11_Click(object sender, EventArgs e)
