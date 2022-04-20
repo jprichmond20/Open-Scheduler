@@ -34,7 +34,36 @@ namespace schedule2
                 File.AppendAllText("short_list.txt", c.getFirstandLast() + "\n");
             }
             this.user = user;
-            InitializeComponent();
+            string[] list_settings = File.ReadAllLines("dir_settings.txt");
+            
+                if (list_settings[0] == "True")
+                {
+                    Program.db.director_settings.multiple_majors = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_majors = false;
+                }
+                if (list_settings[1] == "True")
+                {
+                    Program.db.director_settings.mix_ages = true;
+                }
+                else
+                {
+                    Program.db.director_settings.mix_ages = false;
+                }
+                if (list_settings[2] == "True")
+                {
+                    Program.db.director_settings.multiple_shifts = true;
+                }
+                else
+                {
+                    Program.db.director_settings.multiple_shifts = false;
+                }
+
+                Program.db.director_settings.num_consultants_max = int.Parse(list_settings[3]);
+                Program.db.director_settings.num_consultants_min = int.Parse(list_settings[4]);
+                InitializeComponent();
         }
 
         
@@ -78,9 +107,17 @@ namespace schedule2
             Program.db.director_settings.multiple_majors = checkBox1.Checked;
             Program.db.director_settings.mix_ages = checkBox2.Checked;
             Program.db.director_settings.multiple_shifts = checkBox3.Checked;
+            Program.db.director_settings.num_consultants_max = (int)numericUpDown1.Value;
+            Program.db.director_settings.num_consultants_min = ((int)numericUpDown1.Value)-2;
+            File.WriteAllText("dir_settings.txt", "");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.multiple_majors.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.mix_ages.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.multiple_shifts.ToString() + "\n"); 
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.num_consultants_max.ToString() + "\n");
+            File.AppendAllText("dir_settings.txt", Program.db.director_settings.num_consultants_min.ToString());
             Database.UserListSchedule userSchedule = Program.db.createSchedule();
             Program.db.saveSchedule(userSchedule);
-            var frm = new ScheduleView(user);
+            var frm = new Form2(user);
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -101,7 +138,31 @@ namespace schedule2
 
         private void DirectorLanding_Load(object sender, EventArgs e)
         {
-
+            if (Program.db.director_settings.multiple_majors)
+            {
+                checkBox1.Checked = true;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+            }
+            if (Program.db.director_settings.mix_ages)
+            {
+                checkBox2.Checked = true;
+            }
+            else
+            {
+                checkBox2.Checked = false;
+            }
+            if (Program.db.director_settings.multiple_shifts)
+            {
+                checkBox3.Checked = true;
+            }
+            else
+            {
+                checkBox3.Checked = false;
+            }
+            numericUpDown1.Value = Program.db.director_settings.num_consultants_max;
         }
 
         private void class15_Click(object sender, EventArgs e)
@@ -113,6 +174,11 @@ namespace schedule2
                 
             }
             MessageBox.Show(short_names);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
