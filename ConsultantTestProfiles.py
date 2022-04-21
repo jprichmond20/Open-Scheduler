@@ -108,7 +108,7 @@ def setAvailability():
     days = []
     for i in range(7):
         day = []
-        for j in range(31):
+        for j in range(48):
             available = random.choice([True, False])
             if available:
                 day.append(" ")

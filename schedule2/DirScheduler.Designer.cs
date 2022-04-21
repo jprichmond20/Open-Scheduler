@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,24 +50,30 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(313, 69);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(235, 56);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(625, 742);
+            this.dataGridView1.Size = new System.Drawing.Size(469, 603);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -74,20 +81,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(352, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(264, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(519, 35);
+            this.label1.Size = new System.Drawing.Size(409, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "Create/Change Writing Center Schedule";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(45, 69);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(34, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 642);
+            this.label2.Size = new System.Drawing.Size(175, 522);
             this.label2.TabIndex = 3;
             // 
             // database1DataSet1
@@ -106,10 +111,10 @@
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(958, 219);
-            this.class12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class12.Location = new System.Drawing.Point(718, 178);
+            this.class12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class12.Name = "class12";
-            this.class12.Size = new System.Drawing.Size(181, 71);
+            this.class12.Size = new System.Drawing.Size(136, 58);
             this.class12.TabIndex = 6;
             this.class12.Text = "Reset";
             this.class12.TextColor = System.Drawing.Color.White;
@@ -127,10 +132,10 @@
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(958, 144);
-            this.class11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class11.Location = new System.Drawing.Point(718, 117);
+            this.class11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class11.Name = "class11";
-            this.class11.Size = new System.Drawing.Size(181, 71);
+            this.class11.Size = new System.Drawing.Size(136, 58);
             this.class11.TabIndex = 7;
             this.class11.Text = "Clear";
             this.class11.TextColor = System.Drawing.Color.White;
@@ -148,10 +153,10 @@
             this.class13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class13.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class13.ForeColor = System.Drawing.Color.White;
-            this.class13.Location = new System.Drawing.Point(958, 69);
-            this.class13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class13.Location = new System.Drawing.Point(718, 56);
+            this.class13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class13.Name = "class13";
-            this.class13.Size = new System.Drawing.Size(181, 71);
+            this.class13.Size = new System.Drawing.Size(136, 58);
             this.class13.TabIndex = 8;
             this.class13.Text = "Submit";
             this.class13.TextColor = System.Drawing.Color.White;
@@ -169,10 +174,10 @@
             this.class14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class14.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class14.ForeColor = System.Drawing.Color.White;
-            this.class14.Location = new System.Drawing.Point(50, 69);
-            this.class14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class14.Location = new System.Drawing.Point(38, 56);
+            this.class14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class14.Name = "class14";
-            this.class14.Size = new System.Drawing.Size(181, 71);
+            this.class14.Size = new System.Drawing.Size(136, 58);
             this.class14.TabIndex = 9;
             this.class14.Text = "Back";
             this.class14.TextColor = System.Drawing.Color.White;
@@ -190,10 +195,10 @@
             this.class15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class15.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class15.ForeColor = System.Drawing.Color.White;
-            this.class15.Location = new System.Drawing.Point(50, 144);
-            this.class15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class15.Location = new System.Drawing.Point(38, 117);
+            this.class15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class15.Name = "class15";
-            this.class15.Size = new System.Drawing.Size(181, 71);
+            this.class15.Size = new System.Drawing.Size(136, 58);
             this.class15.TabIndex = 10;
             this.class15.Text = "Sign Out";
             this.class15.TextColor = System.Drawing.Color.White;
@@ -202,9 +207,9 @@
             // 
             // DirScheduler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 826);
+            this.ClientSize = new System.Drawing.Size(863, 671);
             this.Controls.Add(this.class15);
             this.Controls.Add(this.class14);
             this.Controls.Add(this.class13);
@@ -213,7 +218,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DirScheduler";
             this.Text = "DirScheduler";
             this.Load += new System.EventHandler(this.DirScheduler_Load);

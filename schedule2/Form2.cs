@@ -34,6 +34,7 @@ namespace schedule2
             else
             {
                 timer1.Stop();
+                MessageBox.Show("Schedule Successfully Updated!");
                 var frm = new ScheduleView(user);
                 this.Hide();
                 frm.Location = this.Location;
@@ -41,6 +42,11 @@ namespace schedule2
                 frm.FormClosing += delegate { this.Close(); };
                 frm.Show();
             }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
