@@ -65,8 +65,8 @@ namespace schedule2
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 75);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 61);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -81,7 +81,7 @@ namespace schedule2
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(829, 565);
+            this.dataGridView1.Size = new System.Drawing.Size(622, 459);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -91,10 +91,10 @@ namespace schedule2
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Crimson;
-            this.label8.Location = new System.Drawing.Point(85, 0);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Location = new System.Drawing.Point(64, 0);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(522, 77);
+            this.label8.Size = new System.Drawing.Size(414, 61);
             this.label8.TabIndex = 8;
             this.label8.Text = "Current Schedule";
             // 
@@ -109,9 +109,10 @@ namespace schedule2
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(871, 0);
+            this.class12.Location = new System.Drawing.Point(653, 0);
+            this.class12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class12.Name = "class12";
-            this.class12.Size = new System.Drawing.Size(182, 71);
+            this.class12.Size = new System.Drawing.Size(136, 58);
             this.class12.TabIndex = 17;
             this.class12.Text = "Sign Out";
             this.class12.TextColor = System.Drawing.Color.White;
@@ -129,9 +130,10 @@ namespace schedule2
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(683, 0);
+            this.class11.Location = new System.Drawing.Point(512, 0);
+            this.class11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.class11.Name = "class11";
-            this.class11.Size = new System.Drawing.Size(182, 71);
+            this.class11.Size = new System.Drawing.Size(136, 58);
             this.class11.TabIndex = 16;
             this.class11.Text = "Back";
             this.class11.TextColor = System.Drawing.Color.White;
@@ -140,18 +142,17 @@ namespace schedule2
             // 
             // ScheduleView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1402, 661);
+            this.ClientSize = new System.Drawing.Size(1052, 537);
             this.Controls.Add(this.class12);
             this.Controls.Add(this.class11);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label8);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheduleView";
             this.Text = "Current Schedule";
             this.Load += new System.EventHandler(this.Form2_Load);

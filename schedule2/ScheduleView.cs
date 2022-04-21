@@ -129,6 +129,11 @@ namespace schedule2
                     }
                 }
             }
+
+            if (user.IsDirector())
+            {
+               dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            }
         }
 
         private string formatNamesAtTime(List<User> scheduled)
