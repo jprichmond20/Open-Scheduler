@@ -13,11 +13,13 @@ using System.Globalization;
 namespace schedule2
 {
     public class Database
+        
     // This class is our database that we use to store all our information 
     {
         public DirectorSettings director_settings = new DirectorSettings();
 
-
+        
+        
         public struct UserListSchedule
         {
             public List<List<User>> monday;
@@ -938,7 +940,7 @@ namespace schedule2
                         }
                         csv.NextRecord();
                     }
-                    csv.WriteRecords(userSched.monday);
+                   /* csv.WriteRecords(userSched.monday);
                     csv.NextRecord();
                     csv.WriteRecords(userSched.tuesday);
                     csv.NextRecord();
@@ -950,7 +952,7 @@ namespace schedule2
                     csv.NextRecord();
                     csv.WriteRecords(userSched.saturday);
                     csv.NextRecord();
-                    csv.WriteRecords(userSched.sunday);
+                    csv.WriteRecords(userSched.sunday);*/
                     
 
                 }
