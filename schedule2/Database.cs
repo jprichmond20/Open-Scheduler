@@ -87,7 +87,7 @@ namespace schedule2
             {
                 string[] split_line = line.Split(',');
                 User user = getUserById(split_line[3]).user;
-                object[] output = { split_line[1], split_line[2], user};
+                object[] output = { split_line[1], split_line[2], user, user.userID};
                 accounts.Add(split_line[0], output);
             }
 
@@ -148,7 +148,7 @@ namespace schedule2
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
-                object[] user_login_info = { hash, salt, user };
+                object[] user_login_info = { hash, salt, user, user.userID };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID );
                 

@@ -18,6 +18,7 @@ namespace schedule2
         public Director director;
         private int openInd;
         private int closeInd;
+        public Database.UserListSchedule currentUserSchedule;
         String[] times = new String[] {"12:00am", "12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am",
             "3:30am", "4:00am", "4:30am", "5:00am","5:30am","6:00am","6:30am","7:00am", "7:30am", "8:00am", "8:30am", "9:00am", "9:30am",
             "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm",
@@ -59,7 +60,7 @@ namespace schedule2
             // Row headers (not technically headers by dataGridView standards though)
 
             // Try
-            Database.UserListSchedule currentUserSchedule = Program.db.getUserSchedule();
+            currentUserSchedule = Program.db.getUserSchedule();
             String[] maxOpenAndClose = getOpenAndCloseSchedule();
             for (int i = 0; i < maxOpenAndClose.Length; i++)
             {
@@ -291,7 +292,41 @@ namespace schedule2
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell);
+            int colInd = e.ColumnIndex;
+            int rowInd = e.RowIndex;
+            List<User> consultants = new List<User>();
+            List<List<User>> day = new List<List<User>>();
+            switch (colInd)
+            {
+                case 0:
+                    day = currentUserSchedule.monday;
+                    break;
+                case 1:
+                    day = currentUserSchedule.tuesday;
+                    break;
+                case 2:
+                    day = currentUserSchedule.wednesday;
+                    break;
+                case 3:
+                    day = currentUserSchedule.thursday;
+                    break;
+                case 4:
+                    day = currentUserSchedule.friday;
+                    break;
+                case 5:
+                    day = currentUserSchedule.saturday;
+                    break;
+                case 6:
+                    day = currentUserSchedule.sunday;
+                    break;
+            }
+            consultants = day[rowInd];
+            
+            
+            EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell, consultants);
+            editCell.Show();
+            editCell.Location = this.Location;
+            
             
         }
 
