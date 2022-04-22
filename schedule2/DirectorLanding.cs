@@ -127,13 +127,7 @@ namespace schedule2
 
         private void class14_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var frm = new SignIn();
-            this.Hide();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            Program.db.CsvExport();
         }
 
         private void DirectorLanding_Load(object sender, EventArgs e)
@@ -179,6 +173,17 @@ namespace schedule2
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void class16_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm = new SignIn();
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
         }
     }
 }

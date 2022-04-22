@@ -7,6 +7,8 @@ using System.IO;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using CsvHelper;
+using System.Globalization;
 
 namespace schedule2
 {
@@ -782,10 +784,10 @@ namespace schedule2
                 string fileName = "currentSchedule.csv";
                 string fileString = "Time,Workers\n";
                 DateTime startTime = new DateTime(2022, 5,17,8,00,00);
-                for(List<List<User>> userList in userSched.monday)
+                foreach (List<User> userList in userSched.monday)
                 {
                     fileString += "monday " + startTime.ToString("h:mm") +",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -793,11 +795,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.tuesday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.tuesday)
                 {
                     fileString += "tuesday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -805,11 +807,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.wednesday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.wednesday)
                 {
                     fileString += "wednesday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -817,11 +819,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.thursday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.thursday)
                 {
                     fileString += "thursday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -829,11 +831,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.friday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.friday)
                 {
                     fileString += "friday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -841,11 +843,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.saturday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.saturday)
                 {
                     fileString += "saturday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -853,11 +855,11 @@ namespace schedule2
                     startTime.AddMinutes(30);
                 }
 
-                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
-                for(List<List<User>> userList in userSched.sunday)
+                //DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                foreach (List<User> userList in userSched.sunday)
                 {
                     fileString += "sunday " + startTime.ToString("h:mm") + ",[";
-                    for(User user in userList)
+                    foreach (User user in userList)
                     {
                         fileString += user.getFirstandLast() + ",";
                     }
@@ -868,8 +870,92 @@ namespace schedule2
                 File.WriteAllText(fileName, fileString);
 
             }
-            except(Exception e){
+            catch (Exception e){
                 Console.WriteLine(e);
+            }
+        }
+        public void CsvExport()
+        {
+            var csvLoc = Path.Combine(Environment.CurrentDirectory, $"{DateTime.Now.ToString("MM-dd-yyyy")}.csv");
+            using (var streamWriter = new StreamWriter(csvLoc))
+            {
+                using (var csv = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                {
+                    var userSched = getUserSchedule();
+                    foreach (List<User> userList in userSched.monday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.tuesday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.wednesday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.thursday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.friday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.saturday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    foreach (List<User> userList in userSched.sunday)
+                    {
+                        foreach (User user in userList)
+                        {
+                            csv.WriteField(user.getFirstandLast());
+                        }
+                        csv.NextRecord();
+                    }
+                    csv.WriteRecords(userSched.monday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.tuesday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.wednesday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.thursday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.friday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.saturday);
+                    csv.NextRecord();
+                    csv.WriteRecords(userSched.sunday);
+                    
+
+                }
+                {
+                }
             }
         }
 
