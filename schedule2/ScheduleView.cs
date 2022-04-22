@@ -108,12 +108,15 @@ namespace schedule2
             }
             height += dataGridView1.ColumnHeadersHeight;
 
-            int width = 0;
-            foreach(DataGridViewColumn col in dataGridView1.Columns)
-            {
-                width += col.Width;
-            }
-            dataGridView1.ClientSize = new Size(width + 2, height + 2);
+            //int width = 0;
+            //foreach(DataGridViewColumn col in dataGridView1.Columns)
+            //{
+            //    width += col.Width;
+            //}
+            dataGridView1.Height = height;
+
+            dataGridView1.Width = dataGridView1.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width) + (dataGridView1.RowHeadersVisible ? dataGridView1.RowHeadersWidth : 0) + 50;
+            
             
             //Populate the schedule view with the current schedule
             // If the writing center is closed, it is represented by a black square
@@ -138,6 +141,8 @@ namespace schedule2
             if (director != null)
             {
                dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Gainsboro;
             }
         }
 
@@ -186,7 +191,7 @@ namespace schedule2
                         }
                     }
                 }
-                if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am" && currClose[0] != "0" && currClose[1] != "00am")
+                if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am" && (currClose[0] != "0" && currClose[1] != "00am"))
                 {
                     closeTime = day[1];
                 }

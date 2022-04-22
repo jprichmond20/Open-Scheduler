@@ -29,7 +29,7 @@ namespace schedule2
         {
             if (progressBar1.Value < progressBar1.Maximum)
             {
-                progressBar1.Value += 1;
+                progressBar1.Value += 2;
             }
             else
             {
