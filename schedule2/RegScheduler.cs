@@ -19,6 +19,10 @@ namespace schedule2
             "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm",
             "3:00pm", "3:30pm", "4:00pm","4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm", "8:00pm",
             "8:30pm", "9:00pm", "9:30pm", "10:00pm", "10:30pm", "11:00pm", "11:30pm"};
+        public int openInd;
+        public int closeInd;
+        public CurrentSchedule masterSchedule;
+
         public RegScheduler(Consultant user)
         {
             this.user = user;
@@ -27,12 +31,13 @@ namespace schedule2
 
         private void RegScheduler_Load(object sender, EventArgs e)
         {
+            masterSchedule = new CurrentSchedule(Program.db.getMasterAvalibility());
             // Intialize event handler for when the user selection changes
             dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
             // Tell it not to create columns automatically
             dataGridView1.AutoGenerateColumns = false;
             // intialize column and row headers
-            dataGridView1.Columns.Add("Time", "Time");
+            dataGridView1.TopLeftHeaderCell.Value = "Time";
             dataGridView1.Columns.Add("Monday", "Mon");
             dataGridView1.Columns.Add("Tuesday", "Tues");
             dataGridView1.Columns.Add("Wednesday", "Wed");
@@ -41,26 +46,29 @@ namespace schedule2
             dataGridView1.Columns.Add("Saturday", "Sat");
             dataGridView1.Columns.Add("Sunday", "Sun");
             // Populate the data grid with "data" (just nothing)
-            for(int i = 0; i < times.Length; i++)
+            String[] maxOpenAndClose = getOpenAndCloseSchedule();
+
+            for(int i = 0; i < maxOpenAndClose.Length; i++)
             {
-                dataGridView1.Rows.Add(new object[] { times[i], "", "", "", "", "", "", "" });
+                dataGridView1.Rows.Add(new object[] {"", "", "", "", "", "", "" });
+                dataGridView1.Rows[i].HeaderCell.Value = maxOpenAndClose[i];
             }
 
 
-            CurrentSchedule masterSchedule = new CurrentSchedule(Program.db.getMasterAvalibility());
+            
             
             DataGridViewCellStyle sched = new DataGridViewCellStyle();
             sched.BackColor = Color.Black;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                for (int j = 0; j < times.Count(); j++)
                 {
-                    if (i > 0)
+                    if (j >= openInd && j <= closeInd)
                     {
                         // Columns are the associated to the times
-                        if (masterSchedule.days[i - 1][j] == "NULL")
+                        if (masterSchedule.days[i][j] == "NULL")
                         {
-                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
+                            dataGridView1[i, j-openInd].Style.BackColor = sched.BackColor;
                         }
                     }
                 }
@@ -73,8 +81,145 @@ namespace schedule2
 
             //Once we have the direcotr schedule saving correctly it will be brought into here
             // So the users know the hours of the writing center
-            
-     
+
+
+            dataGridView1.FirstDisplayedCell.Selected = false;
+
+        }
+
+        public string[] getOpenAndCloseSchedule()
+        {
+            List<String[]> openAndCloseHours = new List<String[]>();
+            Boolean isOpen = false;
+            Boolean isClosed = false;
+            String openTime = null;
+            String closeTime = null;
+            foreach (String[] day in masterSchedule.days)
+            {
+                openAndCloseHours.Add(getOpenAndCloseDay(day));
+            }
+            openTime = openAndCloseHours.First()[0];
+            closeTime = openAndCloseHours.First()[1];
+
+
+
+            foreach (String[] day in openAndCloseHours)
+            {
+                String[] biggestOpen = openTime.Split(':');
+                String[] biggestClose = closeTime.Split(':');
+                String[] currOpen = day[0].Split(':');
+                String[] currClose = day[1].Split(':');
+                if ((biggestOpen[1].Substring(2) == "am" && currOpen[1].Substring(2) == "am") || (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "pm"))
+                {
+                    if (Int32.Parse(biggestOpen[0]) < Int32.Parse(currOpen[0]))
+                    {
+                        if (Int32.Parse(biggestOpen[1].Substring(0, 2)) < Int32.Parse(currOpen[1].Substring(0, 2)))
+                        {
+                            openTime = day[0];
+                        }
+                    }
+                }
+                if (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am")
+                {
+                    openTime = day[0];
+                }
+
+                if ((biggestClose[1].Substring(2) == "am" && currClose[1].Substring(2) == "am") || (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "pm"))
+                {
+                    if (Int32.Parse(biggestClose[0]) < Int32.Parse(currOpen[0]))
+                    {
+                        if (Int32.Parse(biggestClose[1].Substring(0, 2)) < Int32.Parse(currClose[1].Substring(0, 2)))
+                        {
+                            closeTime = day[1];
+                        }
+                    }
+                }
+                if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am" && (currClose[0] != "0" && currClose[1] != "00am"))
+                {
+                    closeTime = day[1];
+                }
+                if (biggestClose[1].Substring(2) == "am" && currClose[1].Substring(2) == "pm")
+                {
+                    if (biggestClose[0] == "0" && biggestClose[1] == "00am")
+                    {
+                        closeTime = day[1];
+                    }
+                }
+            }
+
+
+            int openIndex = times.ToList().IndexOf(openTime);
+            int closeIndex = times.ToList().IndexOf(closeTime);
+            openInd = openIndex;
+            closeInd = closeIndex;
+            isOpen = false;
+            isClosed = false;
+
+
+            List<String> newHours = new List<string>();
+            for (int j = 0; j < times.Length; j++)
+            {
+                if (!isClosed)
+                {
+                    if (!isOpen)
+                    {
+                        if (j == openIndex)
+                        {
+                            isOpen = true;
+                        }
+                    }
+                    if (isOpen)
+                    {
+                        newHours.Add(times[j]);
+                        if (j == closeIndex)
+                        {
+                            isClosed = true;
+                        }
+                    }
+                }
+            }
+            String[] maxOpenAndClose = new string[newHours.Count];
+            for (int k = 0; k < maxOpenAndClose.Length; k++)
+            {
+                maxOpenAndClose[k] = newHours.ElementAt(k);
+            }
+
+            return maxOpenAndClose;
+        }
+
+        private String[] getOpenAndCloseDay(String[] day)
+        {
+            String[] openAndCloseDay = new string[] { "", "" };
+            Boolean hasOpen = false;
+            Boolean hasClosed = false;
+
+
+            for (int i = 0; i < day.Length; i++)
+            {
+                if (day[i] != "NULL" && !hasOpen)
+                {
+                    openAndCloseDay[0] = times[i];
+                    hasOpen = true;
+                }
+                if (day[day.Length - (i + 1)] != "NULL" && !hasClosed)
+                {
+                    openAndCloseDay[1] = times[day.Length - (i + 1)];
+                    hasClosed = true;
+                }
+
+
+            }
+
+            if (!hasClosed)
+            {
+                openAndCloseDay[1] = "0:00am";
+            }
+            if (!hasOpen)
+            {
+                openAndCloseDay[0] = "0:00am";
+            }
+
+            return openAndCloseDay;
         }
 
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)

@@ -47,6 +47,13 @@ namespace schedule2
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            
+
+
             // Initializes the date in the schedule
             // Column headers
             dataGridView1.TopLeftHeaderCell.Value = "Time";
@@ -114,9 +121,11 @@ namespace schedule2
             //{
             //    width += col.Width;
             //}
-            dataGridView1.Height = height;
+            dataGridView1.Height = this.Height-100;
+            //dataGridView1.Width = this.Width;
+            //dataGridView1.Height = height;
 
-            dataGridView1.Width = dataGridView1.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width) + (dataGridView1.RowHeadersVisible ? dataGridView1.RowHeadersWidth : 0) + 50;
+            //dataGridView1.Width = dataGridView1.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width) + (dataGridView1.RowHeadersVisible ? dataGridView1.RowHeadersWidth : 0) + 50;
             
             
             //Populate the schedule view with the current schedule
@@ -145,6 +154,12 @@ namespace schedule2
                 dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
                 dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Gainsboro;
             }
+            else
+            {
+                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            }
+
+            dataGridView1.FirstDisplayedCell.Selected = false;
         }
 
         public string[] getOpenAndCloseSchedule()
@@ -177,7 +192,7 @@ namespace schedule2
                         }
                     }
                 }
-                if(biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am")
+                if(biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am" && (currOpen[0] != "0" && currOpen[1] != "00am"))
                 {
                     openTime = day[0];
                 }
@@ -195,6 +210,13 @@ namespace schedule2
                 if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am" && (currClose[0] != "0" && currClose[1] != "00am"))
                 {
                     closeTime = day[1];
+                }
+                if (biggestClose[1].Substring(2) == "am" && currClose[1].Substring(2) == "pm")
+                {
+                    if(biggestClose[0] == "0" && biggestClose[1] == "00am")
+                    {
+                        closeTime = day[1];
+                    }
                 }
             }
 
@@ -292,42 +314,50 @@ namespace schedule2
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int colInd = e.ColumnIndex;
-            int rowInd = e.RowIndex;
-            List<User> consultants = new List<User>();
-            List<List<User>> day = new List<List<User>>();
-            switch (colInd)
+            if (director != null)
             {
-                case 0:
-                    day = currentUserSchedule.monday;
-                    break;
-                case 1:
-                    day = currentUserSchedule.tuesday;
-                    break;
-                case 2:
-                    day = currentUserSchedule.wednesday;
-                    break;
-                case 3:
-                    day = currentUserSchedule.thursday;
-                    break;
-                case 4:
-                    day = currentUserSchedule.friday;
-                    break;
-                case 5:
-                    day = currentUserSchedule.saturday;
-                    break;
-                case 6:
-                    day = currentUserSchedule.sunday;
-                    break;
+                int colInd = e.ColumnIndex;
+                int rowInd = e.RowIndex;
+                List<User> consultants = new List<User>();
+                List<List<User>> day = new List<List<User>>();
+                switch (colInd)
+                {
+                    case 0:
+                        day = currentUserSchedule.monday;
+                        break;
+                    case 1:
+                        day = currentUserSchedule.tuesday;
+                        break;
+                    case 2:
+                        day = currentUserSchedule.wednesday;
+                        break;
+                    case 3:
+                        day = currentUserSchedule.thursday;
+                        break;
+                    case 4:
+                        day = currentUserSchedule.friday;
+                        break;
+                    case 5:
+                        day = currentUserSchedule.saturday;
+                        break;
+                    case 6:
+                        day = currentUserSchedule.sunday;
+                        break;
+                }
+                consultants = day[rowInd];
+
+
+                //EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell, consultants);
+                //editCell.Show();
+                //editCell.Location = this.Location;
+
+
+
+                var frm = new editDataGridCell(dataGridView1.CurrentCell, consultants);
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.Show();
             }
-            consultants = day[rowInd];
-            
-            
-            EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell, consultants);
-            editCell.Show();
-            editCell.Location = this.Location;
-            
-            
         }
 
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)

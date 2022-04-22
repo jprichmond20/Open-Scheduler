@@ -49,7 +49,7 @@ namespace schedule2
                 dataGridView1.Rows.Add(new object[] {"", "", "", "", "", "", "" });
                 dataGridView1.Rows[i].HeaderCell.Value = times[i];
             }
-
+            dataGridView1.FirstDisplayedCell.Selected = false;
             // Set the columns to autosize and set the default backcolor 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView1.RowHeadersWidth = 100;
@@ -76,7 +76,7 @@ namespace schedule2
                 }
             }
 
-
+            
         }
 
       
