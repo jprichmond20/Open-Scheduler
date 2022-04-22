@@ -210,15 +210,22 @@ namespace schedule2
                 user.PopulateSched(dataGridView1);
                 MessageBox.Show("Schedule Successfully Updated!");
                 var frm = new ScheduleView(user);
+                var frm2 = new Form2(user);
                 schedule2.ScheduleView.CurrentSched.UpdateCurrentSchedule(user.days);
                 Program.db.setMasterAvailibility(user);
                 Database.UserListSchedule userSchedule = Program.db.createSchedule();
                 Program.db.saveSchedule(userSchedule);
                 this.Hide();
+                frm2.Location = this.Location;
+                frm2.StartPosition = FormStartPosition.Manual;
+                frm2.FormClosing += delegate { this.Close(); };
+                frm2.Show();
+                
+                /*this.Hide();
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Close(); };
-                frm.Show();
+                frm.Show();*/
             }
             else {
                 user.PopulateSched(dataGridView1);
