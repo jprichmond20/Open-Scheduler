@@ -14,7 +14,7 @@ namespace schedule2
     // This class is our database that we use to store all our information 
     {
         public DirectorSettings director_settings = new DirectorSettings();
-        
+
 
         public struct UserListSchedule
         {
@@ -56,7 +56,7 @@ namespace schedule2
             public string[] friday;
             public string[] saturday;
             public string[] sunday;
-        } 
+        }
 
 
         public struct DBReturnMessage // Struct for default return message from database
@@ -78,7 +78,7 @@ namespace schedule2
         private Dictionary<string, object[]> accounts;
         public Database()
         {
-            
+
             // When constructor is called, we initialize our accounts dictionary
             accounts = new Dictionary<string, object[]>();
 
@@ -87,7 +87,7 @@ namespace schedule2
             {
                 string[] split_line = line.Split(',');
                 User user = getUserById(split_line[3]).user;
-                object[] output = { split_line[1], split_line[2], user};
+                object[] output = { split_line[1], split_line[2], user };
                 accounts.Add(split_line[0], output);
             }
 
@@ -105,7 +105,7 @@ namespace schedule2
                 // If the login is correct we set success to true and set the user 
                 {
                     message.success = true;
-                    message.user = (User) pwd_and_hash[2];
+                    message.user = (User)pwd_and_hash[2];
                 }
                 else
                 // Otherwise we tell them its an incorrect password
@@ -150,18 +150,18 @@ namespace schedule2
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
                 object[] user_login_info = { hash, salt, user };
                 accounts.Add(username, user_login_info);
-                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID );
-                
+                File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID);
+
                 if (user.IsDirector())
                 {
                     Director director = new Director(user);
                     director.updatefromMasterSched(getMasterAvalibility());
-                    
+
                 }
-                 Directory.CreateDirectory("users/");
-                 json_file_name = "users/" + user.userID + ".json";
-                 json_text = JsonConvert.SerializeObject(user);
-                 File.WriteAllText(json_file_name, json_text);
+                Directory.CreateDirectory("users/");
+                json_file_name = "users/" + user.userID + ".json";
+                json_text = JsonConvert.SerializeObject(user);
+                File.WriteAllText(json_file_name, json_text);
             }
             catch (Exception e)
             {
@@ -185,7 +185,7 @@ namespace schedule2
                 string json_text = File.ReadAllText("users/" + uuid + ".json");
                 message.user = JsonConvert.DeserializeObject<User>(json_text);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 message.success = false;
                 string[] error = { e.ToString() };
@@ -221,7 +221,7 @@ namespace schedule2
         {
             String json_file_name = "userSchedule.json";
             String json_text = "{ \"monday\":[";
-            foreach(List<User> slot in schedule.monday)
+            foreach (List<User> slot in schedule.monday)
             {
                 json_text += "[";
                 foreach (User consultant in slot)
@@ -316,11 +316,11 @@ namespace schedule2
                 }
                 else
                 {
-                    foreach(String id in idList)
+                    foreach (String id in idList)
                     {
                         temp_user_time.Add(getUserById(id).user);
                     }
-                 
+
                 }
                 userSchedule.monday.Add(temp_user_time);
 
@@ -445,20 +445,20 @@ namespace schedule2
             try {
                 List<Consultant> consultant_list = getAllConsultants();
                 Schedule master_availibility = getMasterAvalibility();
-                List<string[]> hour_option_list = new List<string[]> { 
-                    master_availibility.monday, master_availibility.tuesday, master_availibility.wednesday, 
-                    master_availibility.thursday, master_availibility.friday, master_availibility.saturday, 
-                    master_availibility.sunday 
+                List<string[]> hour_option_list = new List<string[]> {
+                    master_availibility.monday, master_availibility.tuesday, master_availibility.wednesday,
+                    master_availibility.thursday, master_availibility.friday, master_availibility.saturday,
+                    master_availibility.sunday
                 };
 
                 //Choices_List = [MULTIPLE_SHIFTS,MIX_MAJORS,MIX_AGES,SHIFT_MINIMUM_WORKERS,SHIFT_MAXIMUM_WORKERS]//Need to imlement
 
                 // Workers get distributed to all available work times
-            for(int x = 0; x < hour_option_list.Count; x++) {
-                 for(int y = 0; y < hour_option_list[0].Length; y++)
-                 {
-                      if(hour_option_list[x][y] == " ")
-                      {
+                for (int x = 0; x < hour_option_list.Count; x++) {
+                    for (int y = 0; y < hour_option_list[0].Length; y++)
+                    {
+                        if (hour_option_list[x][y] == " ")
+                        {
                             foreach (Consultant worker in consultant_list)
                             {
                                 if (worker.days[x][y] == " ")
@@ -467,9 +467,9 @@ namespace schedule2
                                     worker.numberOfShifts += 1;
                                 }
                             }
-                      }
-                 }
-            }
+                        }
+                    }
+                }
                 if (director_settings.multiple_shifts)
                 {
                     MessageBox.Show("True");
@@ -515,10 +515,10 @@ namespace schedule2
                 CreateOutputFile(Hour_OptionsList, WorkersList)#Creates the "Schedule.csv" file
                 PrintErrorReport(Hour_OptionsList, WorkersList, Choices_List[4], Choices_List[3])#Prints Efficiencies to Shell
                 */
-                
+
 
             }
-            catch(Exception e) { Console.WriteLine(e); }
+            catch (Exception e) { Console.WriteLine(e); }
 
 
             return return_sched;
@@ -528,8 +528,8 @@ namespace schedule2
         public List<Consultant> getAllConsultants()
         {
             List<Consultant> consultants = new List<Consultant>();
-            foreach(object[] account_info in accounts.Values){
-                if (!((User)account_info[2]).director){
+            foreach (object[] account_info in accounts.Values) {
+                if (!((User)account_info[2]).director) {
                     consultants.Add(new Consultant((User)account_info[2]));
                 }
             }
@@ -561,7 +561,7 @@ namespace schedule2
         {
             List<List<List<User>>> new_sched = new List<List<List<User>>>();
             Schedule master = getMasterAvalibility();
-            
+
             for (int i = 0; i < 7; i++)
             {
                 List<List<User>> days = new List<List<User>>();
@@ -613,7 +613,7 @@ namespace schedule2
                                 number_of_upperclassmen++;
                             }
                         }
-                            // Ages
+                        // Ages
                         if (director_settings.mix_ages)
                         {
                             if (count && number_of_upperclassmen == 1)
@@ -632,7 +632,7 @@ namespace schedule2
                         }
                         if (director_settings.multiple_shifts)
                         {
-                            foreach(Consultant staff in temp_kick_list.ToList())
+                            foreach (Consultant staff in temp_kick_list.ToList())
                             {
                                 if (temp_kick_list.Count - current_extra_workers > 0)
                                 {
@@ -647,7 +647,7 @@ namespace schedule2
                                         }
                                         else
                                         {
-                                            if(shifts[x][y - 1].Contains(staff))
+                                            if (shifts[x][y - 1].Contains(staff))
                                             {
                                                 temp_kick_list.Remove(staff);
                                             }
@@ -655,7 +655,7 @@ namespace schedule2
                                     }
                                     else
                                     {
-                                        if(shifts[x][y + 1].Contains(staff))
+                                        if (shifts[x][y + 1].Contains(staff))
                                         {
                                             temp_kick_list.Remove(staff);
                                         }
@@ -665,9 +665,9 @@ namespace schedule2
                         }
                         else
                         {
-                            foreach(Consultant staff in temp_kick_list.ToList())
+                            foreach (Consultant staff in temp_kick_list.ToList())
                             {
-                                if(temp_kick_list.Count - current_extra_workers > 0)
+                                if (temp_kick_list.Count - current_extra_workers > 0)
                                 {
                                     if (y > 0)
                                     {
@@ -712,26 +712,26 @@ namespace schedule2
                             }
                         }
 
-                        while(temp_kick_list.Count > 0 && current_extra_workers > 0)
+                        while (temp_kick_list.Count > 0 && current_extra_workers > 0)
                         {
                             Consultant largest_gap_staff = temp_kick_list[0];
                             int largest_gap = 0;
-                            foreach(Consultant staff in temp_kick_list.ToList())
+                            foreach (Consultant staff in temp_kick_list.ToList())
                             {
-                                if((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
+                                if ((staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2)) > largest_gap)
                                 {
                                     largest_gap_staff = staff;
                                     largest_gap = staff.numberOfShifts - (int.Parse(staff.hoursPer) * 2);
                                 }
                             }
-                                
+
                             current_extra_workers--;
                             largest_gap_staff.numberOfShifts--;
                             temp_kick_list.Remove(largest_gap_staff);
                             shifts[x][y].Remove(largest_gap_staff);
                         }
 
-                        if(current_extra_workers > 0)
+                        if (current_extra_workers > 0)
                         {
                             Random random = new Random();
                             for (int i = 0; i < current_extra_workers; i++)
@@ -773,6 +773,104 @@ namespace schedule2
             director_settings.multiple_majors = majors;
             director_settings.mix_ages = ages;
             director_settings.multiple_shifts = multiShifts;
+        }
+
+        public void createCSV(UserListSchedule userSched)
+        {
+            try
+            {
+                string fileName = "currentSchedule.csv";
+                string fileString = "Time,Workers\n";
+                DateTime startTime = new DateTime(2022, 5,17,8,00,00);
+                for(List<List<User>> userList in userSched.monday)
+                {
+                    fileString += "monday " + startTime.ToString("h:mm") +",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.tuesday)
+                {
+                    fileString += "tuesday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.wednesday)
+                {
+                    fileString += "wednesday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.thursday)
+                {
+                    fileString += "thursday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.friday)
+                {
+                    fileString += "friday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.saturday)
+                {
+                    fileString += "saturday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                DateTime startTime = new DateTime(2022, 5, 17, 8, 00, 00);
+                for(List<List<User>> userList in userSched.sunday)
+                {
+                    fileString += "sunday " + startTime.ToString("h:mm") + ",[";
+                    for(User user in userList)
+                    {
+                        fileString += user.getFirstandLast() + ",";
+                    }
+                    fileString += "]";
+                    startTime.AddMinutes(30);
+                }
+
+                File.WriteAllText(fileName, fileString);
+
+            }
+            except(Exception e){
+                Console.WriteLine(e);
+            }
         }
 
     }
