@@ -122,19 +122,16 @@ namespace schedule2
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 //MessageBox.Show("Columns " + dataGridView1.Columns.Count.ToString() + "\nCurrentSched " + CurrentSched.days.Count.ToString() + "\nRows " + dataGridView1.Rows.Count.ToString());
-                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                for (int j = 0; j < times.Count(); j++)
                 {
-                    if (i > 0)
-                    {
                         if (j >= openInd && j <= closeInd)
                         {
                             // Columns are the associated to the times
-                            if (CurrentSched.days[i - 1][j] == "NULL")
+                            if (CurrentSched.days[i][j] == "NULL")
                             {
-                                dataGridView1[i, j].Style.BackColor = notOpen.BackColor;
+                                dataGridView1[i, j-openInd].Style.BackColor = notOpen.BackColor;
                             }
                         }
-                    }
                 }
             }
 
@@ -148,7 +145,7 @@ namespace schedule2
         {
             List<String[]> openAndCloseHours = new List<String[]>();
             Boolean isOpen = false;
-            Boolean isClosed = true;
+            Boolean isClosed = false;
             String openTime = null;
             String closeTime = null;
             foreach (String[] day in CurrentSched.days)
@@ -189,7 +186,7 @@ namespace schedule2
                         }
                     }
                 }
-                if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am")
+                if (biggestClose[1].Substring(2) == "pm" && currClose[1].Substring(2) == "am" && currClose[0] != "0" && currClose[1] != "00am")
                 {
                     closeTime = day[1];
                 }
