@@ -298,9 +298,12 @@ namespace schedule2
 
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
-                foreach(DataGridViewCell cell in row.Cells)
+                foreach (DataGridViewCell cell in row.Cells)
                 {
-                    cell.Style.BackColor = Color.Gainsboro;
+                    if (cell.Style.BackColor != Color.Black)
+                    {
+                        cell.Style.BackColor = Color.Gainsboro;
+                    }
                 }
             }
         
@@ -330,7 +333,10 @@ namespace schedule2
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    cell.Style.BackColor = Color.Gainsboro;
+                    if (cell.Style.BackColor != Color.Black)
+                    {
+                        cell.Style.BackColor = Color.Gainsboro;
+                    }
                 }
             }
         }
