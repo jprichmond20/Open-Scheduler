@@ -158,6 +158,7 @@ namespace schedule2
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
                 object[] user_login_info = { hash, salt, user, user.userID };
                 accounts.Add(username, user_login_info);
+                lookupAccounts.Add(user.getFirstandLast(), user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID);
 
                 if (user.IsDirector())
