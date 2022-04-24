@@ -205,6 +205,11 @@ namespace schedule2
             return JsonConvert.DeserializeObject<Schedule>(json_text);
         }
 
+        public string[] get_short_list()
+        {
+            return File.ReadAllLines("short_list.txt");
+        }
+
         public void setMasterAvailibility(Director user)
         {
             String json_file_name = "masterAvailability.json";
