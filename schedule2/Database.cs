@@ -795,7 +795,7 @@ namespace schedule2
             director_settings.multiple_shifts = multiShifts;
         }
 
-        private void saveScheduleAsCSV(UserListSchedule schedule)
+        public void saveScheduleAsCSV(UserListSchedule schedule)
         {
             try
             {

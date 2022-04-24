@@ -128,7 +128,7 @@ namespace schedule2
 
         private void class14_Click(object sender, EventArgs e)
         {
-            Program.db.CsvExport();
+            Program.db.saveScheduleAsCSV(Program.db.getUserSchedule());
         }
 
         private void DirectorLanding_Load(object sender, EventArgs e)
