@@ -61,7 +61,7 @@ namespace schedule2
             sched.BackColor = Color.Black;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 0; j < times.Count(); j++)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (j >= openInd && j <= closeInd)
                     {
@@ -83,7 +83,7 @@ namespace schedule2
             // So the users know the hours of the writing center
 
 
-            dataGridView1.FirstDisplayedCell.Selected = false;
+            //dataGridView1.FirstDisplayedCell.Selected = false;
 
         }
 
@@ -117,9 +117,13 @@ namespace schedule2
                         {
                             openTime = day[0];
                         }
+                        if (biggestOpen[0] == "0" && biggestOpen[1] == "00am")
+                        {
+                            openTime = day[0];
+                        }
                     }
                 }
-                if (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am")
+                if (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am" && (currOpen[0] != "0" && currOpen[1] != "00am"))
                 {
                     openTime = day[0];
                 }
@@ -220,6 +224,19 @@ namespace schedule2
             }
 
             return openAndCloseDay;
+        }
+
+        private string formatNamesAtTime(List<User> scheduled)
+        {
+            string formattedOutput = "";
+            foreach (User consult in scheduled)
+            {
+                if (consult != null)
+                {
+                    formattedOutput += consult.getFirstandLast() + "\n";
+                }
+            }
+            return formattedOutput;
         }
 
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
