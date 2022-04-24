@@ -53,7 +53,7 @@ namespace schedule2
             }
             dataGridView1.FirstDisplayedCell.Selected = false;
             // Set the columns to autosize and set the default backcolor 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView1.RowHeadersWidth = 100;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
             //MessageBox.Show(dataGridView1.Rows.Count.ToString());

@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.database1DataSet1 = new schedule2.Database1DataSet();
+            this.class18 = new CustomButtons.Buttons.class1();
+            this.class17 = new CustomButtons.Buttons.class1();
+            this.class16 = new CustomButtons.Buttons.class1();
             this.class15 = new CustomButtons.Buttons.class1();
             this.class14 = new CustomButtons.Buttons.class1();
             this.class13 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
             this.class12 = new CustomButtons.Buttons.class1();
-            this.class16 = new CustomButtons.Buttons.class1();
-            this.class17 = new CustomButtons.Buttons.class1();
-            this.class18 = new CustomButtons.Buttons.class1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
             this.SuspendLayout();
@@ -53,29 +53,30 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(313, 69);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(625, 742);
@@ -106,6 +107,68 @@
             // 
             this.database1DataSet1.DataSetName = "Database1DataSet";
             this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // class18
+            // 
+            this.class18.BackColor = System.Drawing.Color.Crimson;
+            this.class18.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class18.BorderColor = System.Drawing.Color.White;
+            this.class18.BorderRadius = 25;
+            this.class18.BorderSize = 2;
+            this.class18.FlatAppearance.BorderSize = 0;
+            this.class18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class18.ForeColor = System.Drawing.Color.White;
+            this.class18.Location = new System.Drawing.Point(957, 386);
+            this.class18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class18.Name = "class18";
+            this.class18.Size = new System.Drawing.Size(181, 71);
+            this.class18.TabIndex = 13;
+            this.class18.Text = "Save Schedule";
+            this.class18.TextColor = System.Drawing.Color.White;
+            this.class18.UseVisualStyleBackColor = false;
+            this.class18.Click += new System.EventHandler(this.class18_Click);
+            // 
+            // class17
+            // 
+            this.class17.BackColor = System.Drawing.Color.Crimson;
+            this.class17.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class17.BorderColor = System.Drawing.Color.White;
+            this.class17.BorderRadius = 25;
+            this.class17.BorderSize = 2;
+            this.class17.FlatAppearance.BorderSize = 0;
+            this.class17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class17.ForeColor = System.Drawing.Color.White;
+            this.class17.Location = new System.Drawing.Point(957, 461);
+            this.class17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class17.Name = "class17";
+            this.class17.Size = new System.Drawing.Size(181, 71);
+            this.class17.TabIndex = 12;
+            this.class17.Text = "Open Schedule";
+            this.class17.TextColor = System.Drawing.Color.White;
+            this.class17.UseVisualStyleBackColor = false;
+            // 
+            // class16
+            // 
+            this.class16.BackColor = System.Drawing.Color.Crimson;
+            this.class16.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class16.BorderColor = System.Drawing.Color.White;
+            this.class16.BorderRadius = 25;
+            this.class16.BorderSize = 2;
+            this.class16.FlatAppearance.BorderSize = 0;
+            this.class16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class16.ForeColor = System.Drawing.Color.White;
+            this.class16.Location = new System.Drawing.Point(51, 318);
+            this.class16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class16.Name = "class16";
+            this.class16.Size = new System.Drawing.Size(181, 71);
+            this.class16.TabIndex = 11;
+            this.class16.Text = "Help";
+            this.class16.TextColor = System.Drawing.Color.White;
+            this.class16.UseVisualStyleBackColor = false;
+            this.class16.Click += new System.EventHandler(this.class16_Click);
             // 
             // class15
             // 
@@ -212,68 +275,6 @@
             this.class12.UseVisualStyleBackColor = false;
             this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
-            // class16
-            // 
-            this.class16.BackColor = System.Drawing.Color.Crimson;
-            this.class16.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class16.BorderColor = System.Drawing.Color.White;
-            this.class16.BorderRadius = 25;
-            this.class16.BorderSize = 2;
-            this.class16.FlatAppearance.BorderSize = 0;
-            this.class16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class16.ForeColor = System.Drawing.Color.White;
-            this.class16.Location = new System.Drawing.Point(51, 318);
-            this.class16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.class16.Name = "class16";
-            this.class16.Size = new System.Drawing.Size(181, 71);
-            this.class16.TabIndex = 11;
-            this.class16.Text = "Help";
-            this.class16.TextColor = System.Drawing.Color.White;
-            this.class16.UseVisualStyleBackColor = false;
-            this.class16.Click += new System.EventHandler(this.class16_Click);
-            // 
-            // class17
-            // 
-            this.class17.BackColor = System.Drawing.Color.Crimson;
-            this.class17.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class17.BorderColor = System.Drawing.Color.White;
-            this.class17.BorderRadius = 25;
-            this.class17.BorderSize = 2;
-            this.class17.FlatAppearance.BorderSize = 0;
-            this.class17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class17.ForeColor = System.Drawing.Color.White;
-            this.class17.Location = new System.Drawing.Point(957, 461);
-            this.class17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.class17.Name = "class17";
-            this.class17.Size = new System.Drawing.Size(181, 71);
-            this.class17.TabIndex = 12;
-            this.class17.Text = "Open Schedule";
-            this.class17.TextColor = System.Drawing.Color.White;
-            this.class17.UseVisualStyleBackColor = false;
-            // 
-            // class18
-            // 
-            this.class18.BackColor = System.Drawing.Color.Crimson;
-            this.class18.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class18.BorderColor = System.Drawing.Color.White;
-            this.class18.BorderRadius = 25;
-            this.class18.BorderSize = 2;
-            this.class18.FlatAppearance.BorderSize = 0;
-            this.class18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class18.ForeColor = System.Drawing.Color.White;
-            this.class18.Location = new System.Drawing.Point(957, 386);
-            this.class18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.class18.Name = "class18";
-            this.class18.Size = new System.Drawing.Size(181, 71);
-            this.class18.TabIndex = 13;
-            this.class18.Text = "Save Schedule";
-            this.class18.TextColor = System.Drawing.Color.White;
-            this.class18.UseVisualStyleBackColor = false;
-            this.class18.Click += new System.EventHandler(this.class18_Click);
-            // 
             // DirScheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -290,7 +291,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DirScheduler";
             this.Text = "DirScheduler";
             this.Load += new System.EventHandler(this.DirScheduler_Load);

@@ -98,19 +98,19 @@ namespace schedule2
 
             // Set some settings for display
             dataGridView1.RowHeadersWidth = 100; 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            /*dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             for (int i = 0; i < dataGridView1.Columns.Count - 1; i++)
             {
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
-            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }*/
+            /*dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 int colw = dataGridView1.Columns[i].Width;
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 dataGridView1.Columns[i].Width = colw;
-            }
+            }*/
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             // fits dataGridView to data both in height and width
@@ -165,6 +165,7 @@ namespace schedule2
             }
 
             dataGridView1.FirstDisplayedCell.Selected = false;
+            //dataGridView1.AutoSizeColumnsMode = D;
         }
 
         public string[] getOpenAndCloseSchedule()

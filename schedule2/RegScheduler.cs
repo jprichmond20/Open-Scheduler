@@ -76,7 +76,7 @@ namespace schedule2
 
 
             // Set the columns to autosize and set the default backcolor 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             //Once we have the direcotr schedule saving correctly it will be brought into here
