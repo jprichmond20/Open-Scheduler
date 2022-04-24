@@ -31,6 +31,7 @@ namespace schedule2
 
         private void RegScheduler_Load(object sender, EventArgs e)
         {
+            dataGridView1.DoubleBuffered(true);
             masterSchedule = new CurrentSchedule(Program.db.getMasterAvalibility());
             // Intialize event handler for when the user selection changes
             dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
