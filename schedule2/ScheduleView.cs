@@ -190,6 +190,10 @@ namespace schedule2
                         if (Int32.Parse(biggestOpen[1].Substring(0, 2)) < Int32.Parse(currOpen[1].Substring(0, 2))){
                             openTime = day[0];
                         }
+                        if(biggestOpen[0] == "0" && biggestOpen[1] == "00am")
+                        {
+                            openTime = day[0];
+                        }
                     }
                 }
                 if(biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am" && (currOpen[0] != "0" && currOpen[1] != "00am"))

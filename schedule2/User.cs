@@ -45,15 +45,15 @@ namespace schedule2
             sel.BackColor = Color.Crimson;
             for (int i = 0; i < schedule.Rows.Count; i++)
             {
-                for(int j = 1; j < schedule.Columns.Count; j++)
+                for(int j = 0; j < schedule.Columns.Count; j++)
                 {
                     if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor || schedule.Rows[i].Cells[j].Style.BackColor == Color.Gold)
                     {
-                        days[j - 1][i] = " ";
+                        days[j][i] = " ";
                     }
                     else
                     {
-                        days[j - 1][i] = "NULL";
+                        days[j][i] = "NULL";
                     }
                 }
             }
