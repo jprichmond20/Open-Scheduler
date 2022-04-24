@@ -29,11 +29,12 @@ namespace schedule2
         {
             if (progressBar1.Value < progressBar1.Maximum)
             {
-                progressBar1.Value += 1;
+                progressBar1.Value += 2;
             }
             else
             {
                 timer1.Stop();
+                MessageBox.Show("Schedule Successfully Updated!");
                 var frm = new ScheduleView(user);
                 this.Hide();
                 frm.Location = this.Location;
@@ -41,6 +42,11 @@ namespace schedule2
                 frm.FormClosing += delegate { this.Close(); };
                 frm.Show();
             }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
