@@ -490,30 +490,7 @@ namespace schedule2
                         }
                     }
                 }
-                if (director_settings.multiple_shifts)
-                {
-                    MessageBox.Show("True");
-                }
-                else
-                {
-                    MessageBox.Show("False");
-                }
-                if (director_settings.multiple_majors)
-                {
-                    MessageBox.Show("True");
-                }
-                else
-                {
-                    MessageBox.Show("False");
-                }
-                if (director_settings.mix_ages)
-                {
-                    MessageBox.Show("True");
-                }
-                else
-                {
-                    MessageBox.Show("False");
-                }
+               
 
                 List<List<List<User>>> return_schedule_list_temp = ScheduleTrimmer1(return_schedule_list, true, director_settings);
                 return_schedule_list = return_schedule_list_temp;
