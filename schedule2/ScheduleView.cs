@@ -18,6 +18,7 @@ namespace schedule2
         public Director director;
         private int openInd;
         private int closeInd;
+        private bool isDirector;
         public Database.UserListSchedule currentUserSchedule;
         String[] times = new String[] {"12:00am", "12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am",
             "3:30am", "4:00am", "4:30am", "5:00am","5:30am","6:00am","6:30am","7:00am", "7:30am", "8:00am", "8:30am", "9:00am", "9:30am",
@@ -40,6 +41,7 @@ namespace schedule2
         public ScheduleView(Director director)
         {
             this.director = director;
+            isDirector = true;
             CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
             // We set the current schedule to that in our mast availability file
             InitializeComponent();
@@ -47,7 +49,10 @@ namespace schedule2
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+            if (!isDirector)
+            {
+                label9.Text = "";
+            }
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
