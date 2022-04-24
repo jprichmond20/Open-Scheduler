@@ -76,11 +76,13 @@ namespace schedule2
         //username, (hashpass, salt, user)
         // Intialize dictionary to hold all of our accounts that have been generated
         private Dictionary<string, object[]> accounts;
+        public Dictionary<string, object[]> lookupAccounts;
         public Database()
         {
             
             // When constructor is called, we initialize our accounts dictionary
             accounts = new Dictionary<string, object[]>();
+            lookupAccounts = new Dictionary<string, object[]>();
 
             var lines = File.ReadAllLines("pwds.txt");
             foreach (string line in lines)
@@ -89,7 +91,9 @@ namespace schedule2
                 User user = getUserById(split_line[3]).user;
                 object[] output = { split_line[1], split_line[2], user, user.userID};
                 accounts.Add(split_line[0], output);
+                lookupAccounts.Add(user.getFirstandLast(), output);
             }
+            //MessageBox.Show(" ");
 
         }
 

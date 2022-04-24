@@ -14,6 +14,7 @@ namespace schedule2
     {
         public DataGridViewCell cell;
         List<User> consultantsInCell;
+        List<Consultant> short_list = new List<Consultant>();
         public editDataGridCell(DataGridViewCell currentCell, List<User> consultants)
         {
             consultantsInCell = consultants;
@@ -33,7 +34,19 @@ namespace schedule2
             foreach (String consultant in consultants)
             {
                 listBox1.Items.Add(consultant);
+                Object[] consult = Program.db.lookupAccounts[consultant];
+                consultantsInCell.Add(Program.db.getUserById(consult[3].ToString()).user);
             }
+        }
+
+        private void class11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void class12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
