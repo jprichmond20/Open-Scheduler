@@ -198,6 +198,12 @@ namespace schedule2
             return message;
         }
 
+        public User lookupByFirstAndLast(String firstAndLastName)
+        {
+            Object[] userInfo = lookupAccounts[firstAndLastName];
+            return getUserById(userInfo[3].ToString()).user;
+        }
+
         public Schedule getMasterAvalibility()
         // Gets the master availability from our database and returns a schedule
         {

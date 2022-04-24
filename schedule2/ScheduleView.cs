@@ -351,16 +351,38 @@ namespace schedule2
                 consultants = day[rowInd];
 
 
-                //EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell, consultants);
-                //editCell.Show();
-                //editCell.Location = this.Location;
-
-
-
-                var frm = new editDataGridCell(dataGridView1.CurrentCell, consultants);
-                frm.Location = this.Location;
-                frm.StartPosition = FormStartPosition.Manual;
-                frm.Show();
+                using (editDataGridCell editDataGridCell = new editDataGridCell(dataGridView1.CurrentCell))
+                {
+                    DialogResult dr = editDataGridCell.ShowDialog();
+                    if (dr == DialogResult.OK)
+                    {
+                        switch (colInd)
+                        {
+                            case 0:
+                                currentUserSchedule.monday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 1:
+                                currentUserSchedule.tuesday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 2:
+                                currentUserSchedule.wednesday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 3:
+                                currentUserSchedule.thursday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 4:
+                                currentUserSchedule.friday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 5:
+                                currentUserSchedule.saturday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 6:
+                                currentUserSchedule.sunday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                        }
+                        dataGridView1.CurrentCell = editDataGridCell.cell;
+                    }
+                }
             }
         }
 
@@ -379,6 +401,7 @@ namespace schedule2
             if (director != null)
             {
                 this.Hide();
+                Program.db.saveSchedule(currentUserSchedule);
                 var frm = new DirectorLanding(director);
                 this.Hide();
                 frm.Location = this.Location;
@@ -402,6 +425,7 @@ namespace schedule2
         private void class12_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Program.db.saveSchedule(currentUserSchedule);
             var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
@@ -413,6 +437,7 @@ namespace schedule2
         private void class12_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+            Program.db.saveSchedule(currentUserSchedule);
             var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
