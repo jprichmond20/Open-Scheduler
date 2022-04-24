@@ -903,5 +903,37 @@ namespace schedule2
             }
         }
 
+        public DBReturnMessage changePassword(User user, string new_password)
+        {
+            DBReturnMessage return_message = new DBReturnMessage();
+            return_message.success = false;
+            try
+            {
+                string salt = GenerateSalt();
+                string password_hash = ComputeHash(Encoding.UTF8.GetBytes(new_password), Encoding.UTF8.GetBytes(salt));
+                string file_name = "pwds.txt";
+                string file_text ="";
+                foreach(string line in File.ReadLines("pwds.txt"))
+                {
+                    if (!line.Split(',').Last().Equals(user.userID))
+                    {
+                        file_text += line + "\n";
+                    }
+                }
+                file_text += user.username + "," + password_hash + "," + salt + "," + user.userID;
+                File.WriteAllText(file_name, file_text);
+                return_message.success = true;
+            }
+            
+            catch (Exception ex)
+            {
+                string[] errors = { ex.Message };
+                return_message.error_messages = errors;
+            }
+
+            return return_message;
+
+        }
+
     }
 }
