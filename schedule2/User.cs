@@ -45,15 +45,15 @@ namespace schedule2
             sel.BackColor = Color.Crimson;
             for (int i = 0; i < schedule.Rows.Count; i++)
             {
-                for(int j = 1; j < schedule.Columns.Count; j++)
+                for(int j = 0; j < schedule.Columns.Count; j++)
                 {
                     if(schedule.Rows[i].Cells[j].Style.BackColor == sel.BackColor || schedule.Rows[i].Cells[j].Style.BackColor == Color.Gold)
                     {
-                        days[j - 1][i] = " ";
+                        days[j][i] = " ";
                     }
                     else
                     {
-                        days[j - 1][i] = "NULL";
+                        days[j][i] = "NULL";
                     }
                 }
             }
@@ -129,8 +129,8 @@ namespace schedule2
             }
             catch (Exception e)
             {
-                string[] day = new string[31];
-                for (int i = 0; i < 31; i++)
+                string[] day = new string[48];
+                for (int i = 0; i < 48; i++)
                 {
                     day[i] = "";
                 }
@@ -153,8 +153,8 @@ namespace schedule2
             }
             catch(Exception e)
             {
-                string[] day = new string[31];
-                for (int i = 0; i < 31; i++)
+                string[] day = new string[48];
+                for (int i = 0; i < 48; i++)
                 {
                     day[i] = "";
                 }
@@ -222,16 +222,16 @@ namespace schedule2
             userID = demographicInfo[8];
             //this.demographicInfo = demographicInfo;
 
-            string[] day1 = new string[31];
-            string[] day2 = new string[31];
-            string[] day3 = new string[31];
-            string[] day4 = new string[31];
-            string[] day5 = new string[31];
-            string[] day6 = new string[31];
-            string[] day7 = new string[31];
+            string[] day1 = new string[48];
+            string[] day2 = new string[48];
+            string[] day3 = new string[48];
+            string[] day4 = new string[48];
+            string[] day5 = new string[48];
+            string[] day6 = new string[48];
+            string[] day7 = new string[48];
 
 
-            for (int i = 0; i < 31; i++)
+            for (int i = 0; i < 48; i++)
             {
                 day1[i] = "";
                 day2[i] = "";

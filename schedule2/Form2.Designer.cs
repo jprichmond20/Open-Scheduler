@@ -42,30 +42,34 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(85, 129);
-            this.progressBar1.Maximum = 5;
+            this.progressBar1.Location = new System.Drawing.Point(64, 105);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Maximum = 6;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(419, 51);
+            this.progressBar1.Size = new System.Drawing.Size(314, 41);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 0;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(202, 75);
+            this.label1.Location = new System.Drawing.Point(152, 61);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 36);
+            this.label1.Size = new System.Drawing.Size(146, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Please Wait...";
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 309);
+            this.ClientSize = new System.Drawing.Size(442, 251);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);

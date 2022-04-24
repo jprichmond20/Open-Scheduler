@@ -79,6 +79,7 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+        
 
         private void class13_Click(object sender, EventArgs e)
         //Allow director to open up the schedule creator to set new hours of operation

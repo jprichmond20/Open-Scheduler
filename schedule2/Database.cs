@@ -80,20 +80,24 @@ namespace schedule2
         //username, (hashpass, salt, user)
         // Intialize dictionary to hold all of our accounts that have been generated
         private Dictionary<string, object[]> accounts;
+        public Dictionary<string, object[]> lookupAccounts;
         public Database()
         {
 
             // When constructor is called, we initialize our accounts dictionary
             accounts = new Dictionary<string, object[]>();
+            lookupAccounts = new Dictionary<string, object[]>();
 
             var lines = File.ReadAllLines("pwds.txt");
             foreach (string line in lines)
             {
                 string[] split_line = line.Split(',');
                 User user = getUserById(split_line[3]).user;
-                object[] output = { split_line[1], split_line[2], user };
+                object[] output = { split_line[1], split_line[2], user, user.userID};
                 accounts.Add(split_line[0], output);
+                lookupAccounts.Add(user.getFirstandLast(), output);
             }
+            //MessageBox.Show(" ");
 
         }
 
@@ -152,7 +156,7 @@ namespace schedule2
             try {
                 string salt = GenerateSalt();
                 string hash = ComputeHash(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt));
-                object[] user_login_info = { hash, salt, user };
+                object[] user_login_info = { hash, salt, user, user.userID };
                 accounts.Add(username, user_login_info);
                 File.AppendAllText("pwds.txt", Environment.NewLine + username + "," + hash + "," + salt + "," + user.userID);
 
@@ -198,11 +202,22 @@ namespace schedule2
             return message;
         }
 
+        public User lookupByFirstAndLast(String firstAndLastName)
+        {
+            Object[] userInfo = lookupAccounts[firstAndLastName];
+            return getUserById(userInfo[3].ToString()).user;
+        }
+
         public Schedule getMasterAvalibility()
         // Gets the master availability from our database and returns a schedule
         {
             string json_text = File.ReadAllText("masterAvailability.json");
             return JsonConvert.DeserializeObject<Schedule>(json_text);
+        }
+
+        public string[] get_short_list()
+        {
+            return File.ReadAllLines("short_list.txt");
         }
 
         public void setMasterAvailibility(Director user)

@@ -55,6 +55,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -78,7 +79,6 @@
             this.label8.Size = new System.Drawing.Size(276, 42);
             this.label8.TabIndex = 27;
             this.label8.Text = "Hours per Week:";
-            //this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -101,7 +101,6 @@
             this.label10.Size = new System.Drawing.Size(133, 42);
             this.label10.TabIndex = 29;
             this.label10.Text = "Majors:";
-            //this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label3
             // 
@@ -113,7 +112,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 35);
             this.label3.TabIndex = 32;
-            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label6
             // 
@@ -268,7 +266,6 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(245, 157);
             this.checkedListBox1.TabIndex = 4;
-            //this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // checkedListBox2
             // 
@@ -369,7 +366,7 @@
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(786, 622);
+            this.class12.Location = new System.Drawing.Point(786, 636);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(150, 55);
             this.class12.TabIndex = 9;
@@ -389,7 +386,7 @@
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(59, 622);
+            this.class11.Location = new System.Drawing.Point(59, 636);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(150, 55);
             this.class11.TabIndex = 8;
@@ -548,12 +545,24 @@
             this.panel1.Size = new System.Drawing.Size(877, 10);
             this.panel1.TabIndex = 45;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(99, 610);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(803, 25);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Please fill out all forms completely and use your school login for username/passw" +
+    "ord";
+            // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(979, 702);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -584,7 +593,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegForm";
             this.Text = "Registration";
-            //this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,5 +626,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label5;
     }
 }
