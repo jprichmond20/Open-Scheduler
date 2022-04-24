@@ -69,12 +69,7 @@ namespace schedule2
         //It stores their information (username, password, demographic info)
         //in the database in a json file
         {
-            MessageBox.Show(days[0][0]);
-            MessageBox.Show(days[0][1]);
-            MessageBox.Show(days[0][2]);
-            MessageBox.Show(days[0][3]);
-            MessageBox.Show(days[0][4]);
-            MessageBox.Show(days[0][5]);
+            
             //Database db = new Database();
             Program.db.RegisterUser(username, password, this);
             // could be
