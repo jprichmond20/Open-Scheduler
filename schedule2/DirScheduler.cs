@@ -62,9 +62,8 @@ namespace schedule2
             {
                 for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    if (i > 0) {
                         // Columns are the associated to the times
-                        if (user.days[i-1][j] == " ")
+                        if (user.days[i][j] == " ")
                         {
                             dataGridView1[i, j].Style.BackColor = sched.BackColor;
                         }
@@ -72,8 +71,7 @@ namespace schedule2
                         {
                             dataGridView1[i,j].Style.BackColor = Color.Gainsboro;
                         }
-                            }
-                }
+                 }
             }
 
             
