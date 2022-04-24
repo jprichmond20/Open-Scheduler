@@ -304,5 +304,15 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+
+        private void class18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void class16_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Submit: Save new schedule and run scheduler (optional)\nReset: Clear whole schedule and start from scratch\nClear: Clear any changes made to the schedule and return to saved template");
+        }
     }
 }
