@@ -18,6 +18,7 @@ namespace schedule2
         public Director director;
         private int openInd;
         private int closeInd;
+        private bool isDirector;
         public Database.UserListSchedule currentUserSchedule;
         String[] times = new String[] {"12:00am", "12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am",
             "3:30am", "4:00am", "4:30am", "5:00am","5:30am","6:00am","6:30am","7:00am", "7:30am", "8:00am", "8:30am", "9:00am", "9:30am",
@@ -40,6 +41,7 @@ namespace schedule2
         public ScheduleView(Director director)
         {
             this.director = director;
+            isDirector = true;
             CurrentSched = new CurrentSchedule(Program.db.getMasterAvalibility());
             // We set the current schedule to that in our mast availability file
             InitializeComponent();
@@ -47,7 +49,10 @@ namespace schedule2
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+            if (!isDirector)
+            {
+                label9.Text = "";
+            }
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
@@ -93,19 +98,19 @@ namespace schedule2
 
             // Set some settings for display
             dataGridView1.RowHeadersWidth = 100; 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            /*dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             for (int i = 0; i < dataGridView1.Columns.Count - 1; i++)
             {
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
-            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }*/
+            /*dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 int colw = dataGridView1.Columns[i].Width;
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 dataGridView1.Columns[i].Width = colw;
-            }
+            }*/
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             // fits dataGridView to data both in height and width
@@ -160,6 +165,7 @@ namespace schedule2
             }
 
             dataGridView1.FirstDisplayedCell.Selected = false;
+            //dataGridView1.AutoSizeColumnsMode = D;
         }
 
         public string[] getOpenAndCloseSchedule()
@@ -351,16 +357,38 @@ namespace schedule2
                 consultants = day[rowInd];
 
 
-                //EditScheduleView editCell = new EditScheduleView(dataGridView1.CurrentCell, consultants);
-                //editCell.Show();
-                //editCell.Location = this.Location;
-
-
-
-                var frm = new editDataGridCell(dataGridView1.CurrentCell, consultants);
-                frm.Location = this.Location;
-                frm.StartPosition = FormStartPosition.Manual;
-                frm.Show();
+                using (editDataGridCell editDataGridCell = new editDataGridCell(dataGridView1.CurrentCell))
+                {
+                    DialogResult dr = editDataGridCell.ShowDialog();
+                    if (dr == DialogResult.OK)
+                    {
+                        switch (colInd)
+                        {
+                            case 0:
+                                currentUserSchedule.monday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 1:
+                                currentUserSchedule.tuesday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 2:
+                                currentUserSchedule.wednesday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 3:
+                                currentUserSchedule.thursday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 4:
+                                currentUserSchedule.friday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 5:
+                                currentUserSchedule.saturday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                            case 6:
+                                currentUserSchedule.sunday[rowInd] = editDataGridCell.consultantsInCell;
+                                break;
+                        }
+                        dataGridView1.CurrentCell = editDataGridCell.cell;
+                    }
+                }
             }
         }
 
@@ -379,6 +407,7 @@ namespace schedule2
             if (director != null)
             {
                 this.Hide();
+                Program.db.saveSchedule(currentUserSchedule);
                 var frm = new DirectorLanding(director);
                 this.Hide();
                 frm.Location = this.Location;
@@ -402,6 +431,7 @@ namespace schedule2
         private void class12_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Program.db.saveSchedule(currentUserSchedule);
             var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
@@ -413,6 +443,7 @@ namespace schedule2
         private void class12_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+            Program.db.saveSchedule(currentUserSchedule);
             var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;

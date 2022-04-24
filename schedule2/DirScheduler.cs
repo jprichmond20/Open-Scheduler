@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace schedule2
 {
-
+    
     public partial class DirScheduler : Form
     // This form allows a director to set or change the writing center schedule
     // director will have button to allow them to import past shcedules
@@ -30,6 +31,7 @@ namespace schedule2
 
         private void DirScheduler_Load(object sender, EventArgs e)
         {
+            dataGridView1.DoubleBuffered(true);
             // Intialize event handler for when the user selection changes
             dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
             // Tell it not to create columns automatically
@@ -51,7 +53,7 @@ namespace schedule2
             }
             dataGridView1.FirstDisplayedCell.Selected = false;
             // Set the columns to autosize and set the default backcolor 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView1.RowHeadersWidth = 100;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
             //MessageBox.Show(dataGridView1.Rows.Count.ToString());
@@ -304,5 +306,41 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+
+        private void class18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void class16_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Submit: Save new schedule and run scheduler (optional)\nReset: Clear whole schedule and start from scratch\nClear: Clear any changes made to the schedule and return to saved template");
+        }
+        
     }
+    /*public static void DoubleBuffered(this DataGridView dgv, bool setting)
+    {
+        Type dgvType = dgv.GetType();
+        PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+              BindingFlags.Instance | BindingFlags.NonPublic);
+        pi.SetValue(dgv, setting, null);
+    }*/
+    public static class ExtensionMethods
+
+{
+
+    public static void DoubleBuffered(this DataGridView dgv, bool setting)
+
+    {
+
+        Type dgvType = dgv.GetType();
+
+        PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        pi.SetValue(dgv, setting, null);
+
+    }
+
+}
+
 }

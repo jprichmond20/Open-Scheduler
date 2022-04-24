@@ -31,6 +31,7 @@ namespace schedule2
 
         private void RegScheduler_Load(object sender, EventArgs e)
         {
+            dataGridView1.DoubleBuffered(true);
             masterSchedule = new CurrentSchedule(Program.db.getMasterAvalibility());
             // Intialize event handler for when the user selection changes
             dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
@@ -61,7 +62,7 @@ namespace schedule2
             sched.BackColor = Color.Black;
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                for (int j = 0; j < times.Count(); j++)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
                     if (j >= openInd && j <= closeInd)
                     {
@@ -76,14 +77,14 @@ namespace schedule2
 
 
             // Set the columns to autosize and set the default backcolor 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.DefaultCellStyle.BackColor = Color.Gainsboro;
 
             //Once we have the direcotr schedule saving correctly it will be brought into here
             // So the users know the hours of the writing center
 
 
-            dataGridView1.FirstDisplayedCell.Selected = false;
+            //dataGridView1.FirstDisplayedCell.Selected = false;
 
         }
 
@@ -117,9 +118,13 @@ namespace schedule2
                         {
                             openTime = day[0];
                         }
+                        if (biggestOpen[0] == "0" && biggestOpen[1] == "00am")
+                        {
+                            openTime = day[0];
+                        }
                     }
                 }
-                if (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am")
+                if (biggestOpen[1].Substring(2) == "pm" && currOpen[1].Substring(2) == "am" && (currOpen[0] != "0" && currOpen[1] != "00am"))
                 {
                     openTime = day[0];
                 }
@@ -222,6 +227,19 @@ namespace schedule2
             return openAndCloseDay;
         }
 
+        private string formatNamesAtTime(List<User> scheduled)
+        {
+            string formattedOutput = "";
+            foreach (User consult in scheduled)
+            {
+                if (consult != null)
+                {
+                    formattedOutput += consult.getFirstandLast() + "\n";
+                }
+            }
+            return formattedOutput;
+        }
+
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
         // this function is where the magic happens. When a user selects a cell
         // the cell color is updated to the opposite of its current state
@@ -280,9 +298,12 @@ namespace schedule2
 
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
-                foreach(DataGridViewCell cell in row.Cells)
+                foreach (DataGridViewCell cell in row.Cells)
                 {
-                    cell.Style.BackColor = Color.Gainsboro;
+                    if (cell.Style.BackColor != Color.Black)
+                    {
+                        cell.Style.BackColor = Color.Gainsboro;
+                    }
                 }
             }
         
@@ -312,7 +333,10 @@ namespace schedule2
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    cell.Style.BackColor = Color.Gainsboro;
+                    if (cell.Style.BackColor != Color.Black)
+                    {
+                        cell.Style.BackColor = Color.Gainsboro;
+                    }
                 }
             }
         }

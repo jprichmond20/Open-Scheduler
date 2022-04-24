@@ -35,13 +35,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.database1DataSet1 = new schedule2.Database1DataSet();
+            this.class18 = new CustomButtons.Buttons.class1();
+            this.class17 = new CustomButtons.Buttons.class1();
+            this.class16 = new CustomButtons.Buttons.class1();
             this.class15 = new CustomButtons.Buttons.class1();
             this.class14 = new CustomButtons.Buttons.class1();
             this.class13 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
             this.class12 = new CustomButtons.Buttons.class1();
-            this.class16 = new CustomButtons.Buttons.class1();
-            this.class17 = new CustomButtons.Buttons.class1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,7 +65,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(235, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(313, 69);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -76,7 +79,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(469, 603);
+            this.dataGridView1.Size = new System.Drawing.Size(625, 742);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -84,24 +87,88 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(264, 9);
+            this.label1.Location = new System.Drawing.Point(352, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(409, 26);
+            this.label1.Size = new System.Drawing.Size(519, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Create/Change Writing Center Schedule";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 56);
+            this.label2.Location = new System.Drawing.Point(45, 69);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 522);
+            this.label2.Size = new System.Drawing.Size(233, 642);
             this.label2.TabIndex = 3;
             // 
             // database1DataSet1
             // 
             this.database1DataSet1.DataSetName = "Database1DataSet";
             this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // class18
+            // 
+            this.class18.BackColor = System.Drawing.Color.Crimson;
+            this.class18.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class18.BorderColor = System.Drawing.Color.White;
+            this.class18.BorderRadius = 25;
+            this.class18.BorderSize = 2;
+            this.class18.FlatAppearance.BorderSize = 0;
+            this.class18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class18.ForeColor = System.Drawing.Color.White;
+            this.class18.Location = new System.Drawing.Point(957, 386);
+            this.class18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class18.Name = "class18";
+            this.class18.Size = new System.Drawing.Size(181, 71);
+            this.class18.TabIndex = 13;
+            this.class18.Text = "Save Schedule";
+            this.class18.TextColor = System.Drawing.Color.White;
+            this.class18.UseVisualStyleBackColor = false;
+            this.class18.Click += new System.EventHandler(this.class18_Click);
+            // 
+            // class17
+            // 
+            this.class17.BackColor = System.Drawing.Color.Crimson;
+            this.class17.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class17.BorderColor = System.Drawing.Color.White;
+            this.class17.BorderRadius = 25;
+            this.class17.BorderSize = 2;
+            this.class17.FlatAppearance.BorderSize = 0;
+            this.class17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class17.ForeColor = System.Drawing.Color.White;
+            this.class17.Location = new System.Drawing.Point(957, 461);
+            this.class17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class17.Name = "class17";
+            this.class17.Size = new System.Drawing.Size(181, 71);
+            this.class17.TabIndex = 12;
+            this.class17.Text = "Open Schedule";
+            this.class17.TextColor = System.Drawing.Color.White;
+            this.class17.UseVisualStyleBackColor = false;
+            // 
+            // class16
+            // 
+            this.class16.BackColor = System.Drawing.Color.Crimson;
+            this.class16.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class16.BorderColor = System.Drawing.Color.White;
+            this.class16.BorderRadius = 25;
+            this.class16.BorderSize = 2;
+            this.class16.FlatAppearance.BorderSize = 0;
+            this.class16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
+            this.class16.ForeColor = System.Drawing.Color.White;
+            this.class16.Location = new System.Drawing.Point(51, 318);
+            this.class16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.class16.Name = "class16";
+            this.class16.Size = new System.Drawing.Size(181, 71);
+            this.class16.TabIndex = 11;
+            this.class16.Text = "Help";
+            this.class16.TextColor = System.Drawing.Color.White;
+            this.class16.UseVisualStyleBackColor = false;
+            this.class16.Click += new System.EventHandler(this.class16_Click);
             // 
             // class15
             // 
@@ -114,10 +181,10 @@
             this.class15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class15.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class15.ForeColor = System.Drawing.Color.White;
-            this.class15.Location = new System.Drawing.Point(38, 117);
-            this.class15.Margin = new System.Windows.Forms.Padding(2);
+            this.class15.Location = new System.Drawing.Point(51, 144);
+            this.class15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.class15.Name = "class15";
-            this.class15.Size = new System.Drawing.Size(136, 58);
+            this.class15.Size = new System.Drawing.Size(181, 71);
             this.class15.TabIndex = 10;
             this.class15.Text = "Sign Out";
             this.class15.TextColor = System.Drawing.Color.White;
@@ -135,10 +202,10 @@
             this.class14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class14.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class14.ForeColor = System.Drawing.Color.White;
-            this.class14.Location = new System.Drawing.Point(38, 56);
-            this.class14.Margin = new System.Windows.Forms.Padding(2);
+            this.class14.Location = new System.Drawing.Point(51, 69);
+            this.class14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.class14.Name = "class14";
-            this.class14.Size = new System.Drawing.Size(136, 58);
+            this.class14.Size = new System.Drawing.Size(181, 71);
             this.class14.TabIndex = 9;
             this.class14.Text = "Back";
             this.class14.TextColor = System.Drawing.Color.White;
@@ -156,10 +223,10 @@
             this.class13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class13.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class13.ForeColor = System.Drawing.Color.White;
-            this.class13.Location = new System.Drawing.Point(718, 56);
-            this.class13.Margin = new System.Windows.Forms.Padding(2);
+            this.class13.Location = new System.Drawing.Point(957, 69);
+            this.class13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.class13.Name = "class13";
-            this.class13.Size = new System.Drawing.Size(136, 58);
+            this.class13.Size = new System.Drawing.Size(181, 71);
             this.class13.TabIndex = 8;
             this.class13.Text = "Submit";
             this.class13.TextColor = System.Drawing.Color.White;
@@ -177,10 +244,10 @@
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(718, 117);
-            this.class11.Margin = new System.Windows.Forms.Padding(2);
+            this.class11.Location = new System.Drawing.Point(957, 144);
+            this.class11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.class11.Name = "class11";
-            this.class11.Size = new System.Drawing.Size(136, 58);
+            this.class11.Size = new System.Drawing.Size(181, 71);
             this.class11.TabIndex = 7;
             this.class11.Text = "Clear";
             this.class11.TextColor = System.Drawing.Color.White;
@@ -198,59 +265,22 @@
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(718, 178);
-            this.class12.Margin = new System.Windows.Forms.Padding(2);
+            this.class12.Location = new System.Drawing.Point(957, 219);
+            this.class12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.class12.Name = "class12";
-            this.class12.Size = new System.Drawing.Size(136, 58);
+            this.class12.Size = new System.Drawing.Size(181, 71);
             this.class12.TabIndex = 6;
             this.class12.Text = "Reset";
             this.class12.TextColor = System.Drawing.Color.White;
             this.class12.UseVisualStyleBackColor = false;
             this.class12.Click += new System.EventHandler(this.class12_Click);
             // 
-            // class16
-            // 
-            this.class16.BackColor = System.Drawing.Color.Crimson;
-            this.class16.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class16.BorderColor = System.Drawing.Color.White;
-            this.class16.BorderRadius = 25;
-            this.class16.BorderSize = 2;
-            this.class16.FlatAppearance.BorderSize = 0;
-            this.class16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class16.ForeColor = System.Drawing.Color.White;
-            this.class16.Location = new System.Drawing.Point(718, 300);
-            this.class16.Name = "class16";
-            this.class16.Size = new System.Drawing.Size(136, 56);
-            this.class16.TabIndex = 11;
-            this.class16.Text = "Save Schedule";
-            this.class16.TextColor = System.Drawing.Color.White;
-            this.class16.UseVisualStyleBackColor = false;
-            // 
-            // class17
-            // 
-            this.class17.BackColor = System.Drawing.Color.Crimson;
-            this.class17.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class17.BorderColor = System.Drawing.Color.White;
-            this.class17.BorderRadius = 25;
-            this.class17.BorderSize = 2;
-            this.class17.FlatAppearance.BorderSize = 0;
-            this.class17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class17.ForeColor = System.Drawing.Color.White;
-            this.class17.Location = new System.Drawing.Point(718, 362);
-            this.class17.Name = "class17";
-            this.class17.Size = new System.Drawing.Size(136, 56);
-            this.class17.TabIndex = 12;
-            this.class17.Text = "Open Schedule";
-            this.class17.TextColor = System.Drawing.Color.White;
-            this.class17.UseVisualStyleBackColor = false;
-            // 
             // DirScheduler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 671);
+            this.ClientSize = new System.Drawing.Size(1151, 826);
+            this.Controls.Add(this.class18);
             this.Controls.Add(this.class17);
             this.Controls.Add(this.class16);
             this.Controls.Add(this.class15);
@@ -261,6 +291,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DirScheduler";
             this.Text = "DirScheduler";
             this.Load += new System.EventHandler(this.DirScheduler_Load);
@@ -284,5 +315,6 @@
         private CustomButtons.Buttons.class1 class15;
         private CustomButtons.Buttons.class1 class16;
         private CustomButtons.Buttons.class1 class17;
+        private CustomButtons.Buttons.class1 class18;
     }
 }
