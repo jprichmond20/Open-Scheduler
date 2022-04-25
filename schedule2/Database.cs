@@ -782,94 +782,115 @@ namespace schedule2
                 DateTime time;
 
                 day = "monday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.monday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach(User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if(!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "tuesday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.tuesday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "wednesday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.wednesday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "thursday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.thursday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "friday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.friday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "saturday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.saturday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
                     file_text += "]\"\n";
-                    time.AddMinutes(30);
+                    time = time.AddMinutes(30);
                 }
 
                 day = "sunday";
-                time = new DateTime(2000, 5, 17, 8, 00, 00);
+                time = new DateTime(2000, 5, 17, 00, 00, 00);
                 foreach (List<User> shifts in schedule.sunday)
                 {
-                    file_text += day + time.ToString("hh:mm") + ",\"[";
-                    foreach (User user in shifts)
+                    file_text += day + time.ToString("hh:mmtt") + ",\"[";
+                    if (!(shifts[0] == null))
                     {
-                        file_text += user.getFirstandLast() + ",";
+                        foreach (User user in shifts)
+                        {
+                            file_text += user.getFirstandLast() + ",";
+                        }
                     }
-                    file_text += "]\"";
-                    time.AddMinutes(30);
+                    file_text += "]\"\n";
+                    time = time.AddMinutes(30);
                 }
 
                 File.WriteAllText(file_path, file_text);
