@@ -42,5 +42,15 @@ namespace schedule2
         {
 
         }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            var frm = new DirectorLanding(new Director(curr_user));
+            this.Hide();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Close(); };
+            frm.Show();
+        }
     }
 }

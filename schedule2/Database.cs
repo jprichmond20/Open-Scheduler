@@ -990,7 +990,7 @@ namespace schedule2
                     file_text += user.username + "," + password_hash + "," + salt + "," + user.userID;
                     File.WriteAllText(file_name, file_text);
                     object[] user_info = { password_hash, salt, user };
-                    accounts[user.userID] = user_info;
+                    accounts[user.username] = user_info;
                     return_message.success = true;
                 }
 
