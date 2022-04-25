@@ -968,33 +968,41 @@ namespace schedule2
             }
         }
 
-        public DBReturnMessage changePassword(User user, string new_password)
+        public DBReturnMessage changePassword(User user, string new_password, string new_password_again)
         {
             DBReturnMessage return_message = new DBReturnMessage();
             return_message.success = false;
-            try
+            if (new_password.Equals(new_password_again))
             {
-                string salt = GenerateSalt();
-                string password_hash = ComputeHash(Encoding.UTF8.GetBytes(new_password), Encoding.UTF8.GetBytes(salt));
-                string file_name = "pwds.txt";
-                string file_text ="";
-                foreach(string line in File.ReadLines("pwds.txt"))
+                try
                 {
-                    if (!line.Split(',').Last().Equals(user.userID))
+                    string salt = GenerateSalt();
+                    string password_hash = ComputeHash(Encoding.UTF8.GetBytes(new_password), Encoding.UTF8.GetBytes(salt));
+                    string file_name = "pwds.txt";
+                    string file_text = "";
+                    foreach (string line in File.ReadLines("pwds.txt"))
                     {
-                        file_text += line + "\n";
+                        if (!line.Split(',').Last().Equals(user.userID))
+                        {
+                            file_text += line + "\n";
+                        }
                     }
+                    file_text += user.username + "," + password_hash + "," + salt + "," + user.userID;
+                    File.WriteAllText(file_name, file_text);
+                    object[] user_info = { password_hash, salt, user };
+                    accounts[user.userID] = user_info;
+                    return_message.success = true;
                 }
-                file_text += user.username + "," + password_hash + "," + salt + "," + user.userID;
-                File.WriteAllText(file_name, file_text);
-                object[] user_info = { password_hash, salt, user };
-                accounts[user.userID] = user_info;
-                return_message.success = true;
+
+                catch (Exception ex)
+                {
+                    string[] errors = { ex.Message };
+                    return_message.error_messages = errors;
+                }
             }
-            
-            catch (Exception ex)
+            else
             {
-                string[] errors = { ex.Message };
+                string[] errors = { "Passwords do not match!" };
                 return_message.error_messages = errors;
             }
 

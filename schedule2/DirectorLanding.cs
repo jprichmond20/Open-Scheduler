@@ -186,5 +186,10 @@ namespace schedule2
             frm.FormClosing += delegate { this.Close(); };
             frm.Show();
         }
+
+        private void ChangePassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
