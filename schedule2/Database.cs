@@ -338,7 +338,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }  
                     }
 
                 }
@@ -356,7 +359,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -374,7 +380,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -392,7 +401,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -410,7 +422,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -428,7 +443,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -446,7 +464,10 @@ namespace schedule2
                 {
                     foreach (String id in idList)
                     {
-                        temp_user_time.Add(getUserById(id).user);
+                        if (!id.Equals(""))
+                        {
+                            temp_user_time.Add(getUserById(id).user);
+                        }
                     }
 
                 }
@@ -786,12 +807,18 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.monday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if(!(shifts[0] == null))
+                    try
                     {
-                        foreach (User user in shifts)
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch(ArgumentOutOfRangeException e){
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -802,12 +829,18 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.tuesday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
-                    {
-                        foreach (User user in shifts)
+                    try{
+
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch (ArgumentOutOfRangeException e){
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -818,12 +851,18 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.wednesday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
-                    {
-                        foreach (User user in shifts)
+                    try {
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+
+                    }
+                    catch (ArgumentOutOfRangeException e){
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -834,12 +873,19 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.thursday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
+                    try
                     {
-                        foreach (User user in shifts)
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch (ArgumentOutOfRangeException e)
+                    {
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -850,12 +896,19 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.friday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
+                    try
                     {
-                        foreach (User user in shifts)
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch(ArgumentOutOfRangeException e)
+                    {
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -866,12 +919,19 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.saturday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
+                    try
                     {
-                        foreach (User user in shifts)
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch (ArgumentOutOfRangeException e)
+                    {
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
@@ -882,12 +942,19 @@ namespace schedule2
                 foreach (List<User> shifts in schedule.sunday)
                 {
                     file_text += day + time.ToString("hh:mmtt") + ",\"[";
-                    if (!(shifts[0] == null))
+                    try
                     {
-                        foreach (User user in shifts)
+                        if (!(shifts[0] == null))
                         {
-                            file_text += user.getFirstandLast() + ",";
+                            foreach (User user in shifts)
+                            {
+                                file_text += user.getFirstandLast() + ",";
+                            }
                         }
+                    }
+                    catch(ArgumentOutOfRangeException e)
+                    {
+                        Console.WriteLine(e);
                     }
                     file_text += "]\"\n";
                     time = time.AddMinutes(30);
