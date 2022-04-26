@@ -49,10 +49,10 @@ namespace schedule2
             // Populate the data grid with "data" (just nothing)
             String[] maxOpenAndClose = getOpenAndCloseSchedule();
 
-            for(int i = 0; i < maxOpenAndClose.Length; i++)
+            for(int i = 0; i < times.Length; i++)
             {
                 dataGridView1.Rows.Add(new object[] {"", "", "", "", "", "", "" });
-                dataGridView1.Rows[i].HeaderCell.Value = maxOpenAndClose[i];
+                dataGridView1.Rows[i].HeaderCell.Value = times[i];
             }
 
             dataGridView1.RowHeadersWidth = 90;
@@ -64,14 +64,11 @@ namespace schedule2
             {
                 for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    if (j >= openInd && j <= closeInd)
-                    {
                         // Columns are the associated to the times
                         if (masterSchedule.days[i][j] == "NULL")
                         {
-                            dataGridView1[i, j-openInd].Style.BackColor = sched.BackColor;
+                            dataGridView1[i, j].Style.BackColor = sched.BackColor;
                         }
-                    }
                 }
             }
 
