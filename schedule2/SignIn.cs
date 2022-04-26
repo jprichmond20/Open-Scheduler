@@ -93,5 +93,27 @@ namespace schedule2
         {
 
         }
+
+        private void class13_Click(object sender, EventArgs e)
+        {
+            var user_name = newTextBox2.Texts;
+            try
+            {
+                Object[] user_info = Program.db.accounts[user_name];
+                this.Hide();
+                var frm = new ChangePassword((User)user_info[2]);
+                this.Hide();
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Close(); };
+                frm.Show();
+            }
+            catch (Exception)
+            {
+                label3.Text = "User does not exist!";
+            }
+
+
+        }
     }
 }

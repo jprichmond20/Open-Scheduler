@@ -79,7 +79,7 @@ namespace schedule2
 
         //username, (hashpass, salt, user)
         // Intialize dictionary to hold all of our accounts that have been generated
-        private Dictionary<string, object[]> accounts;
+        public Dictionary<string, object[]> accounts;
         public Dictionary<string, object[]> lookupAccounts;
         public Database()
         {
@@ -972,7 +972,7 @@ namespace schedule2
         {
             DBReturnMessage return_message = new DBReturnMessage();
             return_message.success = false;
-            if (new_password.Equals(new_password_again))
+            if (new_password.Equals(new_password_again) && new_password.Length > 0)
             {
                 try
                 {

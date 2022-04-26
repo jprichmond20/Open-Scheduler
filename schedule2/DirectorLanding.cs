@@ -189,13 +189,7 @@ namespace schedule2
 
         private void ChangePassword_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var frm = new ChangePassword(user);
-            this.Hide();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Close(); };
-            frm.Show();
+            
         }
     }
 }

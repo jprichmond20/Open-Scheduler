@@ -45,7 +45,7 @@ namespace schedule2
 
         private void Back_Click(object sender, EventArgs e)
         {
-            var frm = new DirectorLanding(new Director(curr_user));
+            var frm = new SignIn();
             this.Hide();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;

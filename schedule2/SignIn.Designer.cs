@@ -38,6 +38,7 @@
             this.newTextBox2 = new CustomButtons.TextBox.newTextBox();
             this.class12 = new CustomButtons.Buttons.class1();
             this.class11 = new CustomButtons.Buttons.class1();
+            this.class13 = new CustomButtons.Buttons.class1();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,7 +147,7 @@
             this.class12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class12.ForeColor = System.Drawing.Color.White;
-            this.class12.Location = new System.Drawing.Point(411, 388);
+            this.class12.Location = new System.Drawing.Point(215, 388);
             this.class12.Margin = new System.Windows.Forms.Padding(4);
             this.class12.Name = "class12";
             this.class12.Size = new System.Drawing.Size(164, 57);
@@ -167,7 +168,7 @@
             this.class11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.class11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
             this.class11.ForeColor = System.Drawing.Color.White;
-            this.class11.Location = new System.Drawing.Point(195, 388);
+            this.class11.Location = new System.Drawing.Point(411, 388);
             this.class11.Margin = new System.Windows.Forms.Padding(4);
             this.class11.Name = "class11";
             this.class11.Size = new System.Drawing.Size(164, 57);
@@ -177,12 +178,34 @@
             this.class11.UseVisualStyleBackColor = false;
             this.class11.Click += new System.EventHandler(this.class11_Click);
             // 
+            // class13
+            // 
+            this.class13.BackColor = System.Drawing.Color.Crimson;
+            this.class13.BackgroundColor = System.Drawing.Color.Crimson;
+            this.class13.BorderColor = System.Drawing.Color.White;
+            this.class13.BorderRadius = 25;
+            this.class13.BorderSize = 2;
+            this.class13.FlatAppearance.BorderSize = 0;
+            this.class13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.class13.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.class13.ForeColor = System.Drawing.Color.White;
+            this.class13.Location = new System.Drawing.Point(19, 388);
+            this.class13.Margin = new System.Windows.Forms.Padding(4);
+            this.class13.Name = "class13";
+            this.class13.Size = new System.Drawing.Size(164, 57);
+            this.class13.TabIndex = 37;
+            this.class13.Text = "Change Password";
+            this.class13.TextColor = System.Drawing.Color.White;
+            this.class13.UseVisualStyleBackColor = false;
+            this.class13.Click += new System.EventHandler(this.class13_Click);
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(596, 473);
+            this.Controls.Add(this.class13);
             this.Controls.Add(this.newTextBox1);
             this.Controls.Add(this.newTextBox2);
             this.Controls.Add(this.class12);
@@ -212,6 +235,7 @@
         private CustomButtons.Buttons.class1 class12;
         private CustomButtons.TextBox.newTextBox newTextBox2;
         private CustomButtons.TextBox.newTextBox newTextBox1;
+        private CustomButtons.Buttons.class1 class13;
     }
 }
 
