@@ -95,7 +95,7 @@ namespace schedule2
             {
                 if (Convert.ToString(dataGridView1.SelectedCells[i].Value) == "")
                 {
-                    if (dataGridView1.SelectedCells[i].Style.BackColor != sel.BackColor)
+                    if (dataGridView1.SelectedCells[i].Style.BackColor != sel.BackColor && dataGridView1.SelectedCells[i].Style.BackColor != Color.Gold)
                     {
                         dataGridView1.SelectedCells[i].Style.BackColor = sel.BackColor;
                         dataGridView1.ClearSelection();
