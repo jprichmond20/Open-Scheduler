@@ -109,7 +109,7 @@
             this.newTextBox1.Multiline = false;
             this.newTextBox1.Name = "newTextBox1";
             this.newTextBox1.Padding = new System.Windows.Forms.Padding(9);
-            this.newTextBox1.PasswordChar = false;
+            this.newTextBox1.PasswordChar = true;
             this.newTextBox1.Size = new System.Drawing.Size(371, 39);
             this.newTextBox1.TabIndex = 1;
             this.newTextBox1.Texts = "";

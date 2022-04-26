@@ -55,7 +55,7 @@ namespace schedule2
                 dataGridView1.Rows[i].HeaderCell.Value = maxOpenAndClose[i];
             }
 
-
+            dataGridView1.RowHeadersWidth = 90;
             
             
             DataGridViewCellStyle sched = new DataGridViewCellStyle();

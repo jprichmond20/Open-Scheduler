@@ -35,8 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.database1DataSet1 = new schedule2.Database1DataSet();
-            this.class18 = new CustomButtons.Buttons.class1();
-            this.class17 = new CustomButtons.Buttons.class1();
             this.class16 = new CustomButtons.Buttons.class1();
             this.class15 = new CustomButtons.Buttons.class1();
             this.class14 = new CustomButtons.Buttons.class1();
@@ -107,47 +105,6 @@
             // 
             this.database1DataSet1.DataSetName = "Database1DataSet";
             this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // class18
-            // 
-            this.class18.BackColor = System.Drawing.Color.Crimson;
-            this.class18.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class18.BorderColor = System.Drawing.Color.White;
-            this.class18.BorderRadius = 25;
-            this.class18.BorderSize = 2;
-            this.class18.FlatAppearance.BorderSize = 0;
-            this.class18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class18.ForeColor = System.Drawing.Color.White;
-            this.class18.Location = new System.Drawing.Point(957, 386);
-            this.class18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.class18.Name = "class18";
-            this.class18.Size = new System.Drawing.Size(181, 71);
-            this.class18.TabIndex = 13;
-            this.class18.Text = "Save Schedule";
-            this.class18.TextColor = System.Drawing.Color.White;
-            this.class18.UseVisualStyleBackColor = false;
-            this.class18.Click += new System.EventHandler(this.class18_Click);
-            // 
-            // class17
-            // 
-            this.class17.BackColor = System.Drawing.Color.Crimson;
-            this.class17.BackgroundColor = System.Drawing.Color.Crimson;
-            this.class17.BorderColor = System.Drawing.Color.White;
-            this.class17.BorderRadius = 25;
-            this.class17.BorderSize = 2;
-            this.class17.FlatAppearance.BorderSize = 0;
-            this.class17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.class17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F);
-            this.class17.ForeColor = System.Drawing.Color.White;
-            this.class17.Location = new System.Drawing.Point(957, 461);
-            this.class17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.class17.Name = "class17";
-            this.class17.Size = new System.Drawing.Size(181, 71);
-            this.class17.TabIndex = 12;
-            this.class17.Text = "Open Schedule";
-            this.class17.TextColor = System.Drawing.Color.White;
-            this.class17.UseVisualStyleBackColor = false;
             // 
             // class16
             // 
@@ -280,8 +237,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1151, 826);
-            this.Controls.Add(this.class18);
-            this.Controls.Add(this.class17);
             this.Controls.Add(this.class16);
             this.Controls.Add(this.class15);
             this.Controls.Add(this.class14);
@@ -314,7 +269,5 @@
         private CustomButtons.Buttons.class1 class14;
         private CustomButtons.Buttons.class1 class15;
         private CustomButtons.Buttons.class1 class16;
-        private CustomButtons.Buttons.class1 class17;
-        private CustomButtons.Buttons.class1 class18;
     }
 }

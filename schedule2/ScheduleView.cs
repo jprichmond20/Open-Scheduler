@@ -97,7 +97,7 @@ namespace schedule2
             //}
 
             // Set some settings for display
-            dataGridView1.RowHeadersWidth = 100; 
+            dataGridView1.RowHeadersWidth = 120; 
             /*dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             for (int i = 0; i < dataGridView1.Columns.Count - 1; i++)
             {

@@ -75,9 +75,10 @@ namespace schedule2
                         }
                  }
             }
+            dataGridView1.RowHeadersWidth = 90;
 
-            
         }
+        
 
       
         private void dataGridView1_SelectionChanged(Object sender, EventArgs e)
