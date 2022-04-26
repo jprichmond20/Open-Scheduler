@@ -241,80 +241,86 @@ namespace schedule2
         {
             String json_file_name = "userSchedule.json";
             String json_text = "{ \"monday\":[";
-            foreach (List<User> slot in schedule.monday)
+            try
             {
-                json_text += "[";
-                foreach (User consultant in slot)
+                foreach (List<User> slot in schedule.monday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
 
-            json_text += "], \"tuesday\":[";
-            foreach (List<User> slot in schedule.tuesday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"tuesday\":[";
+                foreach (List<User> slot in schedule.tuesday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
-            json_text += "], \"wednesday\":[";
-            foreach (List<User> slot in schedule.wednesday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"wednesday\":[";
+                foreach (List<User> slot in schedule.wednesday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
-            json_text += "], \"thursday\":[";
-            foreach (List<User> slot in schedule.thursday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"thursday\":[";
+                foreach (List<User> slot in schedule.thursday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
-            json_text += "], \"friday\":[";
-            foreach (List<User> slot in schedule.friday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"friday\":[";
+                foreach (List<User> slot in schedule.friday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
-            json_text += "], \"saturday\":[";
-            foreach (List<User> slot in schedule.saturday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"saturday\":[";
+                foreach (List<User> slot in schedule.saturday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
-            }
-            json_text += "], \"sunday\":[";
-            foreach (List<User> slot in schedule.sunday)
-            {
-                json_text += "[";
-                foreach (User consultant in slot)
+                json_text += "], \"sunday\":[";
+                foreach (List<User> slot in schedule.sunday)
                 {
-                    json_text += "\"" + consultant.userID + "\",";
+                    json_text += "[";
+                    foreach (User consultant in slot)
+                    {
+                        json_text += "\"" + consultant.userID + "\",";
+                    }
+                    json_text += "],";
                 }
-                json_text += "],";
+                json_text += "]}";
+                File.WriteAllText(json_file_name, json_text);
             }
-            json_text += "]}";
-            File.WriteAllText(json_file_name, json_text);
+            catch (Exception e)
+            {
+                Console.Write(e.ToString());
+            }
         }
-
         public UserListSchedule getUserSchedule()
         {
             String json_text = File.ReadAllText("userSchedule.json");
