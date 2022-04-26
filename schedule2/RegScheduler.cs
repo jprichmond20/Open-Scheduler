@@ -291,19 +291,22 @@ namespace schedule2
         // this function resets the data grid when the user clicks clear
         // This will repopulate with the writing center schedule when we have it
         {
-            
 
-            foreach(DataGridViewRow row in dataGridView1.Rows)
+
+            DataGridViewCellStyle sched = new DataGridViewCellStyle();
+            sched.BackColor = Color.Black;
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                foreach (DataGridViewCell cell in row.Cells)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    if (cell.Style.BackColor != Color.Black)
+                    // Columns are the associated to the times
+                    if (masterSchedule.days[i][j] == "NULL")
                     {
-                        cell.Style.BackColor = Color.Gainsboro;
+                        dataGridView1[i, j].Style.BackColor = sched.BackColor;
                     }
                 }
             }
-        
+
         }
 
         private void class12_Click(object sender, EventArgs e)
@@ -326,13 +329,23 @@ namespace schedule2
         {
             //clear
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            DataGridViewCellStyle sched = new DataGridViewCellStyle();
+            sched.BackColor = Color.Black;
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                foreach (DataGridViewCell cell in row.Cells)
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    if (cell.Style.BackColor != Color.Black)
+                    // Columns are the associated to the times
+                    if (masterSchedule.days[i][j] == "NULL")
                     {
-                        cell.Style.BackColor = Color.Gainsboro;
+                        dataGridView1[i, j].Style.BackColor = sched.BackColor;
+                    }
+                    else
+                    {
+                        if(dataGridView1[i, j].Style.BackColor == Color.Crimson)
+                        {
+                            dataGridView1[i, j].Style.BackColor = Color.Gainsboro;
+                        }
                     }
                 }
             }
