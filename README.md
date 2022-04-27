@@ -1,5 +1,5 @@
 # Welcome to the Open Scheduling Software!
-Created by Jake Kacik, JP Richmond, and Noah Baker, this software was made to help writing centers across the nation help schedule their consultants.
+Created by Jake Kacik, JP Richmond, and Noah Baker, this software was made to help writing centers across the nation schedule their consultants.
 
 ### How do I install?
 Click on the "Release" tab on the right and follow the instructions there.
