@@ -1,4 +1,8 @@
-# scheduleWIP
-Form for WC Consultants: https://docs.google.com/forms/d/17IwVRdBywEULKU_w8mM_iYRznuJ-mt8yfyCtdmuVcZM/viewform?ts=621024bc&edit_requested=true
-Logos: https://drive.google.com/drive/folders/0BzdVtj0IRJUkSjlRTDFkWVA2SWc?resourcekey=0-b-jwMb62Ppryf5UJ0rw7BA
+# Welcome to the Open Scheduling Software!
+Created by Jake Kacik, JP Richmond, and Noah Baker, this software was made to help writing centers across the nation help schedule their consultants.
 
+## How do I install?
+Click on the "Release" tab on the right and follow the instructions there.
+
+## What if there are issues?
+If there are issues with the application, create an issue thread in the issues tab above. We will do our best to reach out ASAP.
